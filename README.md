@@ -13,26 +13,20 @@ The package itself has no NPM package, Node build, React, database, or applicati
 
 ## Install from GitHub
 
-Add the repository to the host application's `composer.json` (replace the URL with the actual GitHub owner/repository):
+Add the repository to the host application's `composer.json`:
 
 ```json
 {
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/YOUR_GITHUB_USERNAME/reusable-admin-ui"
+            "url": "https://github.com/me-saurabhag/reusable-admin-ui"
         }
     ]
 }
 ```
 
-Install the development branch:
-
-```bash
-composer require reusable-admin-ui/framework:dev-main
-```
-
-After publishing a Git tag such as `v0.1.0`, install the stable release with:
+Install the stable release:
 
 ```bash
 composer require reusable-admin-ui/framework:^0.1
@@ -149,7 +143,7 @@ The package can register GET presentation routes for `/login`, `/register`, and 
 ],
 ```
 
-The package only renders the GET pages. The host application owns POST endpoints, authentication, authorization, validation, OTP verification, password reset, session handling, and redirects. Review the sample branding, logo URLs, labels, and copy in the published configuration before using it in a public-facing application.
+The package only renders the GET pages. The host application owns POST endpoints, authentication, authorization, validation, OTP verification, password reset, session handling, and redirects. Review the sample branding, logo URLs, labels, and copy in the published configuration before using them in a public-facing application.
 
 ## JavaScript utilities
 
@@ -171,9 +165,9 @@ The package layout includes the SVG sprite once as a hidden inline symbol set. S
 
 The host application owns real data, database queries, controllers, business logic, validation, authentication, authorization, APIs, and persistence. This package owns presentation: Blade components, layout, scoped CSS, responsive primitives, and small UI interactions. It is not a CRUD engine or a data layer.
 
-## Local development and demo
+## Demo application
 
-A Laravel 13 demo application is included in [`demo/`](demo/). It uses a Composer path repository pointing to this repository root. Follow [Demo setup](demo/README.md) to install dependencies, publish package files, build assets, and run the feature tests.
+The interactive Laravel demo is maintained separately from this package repository. It can be installed and updated independently, without adding demo application dependencies to the package.
 
 ## License
 

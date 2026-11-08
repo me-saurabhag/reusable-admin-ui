@@ -1,15 +1,12 @@
 # Release checklist
 
-Before publishing a GitHub release:
+1. Review the package changes and update `CHANGELOG.md`.
+2. Run `composer validate --strict` from the package root.
+3. Run PHP syntax checks for `src/` and `config/`.
+4. Run JavaScript syntax checks for `resources/js/` and `resources/stubs/`.
+5. Verify package installation and component rendering in the separate Laravel demo/host application.
+6. Confirm the GitHub Actions `Package CI` workflow passes.
+7. Create and push an annotated version tag (for example, `v0.1.1`).
+8. Create the corresponding GitHub Release and verify the Composer installation instructions.
 
-1. Confirm the package API and Blade component names in `README.md` and `docs/`.
-2. Review `config/admin-ui.php` and replace sample branding, logo URLs, copy, and route settings for the consuming application.
-3. Run `composer validate --strict` from the repository root.
-4. Follow `demo/README.md` from a clean checkout.
-5. Run `php artisan test` from `demo/` after publishing package files.
-6. Run `npm run build` from `demo/`.
-7. Review `git status` and confirm no `.env`, credentials, `vendor/`, `node_modules/`, `public/build/`, logs, sessions, or compiled cache files are staged.
-8. Update `CHANGELOG.md`, commit, and push to `main`.
-9. Create and push a version tag, for example `v0.1.0`, only after the release has been approved.
-
-The CI workflow in `.github/workflows/ci.yml` runs Composer validation, publishes the package files into the demo, builds frontend assets, and runs the Laravel test suite.
+The package CI workflow intentionally checks only package-owned source, configuration, and JavaScript syntax. Full browser/UI integration checks belong to the separately maintained demo/host application.
