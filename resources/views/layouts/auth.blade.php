@@ -12,8 +12,8 @@
 
     @vite([
         
-        $authCss ?? config('admin-ui.auth.vite.css', 'resources/css/auth-login-v1.css'),
-        $authJs ?? config('admin-ui.auth.vite.js', 'resources/js/pages/LoginPage.js'),
+        $authCss ?? config('admin-ui.auth.vite.css', 'resources/css/app.css'),
+        $authJs ?? config('admin-ui.auth.vite.js', 'resources/js/app.js'),
     ])
 
     @stack('styles')

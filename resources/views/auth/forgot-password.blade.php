@@ -6,8 +6,8 @@
     $demoMode = $demoMode ?? false;
 
     // These are entrypoints from the Host application's Vite manifest.
-    $authCss = 'resources/css/auth-forgot-password.css';
-    $authJs = 'resources/js/pages/ForgotPasswordPage.js';
+    $authCss = $forgot['vite']['css'] ?? 'resources/css/app.css';
+    $authJs = $forgot['vite']['js'] ?? 'resources/js/app.js';
 
     $formMethod = strtoupper($forgot['method'] ?? 'POST');
     $formMethod = $formMethod === 'GET' ? 'GET' : 'POST';

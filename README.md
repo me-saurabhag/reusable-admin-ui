@@ -26,10 +26,16 @@ Add the repository to the host application's `composer.json`:
 }
 ```
 
-Install the stable release:
+For the current GitHub `main` branch (pre-release testing):
 
 ```bash
-composer require reusable-admin-ui/framework:^0.1
+composer require reusable-admin-ui/framework:dev-main@dev
+```
+
+After a stable `0.2.x` release has been tagged, install it with:
+
+```bash
+composer require reusable-admin-ui/framework:^0.2
 ```
 
 Laravel package auto-discovery registers `ReusableAdminUi\AdminUiServiceProvider`.
@@ -71,14 +77,26 @@ The host application owns its Vite configuration and imports the published packa
 @import './vendor/admin-ui/sidebar-logo.css';
 @import './vendor/admin-ui/sidebar-variants.css';
 @import './vendor/admin-ui/main-header-alignment.css';
+@import './vendor/admin-ui/auth/login-v1.css';
+@import './vendor/admin-ui/auth/register.css';
+@import './vendor/admin-ui/auth/forgot-password.css';
+@import './vendor/admin-ui/components/status-dialog.css';
+@import './vendor/admin-ui/components/otp-dialog.css';
 ```
 
 ```js
 // resources/js/app.js
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './vendor/admin-ui/admin-ui.js';
+import './pages/LoginPage.js';
+import './pages/RegisterPage.js';
+import './pages/ForgotPasswordPage.js';
 ```
 
-Authentication styles and page classes should be added to the host application's Vite inputs when those pages are used. The exact entry-point list belongs to the host application. Then run its normal commands:
+The package's default authentication Vite entries all use the host's shared
+`resources/css/app.css` and `resources/js/app.js`. Import the auth styles and
+page modules through those shared files as shown below. You may configure
+separate entry points if they are also included in the host Vite build. Then run its normal commands:
 
 ```bash
 npm install
@@ -87,7 +105,9 @@ npm run dev
 npm run build
 ```
 
-Bootstrap is supplied by the host. The package layout can include its local Bootstrap files by default; if the host already loads Bootstrap, set `assets.include_bootstrap` to `false` in `config/admin-ui.php` to avoid loading it twice.
+Bootstrap is supplied by the host. The package defaults `assets.include_bootstrap` to `false`; the host application
+is responsible for loading Bootstrap. Set it to `true` only if the package
+layout should load valid public Bootstrap files and the host does not load it.
 
 ## Minimal Blade example
 
@@ -126,7 +146,7 @@ Publish `config/admin-ui.php` and customize its values for the host application.
 - `theme.default`: `light`
 - `layout.sidebar`: `classic`
 - `auth.login`: `v1`
-- `assets.include_bootstrap`: `true`
+- `assets.include_bootstrap`: `false` (the host application supplies Bootstrap)
 
 The package can register GET presentation routes for `/login`, `/register`, and `/forgot-password`. These routes are enabled by default in the package configuration. If the host application already owns these routes, disable the corresponding package routes to prevent route overlap:
 

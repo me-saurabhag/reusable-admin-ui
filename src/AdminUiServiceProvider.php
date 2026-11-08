@@ -31,7 +31,53 @@ class AdminUiServiceProvider extends ServiceProvider
             $applicationAuth
         );
 
+        // Migrate only exact legacy package defaults from previously published host configs.
+        $mergedAuth = $this->normalizeLegacyAuthViteEntries($mergedAuth);
+
         config()->set('admin-ui.auth', $mergedAuth);
+    }
+
+    /**
+     * Normalize the package's former dedicated auth entry points.
+     *
+     * Published host configs survive Composer upgrades. Only exact historical
+     * package defaults are migrated; custom host entry points are preserved.
+     *
+     * @param array<string|int, mixed> $auth
+     * @return array<string|int, mixed>
+     */
+    private function normalizeLegacyAuthViteEntries(array $auth): array
+    {
+        $legacyEntries = [
+            'vite.css' => ['resources/css/auth-login-v1.css'],
+            'vite.js' => ['resources/js/pages/LoginPage.js'],
+            'registration.vite.css' => ['resources/css/auth-register.css'],
+            // Some earlier published configs accidentally used LoginPage.js for registration.
+            'registration.vite.js' => [
+                'resources/js/pages/RegisterPage.js',
+                'resources/js/pages/LoginPage.js',
+            ],
+            'forgot_password.vite.css' => ['resources/css/auth-forgot-password.css'],
+            'forgot_password.vite.js' => ['resources/js/pages/ForgotPasswordPage.js'],
+        ];
+
+        foreach ($legacyEntries as $key => $legacyPaths) {
+            $configuredPath = data_get($auth, $key);
+
+            if (! in_array($configuredPath, $legacyPaths, true)) {
+                continue;
+            }
+
+            data_set(
+                $auth,
+                $key,
+                str_ends_with($key, '.css')
+                    ? 'resources/css/app.css'
+                    : 'resources/js/app.js'
+            );
+        }
+
+        return $auth;
     }
 
     /**

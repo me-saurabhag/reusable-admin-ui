@@ -310,8 +310,8 @@ return [
             'method' => 'POST',
             // These entrypoints are defined by the Host application's Vite config.
             'vite' => [
-                'css' => 'resources/css/auth-register.css',
-                'js' => 'resources/js/pages/RegisterPage.js',
+                'css' => 'resources/css/app.css',
+                'js' => 'resources/js/app.js',
             ],
             'fields' => [
                 'name' => ['enabled' => true, 'name' => 'name', 'label' => 'Full Name', 'placeholder' => 'Enter your full name', 'required' => true],
@@ -361,6 +361,10 @@ return [
             'route' => ['enabled' => true, 'path' => '/forgot-password', 'name' => 'admin-ui.forgot-password', 'middleware' => ['web']],
             'action' => null,
             'method' => 'POST',
+            'vite' => [
+                'css' => 'resources/css/app.css',
+                'js' => 'resources/js/app.js',
+            ],
             'title' => 'Reset Your Password',
             'description' => 'Enter your email and choose a new password for your account.',
             'email_name' => 'email', 'email_label' => 'Email Address', 'email_placeholder' => 'Enter your registered email',
@@ -373,8 +377,8 @@ return [
         // These are entries in the HOST application's Vite manifest.
         'vite' => [
 
-            'css' => 'resources/css/auth-login-v1.css',
-            'js' => 'resources/js/pages/LoginPage.js',
+            'css' => 'resources/css/app.css',
+            'js' => 'resources/js/app.js',
         ],
     ],
 
@@ -389,7 +393,7 @@ return [
     |
     */
     'assets' => [
-        'include_bootstrap' => true,
+        'include_bootstrap' => false,
         'bootstrap_css' => 'vendor/bootstrap/css/bootstrap.min.css',
         'bootstrap_js' => 'vendor/bootstrap/js/bootstrap.bundle.min.js',
     ],

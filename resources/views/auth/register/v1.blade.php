@@ -20,8 +20,8 @@
     $fields = $registration['fields'] ?? [];
 
     // Registration must load its own Host Vite entrypoints, not the login assets.
-    $authCss = $registration['vite']['css'] ?? 'resources/css/auth-register.css';
-    $authJs = $registration['vite']['js'] ?? 'resources/js/pages/RegisterPage.js';
+    $authCss = $registration['vite']['css'] ?? 'resources/css/app.css';
+    $authJs = $registration['vite']['js'] ?? 'resources/js/app.js';
 
     // Demo mode is explicitly passed by the demo controller.
     $demoMode = $demoMode ?? false;
