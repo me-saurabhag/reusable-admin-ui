@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  demo-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, dom, fileinfo, sqlite3, pdo_sqlite, xml, curl
+          coverage: none
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: demo/package-lock.json
+
+      - name: Validate package Composer manifest
+        run: composer validate --strict
+
+      - name: Lint PHP source files
+        run: find src config resources demo/app demo/bootstrap demo/config demo/routes demo/tests -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Check package JavaScript syntax
+        run: find resources/js resources/stubs -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+
+      - name: Install demo PHP dependencies
+        working-directory: demo
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Prepare Laravel environment
+        working-directory: demo
+        run: |
+          cp .env.example .env
+          php artisan key:generate --force
+
+      - name: Publish package assets and starter files
+        working-directory: demo
+        run: |
+          php artisan vendor:publish --tag=admin-ui-assets --force
+          php artisan vendor:publish --tag=admin-ui-core --force
+          php artisan vendor:publish --tag=admin-ui-auth --force
+
+      - name: Install frontend dependencies
+        working-directory: demo
+        run: npm ci
+
+      - name: Build frontend assets
+        working-directory: demo
+        run: npm run build
+
+      - name: Run Laravel feature tests
+        working-directory: demo
+        run: php artisan test

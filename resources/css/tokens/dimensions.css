@@ -1,0 +1,24 @@
+/* Standard component dimensions. Medium is the default. */
+:root {
+    --rai-control-height-sm: 32px;
+    --rai-control-height: 38px;
+    --rai-control-height-lg: 44px;
+    --rai-control-padding-x-sm: 10px;
+    --rai-control-padding-x: 12px;
+    --rai-control-padding-x-lg: 14px;
+    --rai-card-padding: 20px;
+    --rai-card-padding-mobile: 16px;
+    --rai-table-row-height-compact: 40px;
+    --rai-table-row-height: 48px;
+    --rai-table-row-height-relaxed: 56px;
+    --rai-table-header-height: 44px;
+    --rai-dialog-width-sm: 420px;
+    --rai-dialog-width: 560px;
+    --rai-dialog-width-lg: 760px;
+    --rai-dialog-width-xl: 960px;
+    --rai-offcanvas-width: 400px;
+    --rai-offcanvas-width-lg: 560px;
+    --rai-sidebar-width: 250px;
+    --rai-sidebar-collapsed-width: 80px;
+    --rai-header-height: 64px;
+}

@@ -1,0 +1,44 @@
+/* Default light palette. Override these --rai-* variables in the host app. */
+:root {
+    color-scheme: light;
+    --rai-primary: #16834a;
+    --rai-primary-hover: #126d3e;
+    --rai-primary-active: #0d5731;
+    --rai-primary-soft: #eaf5ee;
+    --rai-primary-contrast: #ffffff;
+    --rai-secondary: #287f78;
+    --rai-secondary-soft: #e8f3f2;
+
+    --rai-success: #16834a;
+    --rai-success-soft: #eaf5ee;
+    --rai-warning: #b7791f;
+    --rai-warning-soft: #fff6e5;
+    --rai-danger: #c43d4b;
+    --rai-danger-soft: #fcebed;
+    --rai-info: #2877a8;
+    --rai-info-soft: #eaf4fa;
+
+    --rai-page-bg: #f6f8fa;
+    --rai-surface: #ffffff;
+    --rai-surface-muted: #f7f9fb;
+    --rai-surface-elevated: #ffffff;
+    --rai-heading: #17212b;
+    --rai-text: #273444;
+    --rai-text-secondary: #536174;
+    --rai-text-muted: #718096;
+    --rai-border: #e2e8ef;
+    --rai-border-subtle: #edf1f5;
+    --rai-divider: #e9eef3;
+    --rai-disabled-bg: #f1f3f5;
+    --rai-disabled-text: #98a2ad;
+
+    --rai-focus-ring: #16834a;
+    --rai-focus-ring-soft: rgb(22 131 74 / 14%);
+
+    --rai-sidebar-bg: #17212b;
+    --rai-sidebar-text: #cbd5df;
+    --rai-sidebar-muted: #8d9aa7;
+    --rai-sidebar-hover: rgb(255 255 255 / 7%);
+    --rai-sidebar-active-bg: rgb(22 131 74 / 22%);
+    --rai-sidebar-border: rgb(255 255 255 / 8%);
+}

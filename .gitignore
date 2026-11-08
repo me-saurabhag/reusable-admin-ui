@@ -1,0 +1,44 @@
+/vendor/
+/node_modules/
+/.phpunit.cache/
+/.phpunit.result.cache
+/.DS_Store
+/Thumbs.db
+/.idea/
+/.vscode/
+/.env
+/.env.*
+!/demo/.env.example
+/demo/vendor/
+/demo/node_modules/
+/demo/public/build/
+/demo/public/hot
+/demo/public/storage
+/demo/bootstrap/cache/*.php
+!/demo/bootstrap/cache/.gitignore
+/demo/storage/*.key
+/demo/storage/app/private/**
+/demo/storage/framework/cache/**
+/demo/storage/framework/sessions/**
+/demo/storage/framework/views/**
+/demo/storage/logs/**
+
+# Laravel runtime files
+/demo/bootstrap/cache/*
+
+/demo/storage/app/public/*
+!/demo/storage/app/public/.gitignore
+
+/demo/storage/framework/testing/**
+/demo/storage/framework/**/.gitignore
+
+# Environment files
+/.env.backup
+/.env.production
+/.env.testing
+
+# Temporary and editor files
+*.log
+*.tmp
+*.swp
+*.swo

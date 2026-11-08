@@ -1,0 +1,503 @@
+/*
+ * Reusable dashboard presentation components.
+ * These styles are intentionally independent of any host application's
+ * page wrapper so each component can be placed in any Blade layout.
+ */
+
+.rai-icon {
+    display: inline-block;
+    flex: 0 0 auto;
+    vertical-align: middle;
+    color: currentColor;
+}
+
+/* Dashboard hero section */
+.rai-dashboard-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 1.5rem 1.75rem 1.25rem;
+    border-radius: var(--rai-radius-lg, 14px);
+    color: #eaf6f0;
+    background:
+        radial-gradient(120% 160% at 100% 0%, rgba(52, 199, 123, .28) 0%, rgba(52, 199, 123, 0) 55%),
+        linear-gradient(135deg, #14503a 0%, #0d3527 55%, #082418 100%);
+    box-shadow: var(--rai-shadow-sm, 0 2px 8px rgba(16, 24, 40, .08));
+}
+.rai-dashboard-hero__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.rai-dashboard-hero__badges,
+.rai-dashboard-hero__actions {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+}
+.rai-dashboard-hero__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .35rem .75rem;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, .92);
+    background: rgba(255, 255, 255, .1);
+    font-size: .75rem;
+    font-weight: 600;
+}
+.rai-dashboard-hero__actions-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .5rem;
+}
+.rai-dashboard-hero__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+    padding: .5rem .95rem;
+    border: 1px solid transparent;
+    border-radius: var(--rai-radius-md, 8px);
+    color: #0d3527;
+    background: #fff;
+    font: inherit;
+    font-size: .8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease;
+}
+.rai-dashboard-hero__button:hover {
+    color: #0d3527;
+    background: #e8f4ee;
+}
+.rai-dashboard-hero__date {
+    color: rgba(233, 246, 240, .7);
+    font-size: .75rem;
+}
+.rai-dashboard-hero__heading {
+    position: relative;
+    z-index: 1;
+    max-width: 46rem;
+    margin-top: 1.25rem;
+}
+.rai-dashboard-hero__title {
+    margin: 0;
+    color: #fff;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.25;
+}
+.rai-dashboard-hero__subtitle {
+    margin: .5rem 0 0;
+    color: rgba(233, 246, 240, .85);
+    font-size: .9rem;
+    line-height: 1.55;
+}
+.rai-dashboard-hero__stats {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, .14);
+}
+.rai-dashboard-hero__stat-label {
+    display: block;
+    color: rgba(233, 246, 240, .65);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.rai-dashboard-hero__stat-value {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    margin-top: .3rem;
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+.rai-dashboard-hero__indicator {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: #34c77b;
+    box-shadow: 0 0 0 3px rgba(52, 199, 123, .25);
+}
+.rai-dashboard-hero__grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .06;
+    pointer-events: none;
+}
+.rai-dashboard-hero__accent {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.rai-dashboard-hero__accent--top {
+    top: -4rem;
+    inset-inline-end: -2.5rem;
+    width: 14rem;
+    height: 14rem;
+    background: rgba(255, 255, 255, .08);
+    filter: blur(4px);
+}
+.rai-dashboard-hero__accent--bottom {
+    bottom: -5rem;
+    inset-inline-start: -2.5rem;
+    width: 12rem;
+    height: 12rem;
+    background: #34c77b;
+    opacity: .16;
+    filter: blur(10px);
+}
+
+/* Shared dashboard card surface */
+.rai-dashboard-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.25rem;
+    color: var(--rai-text, #273444);
+    background: var(--rai-surface, #fff);
+    border: 1px solid var(--rai-border, #e2e8ef);
+    border-radius: var(--rai-radius-lg, 14px);
+    box-shadow: var(--rai-shadow-sm, 0 2px 5px rgba(16, 24, 40, .035));
+}
+.rai-dashboard-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.rai-dashboard-card__title {
+    margin: 0;
+    color: var(--rai-heading, #17212b);
+    font-size: 1rem;
+    font-weight: 700;
+}
+.rai-dashboard-card__subtitle {
+    margin: .35rem 0 0;
+    color: var(--rai-text-secondary, #536174);
+    font-size: .8rem;
+    line-height: 1.45;
+}
+.rai-dashboard-card__period {
+    flex: 0 0 auto;
+    padding: .35rem .6rem;
+    color: var(--rai-text-secondary, #536174);
+    background: var(--rai-surface-muted, #f7f9fb);
+    border: 1px solid var(--rai-border, #e2e8ef);
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Messaging activity chart */
+.rai-messaging-chart {
+    min-height: 100%;
+}
+.rai-messaging-chart__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.1rem;
+    color: var(--rai-text-secondary, #536174);
+    font-size: .75rem;
+}
+.rai-messaging-chart__legend > span {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.rai-messaging-chart__legend-dot {
+    display: inline-block;
+    width: .55rem;
+    height: .55rem;
+    border-radius: 50%;
+}
+.rai-messaging-chart__legend-dot--incoming { background: var(--rai-primary, #16834a); }
+.rai-messaging-chart__legend-dot--outgoing { background: var(--rai-info, #2877a8); }
+.rai-messaging-chart__plot-wrap {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    grid-template-rows: minmax(8.5rem, 1fr) auto;
+    gap: .35rem .6rem;
+    margin-top: .8rem;
+}
+.rai-messaging-chart__y-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 1.2rem;
+    color: var(--rai-text-muted, #718096);
+    font-size: .65rem;
+    text-align: right;
+}
+.rai-messaging-chart__plot {
+    position: relative;
+    min-width: 0;
+    min-height: 8.5rem;
+}
+.rai-messaging-chart__gridline {
+    position: relative;
+    height: 20%;
+    border-top: 1px dashed var(--rai-border, #e2e8ef);
+}
+.rai-messaging-chart__plot > svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+.rai-messaging-chart__line {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+.rai-messaging-chart__line--incoming { stroke: var(--rai-primary, #16834a); }
+.rai-messaging-chart__line--outgoing { stroke: var(--rai-info, #2877a8); }
+.rai-messaging-chart__point {
+    fill: var(--rai-surface, #fff);
+    stroke-width: 2.5;
+    vector-effect: non-scaling-stroke;
+}
+.rai-messaging-chart__point--incoming { stroke: var(--rai-primary, #16834a); }
+.rai-messaging-chart__point--outgoing { stroke: var(--rai-info, #2877a8); }
+.rai-messaging-chart__x-labels {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: .25rem;
+    color: var(--rai-text-muted, #718096);
+    font-size: .62rem;
+}
+.rai-messaging-chart__footer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rai-border-subtle, #edf1f5);
+}
+.rai-messaging-chart__footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+.rai-messaging-chart__total-label {
+    color: var(--rai-text-muted, #718096);
+    font-size: .72rem;
+}
+.rai-messaging-chart__footer strong {
+    color: var(--rai-heading, #17212b);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+/* Conversation and automation health */
+.rai-conversation-health {
+    min-height: 100%;
+}
+.rai-conversation-health__header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+.rai-conversation-health__icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--rai-primary, #16834a);
+    background: color-mix(in srgb, var(--rai-primary, #16834a) 14%, white);
+    border-radius: var(--rai-radius-md, 8px);
+}
+.rai-conversation-health__title {
+    margin: 0;
+    color: var(--rai-heading, #17212b);
+    font-size: 1rem;
+    font-weight: 700;
+}
+.rai-conversation-health__description {
+    max-width: 58rem;
+    margin: .8rem 0 0;
+    color: var(--rai-text-secondary, #536174);
+    font-size: .875rem;
+    line-height: 1.65;
+}
+.rai-conversation-health__description strong {
+    color: var(--rai-text, #273444);
+    font-weight: 700;
+}
+.rai-conversation-health__tiles {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+    margin-top: auto;
+    padding-top: 1.1rem;
+}
+.rai-conversation-health__tile {
+    min-width: 0;
+    padding: .7rem .85rem;
+    background: var(--rai-surface-muted, #f7f9fb);
+    border: 1px solid var(--rai-border-subtle, #edf1f5);
+    border-radius: var(--rai-radius-md, 8px);
+}
+.rai-conversation-health__tile-label {
+    display: block;
+    color: var(--rai-text-muted, #718096);
+    font-size: .72rem;
+}
+.rai-conversation-health__tile-value {
+    display: block;
+    margin-top: .2rem;
+    color: var(--rai-heading, #17212b);
+    font-size: 1.05rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+/* Additive dashboard presentation for the existing stat-card component */
+.rai-stat-card.rai-stat-card--dashboard {
+    min-height: 190px;
+    padding: 1.25rem;
+}
+.rai-stat-card--dashboard .rai-stat-card__icon--primary {
+    color: var(--rai-primary, #16834a);
+    background: color-mix(in srgb, var(--rai-primary, #16834a) 14%, white);
+}
+.rai-stat-card--dashboard .rai-stat-card__icon--info {
+    color: var(--rai-info, #2877a8);
+    background: color-mix(in srgb, var(--rai-info, #2877a8) 14%, white);
+}
+.rai-stat-card--dashboard .rai-stat-card__icon--success {
+    color: var(--rai-success, #16834a);
+    background: color-mix(in srgb, var(--rai-success, #16834a) 14%, white);
+}
+.rai-stat-card--dashboard .rai-stat-card__icon--warning {
+    color: var(--rai-warning, #b7791f);
+    background: color-mix(in srgb, var(--rai-warning, #b7791f) 16%, white);
+}
+.rai-stat-card__dashboard-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: .75rem;
+}
+.rai-stat-card--dashboard .rai-stat-card__label {
+    margin: .85rem 0 0;
+    color: var(--rai-text-secondary, #536174);
+    font-size: .85rem;
+    font-weight: 600;
+}
+.rai-stat-card--dashboard .rai-stat-card__value {
+    margin: .15rem 0 0;
+    color: var(--rai-heading, #17212b);
+    font-size: 1.8rem;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+}
+.rai-stat-card__dashboard-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.rai-stat-card__dashboard-trend--success {
+    color: var(--rai-success, #16834a);
+    background: color-mix(in srgb, var(--rai-success, #16834a) 12%, white);
+}
+.rai-stat-card__dashboard-trend--info,
+.rai-stat-card__dashboard-trend--neutral {
+    color: var(--rai-info, #2877a8);
+    background: color-mix(in srgb, var(--rai-info, #2877a8) 10%, white);
+}
+.rai-stat-card__dashboard-trend--warning {
+    color: var(--rai-warning, #b7791f);
+    background: color-mix(in srgb, var(--rai-warning, #b7791f) 14%, white);
+}
+.rai-stat-card__dashboard-trend--danger {
+    color: var(--rai-danger, #c43d4b);
+    background: color-mix(in srgb, var(--rai-danger, #c43d4b) 12%, white);
+}
+.rai-stat-card__dashboard-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: .9rem;
+    border-top: 1px solid var(--rai-border-subtle, #edf1f5);
+}
+.rai-stat-card__dashboard-footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    min-width: 0;
+}
+.rai-stat-card__dashboard-footer > div:last-child {
+    text-align: right;
+    align-items: flex-end;
+}
+.rai-stat-card__dashboard-footer span {
+    color: var(--rai-text-muted, #718096);
+    font-size: .75rem;
+}
+.rai-stat-card__dashboard-footer strong {
+    color: var(--rai-text, #273444);
+    font-size: .875rem;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px) {
+    .rai-dashboard-hero {
+        padding: 1.25rem 1.25rem 1.1rem;
+    }
+    .rai-dashboard-hero__actions-wrap {
+        align-items: flex-start;
+    }
+    .rai-dashboard-hero__stats {
+        gap: 1.25rem 2rem;
+    }
+    .rai-conversation-health__tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .rai-messaging-chart__plot-wrap {
+        grid-template-columns: 2.2rem minmax(0, 1fr);
+    }
+    .rai-messaging-chart__x-labels {
+        font-size: .58rem;
+    }
+}
+@media (max-width: 400px) {
+    .rai-conversation-health__tiles {
+        grid-template-columns: 1fr;
+    }
+}

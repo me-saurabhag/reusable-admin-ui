@@ -1,0 +1,43 @@
+/*
+ * Sidebar brand logos.
+ * This file only controls the full and compact logo assets inside the
+ * existing brand slot. It does not change sidebar layout or navigation.
+ */
+.rai-ui__brand-logo {
+    display: block;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
+.rai-ui__brand-logo-full {
+    display: block !important;
+    width: auto;
+    max-width: 142px;
+    max-height: 38px;
+}
+
+.rai-ui__brand-logo-small {
+    display: none !important;
+    width: 34px;
+    height: 34px;
+}
+
+@media (min-width: 992px) {
+    .rai-ui[data-rai-sidebar-collapsed="true"] .rai-ui__brand-logo-full {
+        display: none !important;
+    }
+
+    .rai-ui[data-rai-sidebar-collapsed="true"] .rai-ui__brand-logo-small {
+        display: block !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .rai-ui__brand-logo-full {
+        display: block !important;
+    }
+
+    .rai-ui__brand-logo-small {
+        display: none !important;
+    }
+}

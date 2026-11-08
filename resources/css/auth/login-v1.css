@@ -1,0 +1,787 @@
+/* Login V1 — styles are isolated to this page. */
+.rai-auth-body { height: 100vh; height: 100dvh; margin: 0; overflow: hidden; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #F4F6F5; color: #1a1a1a; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.rai-auth-login-v1 { height: 100vh; height: 100dvh; overflow: hidden; }
+/* =========================================================
+   WhatsApp CRM — Sign In Page
+   ========================================================= */
+
+.rai-auth-login-v1{
+    --wa-green: #25D366;
+    --wa-green-dark: #1DA851;
+    --wa-green-darker: #128C4A;
+    --panel-bg: #0B1F17;
+    --panel-bg-2: #0E2A1E;
+    --text-muted: #9FB8AC;
+    --card-radius: 20px;
+}
+
+.rai-auth-login-v1,
+.rai-auth-login-v1 *{
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+.rai-auth-login-v1 input[type="number"]{
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    /* Firefox */
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+/* Chrome, Safari, Edge, Opera */
+.rai-auth-login-v1 input[type="number"]::-webkit-outer-spin-button,
+.rai-auth-login-v1 input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.rai-auth-login-v1 a:focus-visible,
+.rai-auth-login-v1 button:focus-visible,
+.rai-auth-login-v1 input:focus-visible{
+    outline: 2px solid var(--wa-green);
+    outline-offset: 2px;
+}
+
+/*@media (prefers-reduced-motion: reduce) {*/
+/*    * {*/
+/*        transition: none !important;*/
+/*        animation: none !important;*/
+/*    }*/
+/*}*/
+@media (prefers-reduced-motion: reduce) {
+    .rai-auth-login-v1,
+.rai-auth-login-v1 *{
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .rai-auth-login-v1 .loader-mofi *,
+.rai-auth-login-v1 .loader-mofi{
+        animation-play-state: running !important;
+    }
+
+    .rai-auth-login-v1 .loader-outter{
+        animation: loaderRotate 1.1s linear infinite !important;
+    }
+
+    .rai-auth-login-v1 .loader-inner{
+        animation: loaderRotateReverse .9s linear infinite !important;
+    }
+
+    .rai-auth-login-v1 .loader-inner-1{
+        animation: loaderPulse 1s ease infinite !important;
+    }
+}
+
+.rai-auth-login-v1{
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.rai-auth-login-v1 .auth-row{
+    height: 100%;
+}
+
+/* =========================================================
+   LEFT PANEL
+   ========================================================= */
+
+.rai-auth-login-v1 .left-panel{
+    position: relative;
+    background-color: var(--panel-bg);
+    background-image:
+        radial-gradient(circle at 15% 15%, rgba(37, 211, 102, 0.10) 0%, rgba(37, 211, 102, 0) 40%),
+        linear-gradient(160deg, rgba(11, 31, 23, 0.95) 0%, rgba(10, 41, 27, 0.92) 55%, rgba(11, 31, 23, 0.97) 100%),
+        url("https://bot.kotfumes.com/assets/images/background_1.webp");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.rai-auth-login-v1 .left-panel::before,
+.rai-auth-login-v1 .left-panel::after{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.rai-auth-login-v1 .left-panel::before{
+    width: 520px;
+    height: 520px;
+    right: -180px;
+    top: 45%;
+    transform: translateY(-50%);
+    background: radial-gradient(circle at center, rgba(37, 211, 102, 0.14) 0%, rgba(37, 211, 102, 0) 70%);
+}
+
+.rai-auth-login-v1 .left-panel::after{
+    width: 260px;
+    height: 260px;
+    left: -100px;
+    bottom: -80px;
+    background: radial-gradient(circle at center, rgba(37, 211, 102, 0.10) 0%, rgba(37, 211, 102, 0) 70%);
+}
+
+.rai-auth-login-v1 .left-panel-content{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 620px;
+    height: 100%;
+    padding: clamp(1.5rem, 5vh, 3.5rem) clamp(1.75rem, 3.5vw, 3.75rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(0.75rem, 2.3vh, 2rem);
+}
+
+/* Brand / logo — full lockup image (icon + wordmark), shown at its
+   natural aspect ratio, not cropped or stretched. Sized off the
+   viewport height so it can go bigger without ever forcing a scroll. */
+.rai-auth-login-v1 .brand-logo-full{
+    height: clamp(70px, 11.5vh, 120px);
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+/* On the light card background the dark-panel version of the logo
+   needs a touch more room to stay legible. */
+.rai-auth-login-v1 .brand-logo-full-dark{
+    height: clamp(56px, 9.5vh, 120px);
+}
+
+.rai-auth-login-v1 .brand-text{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.rai-auth-login-v1 .brand-text-dark{
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #14251d;
+    letter-spacing: -0.02em;
+}
+
+.rai-auth-login-v1 .brand-accent{
+    color: var(--wa-green);
+}
+
+/* Headline */
+.rai-auth-login-v1 .headline{
+    font-size: clamp(1.7rem, 4.4vh, 3.25rem);
+    font-weight: 800;
+    line-height: 1.16;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.rai-auth-login-v1 .subtext{
+    font-size: clamp(0.9rem, 2.1vh, 1.2rem);
+    line-height: 1.55;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0;
+}
+
+/* Feature list */
+.rai-auth-login-v1 .feature-list{
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.7rem, 2.1vh, 1.6rem);
+}
+
+.rai-auth-login-v1 .feature-item{
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.rai-auth-login-v1 .feature-icon{
+    flex: 0 0 auto;
+    width: clamp(36px, 4.8vh, 54px);
+    height: clamp(36px, 4.8vh, 54px);
+    border-radius: 12px;
+    background: linear-gradient(160deg, rgba(37, 211, 102, 0.18), rgba(37, 211, 102, 0.06));
+    border: 1px solid rgba(37, 211, 102, 0.28);
+    box-shadow: 0 4px 12px -4px rgba(37, 211, 102, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wa-green);
+    margin-top: 0.05rem;
+}
+
+.rai-auth-login-v1 .feature-icon svg{
+    width: 62%;
+    height: 62%;
+}
+
+.rai-auth-login-v1 .feature-title{
+    font-size: clamp(0.92rem, 2vh, 1.2rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.2rem;
+}
+
+.rai-auth-login-v1 .feature-desc{
+    font-size: clamp(0.8rem, 1.7vh, 1.02rem);
+    line-height: 1.45;
+    color: var(--text-muted);
+    max-width: 420px;
+    margin: 0;
+}
+
+.rai-auth-login-v1 .copyright{
+    font-size: clamp(0.78rem, 1.4vh, 0.92rem);
+    color: rgba(159, 184, 172, 0.7);
+    margin: 0;
+}
+
+/* =========================================================
+   RIGHT PANEL
+   ========================================================= */
+
+.rai-auth-login-v1 .right-panel{
+    background-color: #F4F6F5;
+    padding: clamp(1rem, 4vh, 3.5rem) 1.5rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+.rai-auth-login-v1 .form-card{
+    width: 100%;
+    max-width: 480px;
+    max-height: 100%;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid rgba(15, 40, 28, 0.06);
+    border-radius: var(--card-radius);
+    padding: clamp(1.15rem, 2.8vh, 2rem) clamp(1.5rem, 3.4vw, 3.25rem);
+    box-shadow: 0 30px 60px -25px rgba(15, 40, 28, 0.22), 0 8px 20px -12px rgba(15, 40, 28, 0.10);
+}
+
+.rai-auth-login-v1 .form-card::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
+
+/* Full logo shown above "Welcome Back", natural aspect ratio, scaled
+   with viewport height so it stays large without ever forcing scroll. */
+.rai-auth-login-v1 .welcome-logo{
+    height: clamp(60px, 10.5vh, 110px);
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+.rai-auth-login-v1 .welcome-title{
+    font-size: clamp(1.3rem, 3.3vh, 1.9rem);
+    font-weight: 800;
+    color: #14251d;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.25rem;
+}
+
+.rai-auth-login-v1 .welcome-sub{
+    font-size: clamp(0.85rem, 1.9vh, 1.08rem);
+    color: #6b7d75;
+}
+
+/* Form fields */
+.rai-auth-login-v1 .field-label{
+    font-size: clamp(0.85rem, 1.7vh, 1.02rem);
+    font-weight: 600;
+    color: #24352c;
+    margin-bottom: 0.45rem;
+}
+
+.rai-auth-login-v1 .custom-input-group{
+    border: 1.5px solid #E3E8E6;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #FAFBFA;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.rai-auth-login-v1 .custom-input-group:focus-within{
+    border-color: var(--wa-green);
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(37, 211, 102, 0.12);
+}
+
+.rai-auth-login-v1 .custom-input{
+    border: none;
+    padding: clamp(0.5rem, 1.7vh, 0.95rem) 0.95rem;
+    font-size: clamp(0.92rem, 1.8vh, 1.08rem);
+    color: #14251d;
+    background: transparent;
+}
+
+.rai-auth-login-v1 .custom-input:focus{
+    box-shadow: none;
+    outline: none;
+    background: transparent;
+}
+
+.rai-auth-login-v1 .custom-input::placeholder{
+    color: #A6B2AC;
+}
+
+.rai-auth-login-v1 .custom-input-icon{
+    background: transparent;
+    border: none;
+    color: #8B9A93;
+}
+
+.rai-auth-login-v1 .toggle-password{
+    cursor: pointer;
+}
+
+.rai-auth-login-v1 .toggle-password.active{
+    color: var(--wa-green-dark);
+}
+
+.rai-auth-login-v1 .forgot-link{
+    font-size: clamp(0.85rem, 1.6vh, 1rem);
+    font-weight: 600;
+    color: var(--wa-green-dark);
+    text-decoration: none;
+}
+
+.rai-auth-login-v1 .forgot-link:hover{
+    text-decoration: underline;
+}
+
+/* Sign in button */
+.rai-auth-login-v1 .btn-signin{
+    background: linear-gradient(135deg, var(--wa-green) 0%, var(--wa-green-dark) 100%);
+    border: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: clamp(0.98rem, 1.9vh, 1.15rem);
+    padding: clamp(0.55rem, 1.8vh, 1rem) 1rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px -8px rgba(29, 168, 81, 0.55);
+    transition: box-shadow 0.15s ease, transform 0.12s ease, filter 0.15s ease;
+}
+
+.rai-auth-login-v1 .btn-signin:hover{
+    filter: brightness(1.04);
+    color: #ffffff;
+    box-shadow: 0 12px 24px -8px rgba(29, 168, 81, 0.6);
+    transform: translateY(-1px);
+}
+
+.rai-auth-login-v1 .btn-signin:active{
+    transform: translateY(0);
+    box-shadow: 0 6px 14px -8px rgba(29, 168, 81, 0.5);
+}
+
+/* Divider */
+.rai-auth-login-v1 .divider{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #9AA6A0;
+    font-size: clamp(0.82rem, 1.5vh, 0.98rem);
+}
+
+.rai-auth-login-v1 .divider::before,
+.rai-auth-login-v1 .divider::after{
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #E3E8E6;
+}
+
+.rai-auth-login-v1 .divider span{
+    padding: 0 0.9rem;
+}
+
+/* Social login buttons */
+.rai-auth-login-v1 .social-login-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.rai-auth-login-v1 .btn-social-login{
+    background: #ffffff;
+    border: 1.5px solid #E3E8E6;
+    color: #24352c;
+    font-weight: 600;
+    font-size: clamp(0.92rem, 1.7vh, 1.08rem);
+    padding: clamp(0.5rem, 1.7vh, 0.95rem) 1rem;
+    border-radius: 10px;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.12s ease;
+}
+
+.rai-auth-login-v1 .btn-social-login:hover:not(:disabled){
+    background: #F7F9F8;
+    border-color: #D3DAD7;
+    box-shadow: 0 6px 16px -10px rgba(15, 40, 28, 0.35);
+    transform: translateY(-1px);
+}
+
+.rai-auth-login-v1 .btn-social-login:disabled{
+    opacity: 1;
+    cursor: not-allowed;
+    background: #ffffff;
+    color: #24352c;
+}
+
+.rai-auth-login-v1 .signup-section{
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #E3E8E6;
+}
+
+/* Sign up text */
+.rai-auth-login-v1 .signup-text{
+    font-size: clamp(0.88rem, 1.6vh, 1.02rem);
+    color: #6b7d75;
+}
+
+.rai-auth-login-v1 .signup-link{
+    color: var(--wa-green-dark);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.rai-auth-login-v1 .signup-link:hover{
+    text-decoration: underline;
+}
+
+/* Compact, viewport-aware vertical rhythm for the form — overrides
+   Bootstrap's fixed rem spacing utilities so the whole card always
+   fits within the viewport height without needing to scroll, while
+   growing to fill taller viewports instead of leaving dead space. */
+.rai-auth-login-v1 .form-card .mb-4{
+    margin-bottom: clamp(0.6rem, 2.2vh, 2rem) !important;
+}
+
+.rai-auth-login-v1 .form-card .mb-3{
+    margin-bottom: clamp(0.5rem, 1.8vh, 1.5rem) !important;
+}
+
+.rai-auth-login-v1 .form-card .mb-2{
+    margin-bottom: clamp(0.35rem, 1.2vh, 0.75rem) !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .rai-auth-login-v1 .right-panel{
+        height: 100%;
+        background:
+            linear-gradient(180deg, rgba(11, 31, 23, 0.04) 0%, rgba(11, 31, 23, 0) 220px),
+            #F4F6F5;
+    }
+
+    .rai-auth-login-v1 .form-card{
+        box-shadow: 0 12px 30px -12px rgba(15, 40, 28, 0.14);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .rai-auth-login-v1 .right-panel{
+        padding: 1rem 1rem;
+    }
+
+    .rai-auth-login-v1 .form-card{
+        padding: clamp(1.25rem, 3.5vh, 1.75rem) 1.25rem;
+        border-radius: 16px;
+    }
+
+    .rai-auth-login-v1 .welcome-title{
+        font-size: clamp(1.1rem, 4vh, 1.35rem);
+    }
+
+    .rai-auth-login-v1 .welcome-logo{
+        height: clamp(48px, 9vh, 72px);
+    }
+
+    .rai-auth-login-v1 .brand-logo-full-dark{
+        height: clamp(38px, 7vh, 56px);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .rai-auth-login-v1 .left-panel-content{
+        padding: clamp(1.25rem, 4vh, 2.25rem) 2.25rem;
+    }
+}
+
+/* =========================================================
+   TABLET + MOBILE HEIGHT / SCROLL FIX
+   Keep the complete form reachable on short and narrow viewports.
+   The page grows with its content and the document scrolls naturally.
+   ========================================================= */
+@media (max-width: 991.98px) {
+    .rai-auth-body {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .rai-auth-login-v1 {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow: visible;
+    }
+
+    .rai-auth-login-v1 .auth-row {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+    }
+
+    .rai-auth-login-v1 .right-panel {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow: visible;
+        padding: clamp(1.25rem, 4vh, 2.5rem) 1.25rem;
+    }
+
+    .rai-auth-login-v1 .form-card {
+        max-height: none;
+        overflow: visible;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .rai-auth-login-v1 .right-panel {
+        padding: 1rem 0.875rem;
+    }
+
+    .rai-auth-login-v1 .form-card {
+        width: 100%;
+    }
+}
+
+/* =========================================================
+   LOGIN V2 — NEWSROOM / EDITORIAL THEME
+   Same markup and form hooks as V1; visual treatment only.
+   ========================================================= */
+.rai-auth-login--v2 {
+    --wa-green: #e15a43;
+    --wa-green-dark: #c84432;
+    --wa-green-darker: #a93629;
+    --panel-bg: #101d2d;
+    --panel-bg-2: #172b40;
+    --text-muted: #bdc9d5;
+    --card-radius: 18px;
+}
+
+.rai-auth-login--v2 .left-panel {
+    background-color: #101d2d;
+    background-image:
+        linear-gradient(135deg, rgba(9, 20, 34, .94) 0%, rgba(16, 39, 59, .88) 55%, rgba(18, 31, 48, .94) 100%),
+        url("https://bot.kotfumes.com/assets/images/background.webp");
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, .08);
+}
+
+.rai-auth-login--v2 .brand-accent { color: #ff9a65; }
+.rai-auth-login--v2 .feature-icon {
+    color: #ff9a65;
+    background: linear-gradient(145deg, rgba(255, 154, 101, .20), rgba(225, 90, 67, .07));
+    border-color: rgba(255, 154, 101, .30);
+    box-shadow: 0 5px 18px -8px rgba(225, 90, 67, .42);
+}
+.rai-auth-login--v2 .feature-title { color: #f7f9fc; }
+.rai-auth-login--v2 .feature-desc,
+.rai-auth-login--v2 .subtext { color: #bdc9d5; }
+.rai-auth-login--v2 .copyright { color: rgba(189, 201, 213, .72); }
+.rai-auth-login--v2 .right-panel {
+    background:
+        radial-gradient(circle at 90% 8%, rgba(225, 90, 67, .07), transparent 28%),
+        #f3f5f8;
+}
+.rai-auth-login--v2 .custom-input-group:focus-within {
+    border-color: #e15a43;
+    box-shadow: 0 0 0 4px rgba(225, 90, 67, .11);
+}
+.rai-auth-login--v2 .forgot-link,
+.rai-auth-login--v2 .signup-link { color: #c84432; }
+.rai-auth-login--v2 .btn-signin {
+    background: linear-gradient(135deg, #ed795b 0%, #c84432 100%);
+    box-shadow: 0 9px 20px -12px rgba(200, 68, 50, .65);
+}
+.rai-auth-login--v2 .btn-signin:hover {
+    background: linear-gradient(135deg, #e9684c 0%, #ad392b 100%);
+}
+.rai-auth-login--v2 a:focus-visible,
+.rai-auth-login--v2 button:focus-visible,
+.rai-auth-login--v2 input:focus-visible { outline-color: #e15a43; }
+
+/* =========================================================
+   LOGIN V3 — ISLAMIC EDUCATION THEME
+   Calm emerald, deep green and restrained antique-gold accents.
+   ========================================================= */
+.rai-auth-login--v3 {
+    --wa-green: #d7b66d;
+    --wa-green-dark: #b8944b;
+    --wa-green-darker: #98753a;
+    --panel-bg: #092f2a;
+    --panel-bg-2: #10453b;
+    --text-muted: #c3d5cd;
+    --card-radius: 20px;
+}
+
+.rai-auth-login--v3 .left-panel {
+    background-color: #092f2a;
+    background-image:
+        radial-gradient(circle at 14% 16%, rgba(215, 182, 109, .16), transparent 34%),
+        radial-gradient(circle at 85% 78%, rgba(29, 119, 94, .30), transparent 38%),
+        repeating-linear-gradient(45deg, rgba(215, 182, 109, .035) 0, rgba(215, 182, 109, .035) 1px, transparent 1px, transparent 24px),
+        repeating-linear-gradient(-45deg, rgba(215, 182, 109, .025) 0, rgba(215, 182, 109, .025) 1px, transparent 1px, transparent 24px),
+        linear-gradient(145deg, #082b27 0%, #0c4036 56%, #092f2a 100%);
+    background-size: auto, auto, 34px 34px, 34px 34px, auto;
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, .07);
+}
+
+.rai-auth-login--v3 .brand-accent { color: #e3c985; }
+.rai-auth-login--v3 .feature-icon {
+    color: #e3c985;
+    background: linear-gradient(145deg, rgba(227, 201, 133, .18), rgba(227, 201, 133, .05));
+    border-color: rgba(227, 201, 133, .28);
+    box-shadow: 0 5px 18px -8px rgba(215, 182, 109, .28);
+}
+.rai-auth-login--v3 .feature-title { color: #fffdf7; }
+.rai-auth-login--v3 .feature-desc,
+.rai-auth-login--v3 .subtext { color: #c3d5cd; }
+.rai-auth-login--v3 .copyright { color: rgba(195, 213, 205, .72); }
+.rai-auth-login--v3 .right-panel {
+    background:
+        radial-gradient(circle at 92% 8%, rgba(215, 182, 109, .12), transparent 30%),
+        #f5f6f1;
+}
+.rai-auth-login--v3 .custom-input-group:focus-within {
+    border-color: #b8944b;
+    box-shadow: 0 0 0 4px rgba(184, 148, 75, .13);
+}
+.rai-auth-login--v3 .forgot-link,
+.rai-auth-login--v3 .signup-link { color: #98753a; }
+.rai-auth-login--v3 .btn-signin {
+    background: linear-gradient(135deg, #d9bd7c 0%, #a98543 100%);
+    color: #172d27;
+    box-shadow: 0 9px 20px -12px rgba(169, 133, 67, .62);
+}
+.rai-auth-login--v3 .btn-signin:hover {
+    background: linear-gradient(135deg, #e4ca8d 0%, #98753a 100%);
+    color: #172d27;
+}
+.rai-auth-login--v3 a:focus-visible,
+.rai-auth-login--v3 button:focus-visible,
+.rai-auth-login--v3 input:focus-visible { outline-color: #b8944b; }
+
+/* =========================================================
+   LOGIN V4 — MINIMAL CENTERED FORM
+   ========================================================= */
+.rai-auth-login--v4 {
+    --wa-green: #267657;
+    --wa-green-dark: #1d6248;
+    --wa-green-darker: #164d39;
+    --panel-bg: #102d24;
+    --text-muted: #718078;
+    --card-radius: 20px;
+}
+
+.rai-auth-login--v4 .left-panel { display: none !important; }
+.rai-auth-login--v4 .auth-row { justify-content: center; }
+.rai-auth-login--v4 .right-panel {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    padding: 2rem 1.25rem;
+    background:
+        radial-gradient(circle at 12% 12%, rgba(38, 118, 87, .10), transparent 28%),
+        radial-gradient(circle at 88% 86%, rgba(38, 118, 87, .08), transparent 30%),
+        #f4f6f5;
+}
+.rai-auth-login--v4 .form-card {
+    max-width: 430px;
+    padding: clamp(1.65rem, 4vh, 2.5rem) clamp(1.5rem, 4vw, 2.75rem);
+    border: 1px solid rgba(16, 45, 36, .08);
+    border-radius: 22px;
+    box-shadow: 0 28px 70px -34px rgba(16, 45, 36, .30), 0 8px 24px -16px rgba(16, 45, 36, .16);
+}
+.rai-auth-login--v4 .login-logo-frame {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto 1rem;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+.rai-auth-login--v4 .welcome-logo {
+    display: block;
+    height: 66px;
+    max-width: 210px;
+    margin: 0 !important;
+    object-fit: contain;
+}
+.rai-auth-login--v4 .welcome-title {
+    font-size: 1.55rem;
+    color: #18382c;
+}
+.rai-auth-login--v4 .welcome-sub { color: #718078; }
+.rai-auth-login--v4 .custom-input-group:focus-within {
+    border-color: #267657;
+    box-shadow: 0 0 0 4px rgba(38, 118, 87, .11);
+}
+.rai-auth-login--v4 .forgot-link { color: #1d6248; }
+.rai-auth-login--v4 .btn-signin {
+    background: linear-gradient(135deg, #2d8965 0%, #1d6248 100%);
+    box-shadow: 0 9px 20px -12px rgba(29, 98, 72, .62);
+}
+.rai-auth-login--v4 .btn-signin:hover {
+    background: linear-gradient(135deg, #267b5a 0%, #164d39 100%);
+}
+.rai-auth-login--v4 a:focus-visible,
+.rai-auth-login--v4 button:focus-visible,
+.rai-auth-login--v4 input:focus-visible { outline-color: #267657; }
+
+@media (max-width: 991.98px) {
+    .rai-auth-login--v4 .right-panel {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+    }
+
+    .rai-auth-login--v4 .form-card {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .rai-auth-login--v4 .right-panel { padding: 1rem 0.875rem; }
+    .rai-auth-login--v4 .form-card { padding: 1.5rem 1.25rem; }
+    .rai-auth-login--v4 .welcome-logo { height: 58px; }
+}

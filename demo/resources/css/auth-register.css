@@ -1,0 +1,5 @@
+/* Host Vite entry: Bootstrap is supplied by the host application's npm dependency. */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './vendor/admin-ui/auth/register.css';
+@import './ui-manager.css';
+@import './vendor/admin-ui/status-dialog.css';

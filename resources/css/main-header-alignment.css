@@ -1,0 +1,32 @@
+/*
+ * Main Header Alignment
+ */
+
+.rai-ui__main {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.rai-ui__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 72px;
+    height: 72px;
+    margin: 0;
+    padding-block: 0;
+    box-sizing: border-box;
+}
+
+.rai-ui__header-start,
+.rai-ui__header-actions {
+    align-items: center;
+}
+
+@media (max-width: 575.98px) {
+    .rai-ui__header {
+        min-height: 72px;
+        height: auto;
+        padding-block: 0;
+    }
+}

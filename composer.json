@@ -1,0 +1,33 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "reusable-admin-ui/framework",
+    "description": "Reusable Blade-based admin UI components for Laravel applications.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^13.0",
+        "illuminate/view": "^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ReusableAdminUi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ReusableAdminUi\\AdminUiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "keywords": [
+        "laravel",
+        "admin-ui",
+        "blade",
+        "bootstrap",
+        "ui-components"
+    ]
+}

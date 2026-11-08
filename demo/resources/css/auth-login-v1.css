@@ -1,0 +1,6 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './vendor/admin-ui/auth/login-v1.css';
+@import './ui-manager.css';
+@import './vendor/admin-ui/status-dialog.css';
+
+@import './vendor/admin-ui/otp-dialog.css';

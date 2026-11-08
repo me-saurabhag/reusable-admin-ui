@@ -1,0 +1,11 @@
+/* Consistent corner radius scale. */
+:root {
+    --rai-radius-xs: 4px;
+    --rai-radius-sm: 6px;
+    --rai-radius-md: 8px;
+    --rai-radius-lg: 12px;
+    --rai-radius-xl: 16px;
+    --rai-radius-pill: 999px;
+    --rai-border-width: 1px;
+    --rai-focus-ring-width: 3px;
+}

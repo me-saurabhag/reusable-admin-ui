@@ -1,0 +1,8 @@
+/* Restrained elevation: surfaces rely on borders before shadows. */
+:root {
+    --rai-shadow-none: none;
+    --rai-shadow-sm: 0 1px 2px rgb(16 24 40 / 6%);
+    --rai-shadow-md: 0 4px 12px rgb(16 24 40 / 10%);
+    --rai-shadow-lg: 0 12px 32px rgb(16 24 40 / 14%);
+    --rai-transition-fast: 140ms ease;
+}

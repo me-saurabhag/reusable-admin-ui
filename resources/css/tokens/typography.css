@@ -1,0 +1,21 @@
+/* Typography scale: Inter first, then dependable local system fallbacks. */
+:root {
+    --rai-font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --rai-font-size-display: 2rem;
+    --rai-font-size-h1: 1.75rem;
+    --rai-font-size-h2: 1.5rem;
+    --rai-font-size-h3: 1.25rem;
+    --rai-font-size-h4: 1.125rem;
+    --rai-font-size-h5: 1rem;
+    --rai-font-size-body: .875rem;
+    --rai-font-size-small: .8125rem;
+    --rai-font-size-caption: .75rem;
+    --rai-font-size-tiny: .6875rem;
+    --rai-font-weight-regular: 400;
+    --rai-font-weight-medium: 500;
+    --rai-font-weight-semibold: 600;
+    --rai-font-weight-bold: 700;
+    --rai-line-height-heading: 1.3;
+    --rai-line-height-body: 1.5;
+    --rai-line-height-compact: 1.4;
+}

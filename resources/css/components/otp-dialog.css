@@ -1,0 +1,523 @@
+/* ==========================================================================
+   OTP MODAL
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Modal
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-modal-dialog {
+    max-width: 440px;
+}
+
+.rai-otp-modal .otp-modal {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid var(--rai-border, #e5e7eb);
+    border-radius: 18px;
+
+    background: var(--rai-surface, #ffffff);
+
+    box-shadow: var(--rai-shadow-lg, 0 12px 40px rgba(15, 23, 42, .12));
+}
+
+
+/* --------------------------------------------------------------------------
+   Close Button
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 5;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: var(--rai-text-strong, #1f2937);
+
+    cursor: pointer;
+
+    transition: background-color 0.15s ease-in-out;
+}
+
+.rai-otp-modal .otp-close-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.rai-otp-modal .otp-close-btn:focus-visible {
+    outline: 2px solid var(--rai-primary, #25a95a);
+    outline-offset: 2px;
+}
+
+.rai-otp-modal .otp-close-btn i,
+.rai-otp-modal .otp-close-btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Top Banner Graphic (full width)
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-banner {
+    line-height: 0;
+
+    background: #e6f7ee;
+}
+
+.rai-otp-modal .otp-graphic {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   Modal Body
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-modal .modal-body {
+    padding: 22px 32px 28px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-header {
+    margin-bottom: 22px;
+}
+
+.rai-otp-modal .otp-title {
+    margin: 0 0 10px;
+
+    color: var(--rai-text-strong, #1f2937);
+
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.rai-otp-modal .otp-subtext {
+    margin-bottom: 4px;
+
+    font-size: 14.5px;
+
+    color: var(--rai-text-muted, #6b7280);
+
+    line-height: 1.45;
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile Number + Edit
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-mobile-row {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+.rai-otp-modal .otp-mobile {
+    font-size: 16.5px;
+
+    color: var(--rai-text-strong, #1f2937);
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+}
+
+.rai-otp-modal .otp-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--rai-primary, #25a95a);
+
+    cursor: pointer;
+}
+
+.rai-otp-modal .otp-edit-btn:hover {
+    color: var(--rai-primary-hover, #1da851);
+}
+
+.rai-otp-modal .otp-edit-btn:focus-visible {
+    outline: 2px solid var(--rai-primary, #25a95a);
+    outline-offset: 2px;
+
+    border-radius: 4px;
+}
+
+.rai-otp-modal .otp-edit-btn i,
+.rai-otp-modal .otp-edit-btn svg {
+    width: 15px;
+    height: 15px;
+}
+
+
+/* --------------------------------------------------------------------------
+   OTP Inputs (same boxes as the old design)
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-inputs {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 4px;
+    margin-bottom: 20px;
+}
+
+.rai-otp-modal .otp-input {
+    width: 46px;
+    height: 52px;
+
+    padding: 0;
+
+    text-align: center;
+
+    color: var(--rai-text, #374151);
+
+    background-color: var(--rai-surface-muted, #f8fafc);
+
+    border: 1px solid var(--rai-border, #e5e7eb);
+
+    border-radius: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    line-height: 52px;
+
+    transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out,
+        background-color 0.15s ease-in-out;
+}
+
+/* Dot placeholder for empty boxes */
+
+.rai-otp-modal .otp-input::placeholder {
+    color: var(--rai-text-subtle, #9ca3af);
+
+    font-size: 14px;
+    font-weight: 400;
+
+    opacity: 0.7;
+}
+
+.rai-otp-modal .otp-input:focus::placeholder {
+    color: transparent;
+}
+
+.rai-otp-modal .otp-input:hover {
+    border-color: var(--rai-border-strong, var(--rai-border, #dce2e8));
+}
+
+.rai-otp-modal .otp-input:focus {
+    outline: none;
+
+    background-color: var(--rai-surface, #ffffff);
+
+    border-color: var(--rai-primary, #25a95a);
+
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.12);
+}
+
+
+/* --------------------------------------------------------------------------
+   Expiry Timer
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-timer-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-bottom: 22px;
+
+    color: var(--rai-text-muted, #6b7280);
+
+    font-size: 14px;
+}
+
+.rai-otp-modal .otp-timer-row i,
+.rai-otp-modal .otp-timer-row svg {
+    width: 16px;
+    height: 16px;
+}
+
+.rai-otp-modal .otp-timer-label {
+    color: var(--rai-text-muted, #6b7280);
+}
+
+.rai-otp-modal .otp-timer {
+    color: var(--rai-primary, #25a95a);
+
+    font-weight: 700;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* --------------------------------------------------------------------------
+   Verify Button
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-verify-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+
+    padding: 13px 18px;
+
+    color: #ffffff;
+
+    font-size: 15.5px;
+    font-weight: 600;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--rai-primary, #25a95a);
+
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.18);
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease-in-out,
+        transform 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+}
+
+.rai-otp-modal .otp-verify-btn i,
+.rai-otp-modal .otp-verify-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.rai-otp-modal .otp-verify-btn:hover:not(:disabled) {
+    color: #ffffff;
+
+    background: var(--rai-primary-hover, #1da851);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 10px 24px rgba(37, 211, 102, 0.24);
+}
+
+.rai-otp-modal .otp-verify-btn:active:not(:disabled) {
+    transform: translateY(0);
+
+    box-shadow: 0 5px 14px rgba(37, 211, 102, 0.18);
+}
+
+.rai-otp-modal .otp-verify-btn:focus-visible {
+    outline: 2px solid var(--rai-primary-hover, #1da851);
+    outline-offset: 2px;
+}
+
+.rai-otp-modal .otp-verify-btn:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   Error State (wrong OTP)
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-inputs.is-invalid {
+    animation: otp-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.rai-otp-modal .otp-input.is-invalid,
+.rai-otp-modal .otp-input.is-invalid:hover,
+.rai-otp-modal .otp-input.is-invalid:focus {
+    border-color: var(--rai-danger, #dc3545);
+
+    background-color: rgba(220, 53, 69, 0.05);
+}
+
+.rai-otp-modal .otp-input.is-invalid:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
+@keyframes otp-shake {
+    10%, 90%      { transform: translateX(-2px); }
+    20%, 80%      { transform: translateX(4px); }
+    30%, 50%, 70% { transform: translateX(-7px); }
+    40%, 60%      { transform: translateX(7px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rai-otp-modal .otp-inputs.is-invalid {
+        animation: none;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Divider ("Didn't receive the code?")
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin: 22px 0 12px;
+
+    color: var(--rai-text-muted, #6b7280);
+
+    font-size: 13.5px;
+}
+
+.rai-otp-modal .otp-divider::before,
+.rai-otp-modal .otp-divider::after {
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: var(--rai-border, #e5e7eb);
+}
+
+
+/* --------------------------------------------------------------------------
+   Resend OTP
+   -------------------------------------------------------------------------- */
+
+.rai-otp-modal .otp-resend-wrapper {
+    margin-top: 0;
+}
+
+.rai-otp-modal .otp-resend-btn {
+    padding: 4px 8px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--rai-primary, #25a95a);
+
+    font-size: 14.5px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.rai-otp-modal .otp-resend-btn:hover:not(:disabled) {
+    color: var(--rai-primary-hover, #1da851);
+}
+
+.rai-otp-modal .otp-resend-btn:focus-visible {
+    outline: 2px solid var(--rai-primary, #25a95a);
+    outline-offset: 2px;
+
+    border-radius: 6px;
+}
+
+.rai-otp-modal .otp-resend-btn:disabled {
+    color: var(--rai-primary, #25a95a);
+
+    opacity: 0.85;
+
+    cursor: not-allowed;
+}
+
+.rai-otp-modal #resendCountdown {
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* --------------------------------------------------------------------------
+   Small Screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 420px) {
+
+    .rai-otp-modal .otp-modal .modal-body {
+        padding: 20px 20px 24px;
+    }
+
+    .rai-otp-modal .otp-title {
+        font-size: 1.4rem;
+    }
+
+    .rai-otp-modal .otp-inputs {
+        gap: 8px;
+    }
+
+    .rai-otp-modal .otp-input {
+        width: 40px;
+        height: 48px;
+
+        font-size: 18px;
+
+        line-height: 48px;
+    }
+}
+
+
+/* Reusable Admin UI integration */
+.rai-otp-modal [hidden] { display: none !important; }
+.rai-otp-modal .otp-graphic { max-width: 100%; }
+.rai-otp-modal .otp-input { min-width: 0; }
+@media (max-width: 360px) {
+    .rai-otp-modal .otp-modal .modal-body { padding-right: 14px; padding-left: 14px; }
+    .rai-otp-modal .otp-inputs { gap: 6px; }
+    .rai-otp-modal .otp-input { width: 36px; }
+}

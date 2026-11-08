@@ -1,0 +1,116 @@
+/* Transaction PIN input */
+.rai-pin-input {
+    --rai-pin-box-size: 54px;
+    width: 100%;
+}
+
+.rai-pin-input__label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--rai-text-strong, #202938);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.rai-pin-input__description {
+    margin: -3px 0 14px;
+    color: var(--rai-text-muted, #6b7280);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.rai-pin-input__fields {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.rai-pin-input__box {
+    box-sizing: border-box;
+    display: block;
+    flex: 0 1 var(--rai-pin-box-size);
+    width: var(--rai-pin-box-size);
+    min-width: 0;
+    max-width: var(--rai-pin-box-size);
+    height: 58px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--rai-border, #dce2e8);
+    border-radius: var(--rai-radius-md, 10px);
+    outline: none;
+    background: var(--rai-surface, #fff);
+    color: var(--rai-text-strong, #202938);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.035);
+    font-family: inherit;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 58px;
+    text-align: center;
+    caret-color: var(--rai-primary, #2eaa14);
+    transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+
+.rai-pin-input__box:hover {
+    border-color: var(--rai-border-strong, #c5ced8);
+}
+
+.rai-pin-input__box:focus {
+    border-color: var(--rai-primary, #2eaa14);
+    background: var(--rai-surface, #fff);
+    box-shadow: 0 0 0 3px var(--rai-focus-ring, rgba(46, 170, 20, .13));
+}
+
+.rai-pin-input__box:disabled {
+    cursor: not-allowed;
+    background: var(--rai-surface-muted, #f5f7f9);
+    opacity: .65;
+}
+
+.rai-pin-input.is-invalid .rai-pin-input__box {
+    border-color: var(--rai-danger, #dc3545);
+    background: var(--rai-danger-soft, rgba(220, 53, 69, .045));
+}
+
+.rai-pin-input.is-invalid .rai-pin-input__box:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, .12);
+}
+
+@media (max-width: 420px) {
+    .rai-pin-input {
+        --rai-pin-box-size: 46px;
+    }
+
+    .rai-pin-input__fields {
+        gap: 7px;
+    }
+
+    .rai-pin-input__box {
+        height: 52px;
+        font-size: 22px;
+        line-height: 52px;
+    }
+}
+
+@media (max-width: 350px) {
+    .rai-pin-input {
+        --rai-pin-box-size: 40px;
+    }
+
+    .rai-pin-input__fields {
+        gap: 6px;
+    }
+
+    .rai-pin-input__box {
+        height: 48px;
+        font-size: 20px;
+        line-height: 48px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rai-pin-input__box {
+        transition: none;
+    }
+}

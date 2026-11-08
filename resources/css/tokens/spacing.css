@@ -1,0 +1,14 @@
+/* 4px base spacing scale. Values are CSS lengths for direct token use. */
+:root {
+    --rai-space-0: 0;
+    --rai-space-1: 4px;
+    --rai-space-2: 8px;
+    --rai-space-3: 12px;
+    --rai-space-4: 16px;
+    --rai-space-5: 20px;
+    --rai-space-6: 24px;
+    --rai-space-8: 32px;
+    --rai-space-10: 40px;
+    --rai-space-12: 48px;
+    --rai-space-16: 64px;
+}
