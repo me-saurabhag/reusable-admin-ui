@@ -10,11 +10,7 @@
         <link rel="stylesheet" href="{{ asset(config('admin-ui.assets.bootstrap_css')) }}">
     @endif
 
-    @vite([
-        
-        $authCss ?? config('admin-ui.auth.vite.css', 'resources/css/app.css'),
-        $authJs ?? config('admin-ui.auth.vite.js', 'resources/js/app.js'),
-    ])
+    @vite($authCss ?? config('admin-ui.auth.vite.css', 'resources/css/app.css'))
 
     @stack('styles')
 </head>
@@ -26,5 +22,7 @@
     @if (config('admin-ui.auth.otp_dialog.enabled', true))
         @include('admin-ui::dialogs.otp-modal')
     @endif
+
+    @vite($authJs ?? config('admin-ui.auth.vite.js', 'resources/js/app.js'))
 </body>
 </html>
