@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## Unreleased - Authentication JavaScript loading
+
+- Load authentication CSS in the document head and the configured JavaScript entry point immediately before the closing body tag.
+- Preserve configurable Vite CSS and JavaScript entry points for Login, Registration, and Forgot Password pages.
+
 ## Unreleased - Authentication Vite upgrade compatibility
 
 - Normalize exact legacy Login, Registration, and Forgot Password Vite defaults from already-published host configs to the shared `app.css` and `app.js` entry points at runtime.
