@@ -1,3 +1,12 @@
+## Unreleased - Authentication click-based actions and OTP manager import
+
+- Change Login, Registration and Forgot Password primary actions to `type="button"`.
+- Handle each action through its button click listener and retain browser validation with `form.reportValidity()`.
+- Dispatch Host-facing authentication events without falling back to native form submission.
+- Explicitly import and initialize OtpManager in the authentication starter pages to prevent an undefined module reference.
+- Include the OTP manager instance in each custom event detail when the OTP modal is present.
+- Document the click-event and OTP integration contract.
+
 ## Unreleased - Shared frontend validation helpers
 
 - Add the reusable Validation utility with email, mobile, password, PIN code, Aadhaar-format, UUID and numeric string helpers.
