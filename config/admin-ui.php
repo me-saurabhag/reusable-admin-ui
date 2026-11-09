@@ -310,8 +310,14 @@ return [
             'method' => 'POST',
             // These entrypoints are defined by the Host application's Vite config.
             'vite' => [
-                'css' => 'resources/css/app.css',
-                'js' => 'resources/js/app.js',
+                'css' => [
+                    'resources/css/app.css',
+                    'resources/css/pages/auth/register.css',
+                ],
+                'js' => [
+                    'resources/js/app.js',
+                    'resources/js/pages/RegisterPage.js',
+                ],
             ],
             'fields' => [
                 'name' => ['enabled' => true, 'name' => 'name', 'label' => 'Full Name', 'placeholder' => 'Enter your full name', 'required' => true],
@@ -362,8 +368,14 @@ return [
             'action' => null,
             'method' => 'POST',
             'vite' => [
-                'css' => 'resources/css/app.css',
-                'js' => 'resources/js/app.js',
+                'css' => [
+                    'resources/css/app.css',
+                    'resources/css/pages/auth/forgot-password.css',
+                ],
+                'js' => [
+                    'resources/js/app.js',
+                    'resources/js/pages/ForgotPasswordPage.js',
+                ],
             ],
             'title' => 'Reset Your Password',
             'description' => 'Enter your email and choose a new password for your account.',
@@ -376,9 +388,14 @@ return [
 
         // These are entries in the HOST application's Vite manifest.
         'vite' => [
-
-            'css' => 'resources/css/app.css',
-            'js' => 'resources/js/app.js',
+            'css' => [
+                'resources/css/app.css',
+                'resources/css/pages/auth/login.css',
+            ],
+            'js' => [
+                'resources/js/app.js',
+                'resources/js/pages/LoginPage.js',
+            ],
         ],
     ],
 
