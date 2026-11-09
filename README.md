@@ -87,18 +87,47 @@ The host application owns its Vite configuration and imports the published packa
 ```
 
 ```js
-// resources/js/app.js
+// resources/js/app.js — global runtime only
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './vendor/admin-ui/admin-ui.js';
-import './pages/LoginPage.js';
-import './pages/RegisterPage.js';
-import './pages/ForgotPasswordPage.js';
+
+// Do not import page-specific modules in this global entry.
 ```
 
-The package's default authentication Vite entries all use the host's shared
-`resources/css/app.css` and `resources/js/app.js`. Import the auth styles and
-page modules through those shared files as shown below. You may configure
-separate entry points if they are also included in the host Vite build. Then run its normal commands:
+Each authentication page has its own Vite entries. The shared `app.js` must
+contain only global runtime code and must never import LoginPage, RegisterPage,
+ForgotPasswordPage, DashboardPage, or other page modules.
+
+Publish `admin-ui-auth` to create the starter page modules and their matching
+CSS entry files under `resources/css/pages/auth/`. Keep page-specific auth
+stylesheet imports out of global `resources/css/app.css`.
+
+Add all entries to the host `vite.config.js`:
+
+```js
+laravel({
+    input: [
+        'resources/css/app.css',
+        'resources/js/app.js',
+        'resources/css/pages/auth/login.css',
+        'resources/js/pages/LoginPage.js',
+        'resources/css/pages/auth/register.css',
+        'resources/js/pages/RegisterPage.js',
+        'resources/css/pages/auth/forgot-password.css',
+        'resources/js/pages/ForgotPasswordPage.js',
+    ],
+    refresh: true,
+})
+```
+
+The package auth layouts load the global entries plus only their own page
+entries. Login loads LoginPage, registration loads RegisterPage, and
+forgot-password loads ForgotPasswordPage. For future admin pages, create a
+dedicated JS/CSS entry, add it to Vite input, and include only those entries
+in that page's Blade layout. Vite may extract shared dependencies into common
+chunks; unrelated page modules are still not executed.
+
+Then run its normal commands:
 
 ```bash
 npm install
