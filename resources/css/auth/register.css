@@ -873,3 +873,19 @@
         font-size: .88rem;
     }
 }
+
+
+/* Keep the complete brand lockup centered above the authentication form. */
+.rai-auth-register .login-logo-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.rai-auth-register .login-logo-frame .welcome-logo {
+    display: block;
+    margin-inline: auto;
+}

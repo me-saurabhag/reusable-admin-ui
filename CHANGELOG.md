@@ -1,3 +1,11 @@
+## Unreleased - Modular API client and authentication logo alignment
+
+- Add reusable fetch-based API client, normalized response classes, API defaults and shared Loader under the core services.
+- Keep BasePage lightweight; API, location and dialog services are no longer imported by every page through the base class.
+- Publish the API service files through the existing admin-ui-core asset tag.
+- Center the light-background brand logo consistently on Login, Registration and Forgot Password forms.
+- Escape Loader title and message as text instead of interpolating them into HTML.
+
 # Changelog
 
 All notable changes to this project are documented here.

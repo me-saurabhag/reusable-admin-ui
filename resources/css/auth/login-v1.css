@@ -785,3 +785,19 @@
     .rai-auth-login--v4 .form-card { padding: 1.5rem 1.25rem; }
     .rai-auth-login--v4 .welcome-logo { height: 58px; }
 }
+
+
+/* Keep the complete brand lockup centered above the authentication form. */
+.rai-auth-login-v1 .login-logo-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.rai-auth-login-v1 .login-logo-frame .welcome-logo {
+    display: block;
+    margin-inline: auto;
+}
