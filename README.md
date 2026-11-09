@@ -71,15 +71,14 @@ Other focused publish tags are available: `admin-ui-dialogs`, `admin-ui-otp-dial
 
 The host application owns its Vite configuration and imports the published package assets. Typical imports are:
 
+Global `resources/css/app.css` should contain only shared/global styles. Do not import Login, Registration, or Forgot Password page styles there. Each page imports its own stylesheet through the dedicated entry published by `admin-ui-auth`.
+
 ```css
 /* resources/css/app.css */
 @import './vendor/admin-ui/admin-ui.css';
 @import './vendor/admin-ui/sidebar-logo.css';
 @import './vendor/admin-ui/sidebar-variants.css';
 @import './vendor/admin-ui/main-header-alignment.css';
-@import './vendor/admin-ui/auth/login-v1.css';
-@import './vendor/admin-ui/auth/register.css';
-@import './vendor/admin-ui/auth/forgot-password.css';
 @import './vendor/admin-ui/components/status-dialog.css';
 @import './vendor/admin-ui/components/toast.css';
 @import './vendor/admin-ui/components/loader.css';
