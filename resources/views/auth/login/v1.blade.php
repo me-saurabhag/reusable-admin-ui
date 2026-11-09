@@ -22,6 +22,15 @@
     $showSocialLogins = $login['show_social_logins'] ?? true;
     $showRegisterLink = $login['show_register_link'] ?? true;
     $demoMode = $demoMode ?? false;
+
+    $authCss = config('admin-ui.auth.vite.css', [
+        'resources/css/app.css',
+        'resources/css/pages/auth/login.css',
+    ]);
+    $authJs = config('admin-ui.auth.vite.js', [
+        'resources/js/app.js',
+        'resources/js/pages/LoginPage.js',
+    ]);
 @endphp
 
 @section('title', $login['title'] ?? config('app.name', 'Sign In'))
