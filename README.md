@@ -82,6 +82,7 @@ The host application owns its Vite configuration and imports the published packa
 @import './vendor/admin-ui/auth/forgot-password.css';
 @import './vendor/admin-ui/components/status-dialog.css';
 @import './vendor/admin-ui/components/toast.css';
+@import './vendor/admin-ui/components/loader.css';
 @import './vendor/admin-ui/components/otp-dialog.css';
 ```
 
