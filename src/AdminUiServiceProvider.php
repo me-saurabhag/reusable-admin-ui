@@ -223,10 +223,10 @@ class AdminUiServiceProvider extends ServiceProvider
      * The host may replace Laravel's default guest middleware with its own
      * middleware class (or list), or set the value to null/false to disable it.
      *
-     * @param array<int, string>|string|null $routeMiddleware
+     * @param array<int, string>|string|false|null $routeMiddleware
      * @return array<int, string>
      */
-    private function authRouteMiddleware(array|string|null $routeMiddleware): array
+    private function authRouteMiddleware(array|string|false|null $routeMiddleware): array
     {
         $middleware = is_array($routeMiddleware)
             ? $routeMiddleware
