@@ -4,6 +4,8 @@
  * Keep page-specific services (API, dialogs, location, etc.) out of this
  * class. Import only the services a page actually needs.
  */
+import Toast from './Toast.js';
+
 export default class BasePage {
     constructor(options = {}) {
         // Backward-compatible support for selector strings and DOM roots.
@@ -20,7 +22,7 @@ export default class BasePage {
         const { root = null, toast = null, loader = null } = options ?? {};
 
         this.root = root ?? (typeof document !== 'undefined' ? document : null);
-        this.toast = toast ?? (typeof window !== 'undefined' ? (window.AdminUiToast ?? null) : null);
+        this.toast = toast ?? (typeof window !== 'undefined' ? (window.AdminUiToast ?? Toast) : Toast);
         this.loader = loader ?? (typeof window !== 'undefined' ? (window.AdminUiLoader ?? null) : null);
         this.abortController = new AbortController();
 
