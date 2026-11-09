@@ -153,6 +153,7 @@ class AdminUiServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/js/dialogs/OtpManager.js' => resource_path('js/vendor/admin-ui/dialogs/OtpManager.js'),
             __DIR__ . '/../resources/css/components/status-dialog.css' => resource_path('css/vendor/admin-ui/status-dialog.css'),
             __DIR__ . '/../resources/css/components/toast.css' => resource_path('css/vendor/admin-ui/components/toast.css'),
+            __DIR__ . '/../resources/css/components/loader.css' => resource_path('css/vendor/admin-ui/components/loader.css'),
             __DIR__ . '/../resources/css/components/otp-dialog.css' => resource_path('css/vendor/admin-ui/otp-dialog.css'),
             __DIR__ . '/../resources/js/inputs/PinInput.js' => resource_path('js/vendor/admin-ui/inputs/PinInput.js'),
             __DIR__ . '/../resources/js/components/Pagination.js' => resource_path('js/vendor/admin-ui/components/Pagination.js'),
