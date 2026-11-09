@@ -39,3 +39,17 @@ Do not assume `OtpManager` is a global variable. The module also exposes `window
 ## Host integration note
 
 The package publishes starter page classes into `resources/js/pages/`. If you have customized those files, do not blindly overwrite them. Either merge the changes or back them up before running `vendor:publish --tag=admin-ui-auth --force`.
+
+
+## Toast notifications
+
+Toast is included in the `admin-ui-core` publish set and is imported by `BasePage.js`. Page classes extending BasePage can use it without a separate global setup:
+
+```js
+this.toast.success('Signed in successfully');
+this.toast.info('Please wait', 'Information', 2000);
+this.toast.warning('Check your details');
+this.toast.error('Unable to sign in');
+```
+
+The optional arguments are title and auto-dismiss duration in milliseconds. Toast content is inserted as text, not HTML. The Host application should import `resources/css/vendor/admin-ui/components/toast.css` from its Vite CSS entry (or use the corresponding package CSS import shown in the README).
