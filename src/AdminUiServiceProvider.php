@@ -48,33 +48,38 @@ class AdminUiServiceProvider extends ServiceProvider
      */
     private function normalizeLegacyAuthViteEntries(array $auth): array
     {
-        $legacyEntries = [
-            'vite.css' => ['resources/css/auth-login-v1.css'],
-            'vite.js' => ['resources/js/pages/LoginPage.js'],
-            'registration.vite.css' => ['resources/css/auth-register.css'],
-            // Some earlier published configs accidentally used LoginPage.js for registration.
-            'registration.vite.js' => [
-                'resources/js/pages/RegisterPage.js',
+        // Migrate known legacy defaults from published configs to isolated page entries.
+        $migrations = [
+            'vite.css' => ['resources/css/auth-login-v1.css', [
+                'resources/css/app.css',
+                'resources/css/pages/auth/login.css',
+            ]],
+            'vite.js' => ['resources/js/pages/LoginPage.js', [
+                'resources/js/app.js',
                 'resources/js/pages/LoginPage.js',
-            ],
-            'forgot_password.vite.css' => ['resources/css/auth-forgot-password.css'],
-            'forgot_password.vite.js' => ['resources/js/pages/ForgotPasswordPage.js'],
+            ]],
+            'registration.vite.css' => ['resources/css/app.css', [
+                'resources/css/app.css',
+                'resources/css/pages/auth/register.css',
+            ]],
+            'registration.vite.js' => ['resources/js/app.js', [
+                'resources/js/app.js',
+                'resources/js/pages/RegisterPage.js',
+            ]],
+            'forgot_password.vite.css' => ['resources/css/app.css', [
+                'resources/css/app.css',
+                'resources/css/pages/auth/forgot-password.css',
+            ]],
+            'forgot_password.vite.js' => ['resources/js/app.js', [
+                'resources/js/app.js',
+                'resources/js/pages/ForgotPasswordPage.js',
+            ]],
         ];
 
-        foreach ($legacyEntries as $key => $legacyPaths) {
-            $configuredPath = data_get($auth, $key);
-
-            if (! in_array($configuredPath, $legacyPaths, true)) {
-                continue;
+        foreach ($migrations as $key => [$legacyPath, $newPaths]) {
+            if (data_get($auth, $key) === $legacyPath) {
+                data_set($auth, $key, $newPaths);
             }
-
-            data_set(
-                $auth,
-                $key,
-                str_ends_with($key, '.css')
-                    ? 'resources/css/app.css'
-                    : 'resources/js/app.js'
-            );
         }
 
         return $auth;
@@ -136,6 +141,9 @@ class AdminUiServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/stubs/LoginPage.js' => resource_path('js/pages/LoginPage.js'),
             __DIR__ . '/../resources/stubs/RegisterPage.js' => resource_path('js/pages/RegisterPage.js'),
             __DIR__ . '/../resources/stubs/ForgotPasswordPage.js' => resource_path('js/pages/ForgotPasswordPage.js'),
+            __DIR__ . '/../resources/stubs/css/login.css' => resource_path('css/pages/auth/login.css'),
+            __DIR__ . '/../resources/stubs/css/register.css' => resource_path('css/pages/auth/register.css'),
+            __DIR__ . '/../resources/stubs/css/forgot-password.css' => resource_path('css/pages/auth/forgot-password.css'),
         ], 'admin-ui-auth');
 
         // Shared page foundation and browser-location service used by Host pages.
