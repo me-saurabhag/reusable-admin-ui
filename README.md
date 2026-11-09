@@ -81,6 +81,7 @@ The host application owns its Vite configuration and imports the published packa
 @import './vendor/admin-ui/auth/register.css';
 @import './vendor/admin-ui/auth/forgot-password.css';
 @import './vendor/admin-ui/components/status-dialog.css';
+@import './vendor/admin-ui/components/toast.css';
 @import './vendor/admin-ui/components/otp-dialog.css';
 ```
 
@@ -169,7 +170,8 @@ The package only renders the GET pages. The host application owns POST endpoints
 
 The package publishes small ES modules for shared page behavior and optional components:
 
-- `BasePage.js` — page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, and optional Toast/Loader integration.
+- `BasePage.js` — page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, and optional Loader integration.
+- `Toast.js` — lightweight success, info, warning, and error notifications; BasePage provides it as `this.toast` by default.
 - `LocationManager.js` — browser geolocation service with explicit permission requests and normalized errors.
 - Dialog, PIN input, pagination, and offcanvas utilities.
 
