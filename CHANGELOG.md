@@ -1,3 +1,10 @@
+## Unreleased - Toast notification service and core publishing fix
+
+- Add a lightweight Toast service with success, info, warning, error, dismiss, and clear APIs.
+- Add scoped Toast styles and publish the JavaScript and CSS through the `admin-ui-core` tag.
+- Import Toast as the safe BasePage fallback so `this.toast` is available to Login, Registration, Forgot Password, and other BasePage-derived pages without relying on an undeclared global.
+- Document Toast methods and Vite CSS integration.
+
 ## Unreleased - Authentication click-based actions and OTP manager import
 
 - Change Login, Registration and Forgot Password primary actions to `type="button"`.
