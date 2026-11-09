@@ -6,8 +6,14 @@
  */
 export default class BasePage {
     constructor(options = {}) {
-        // Backward-compatible support for the former selector-string argument.
-        if (typeof options === 'string' || options?.querySelector) {
+        // Backward-compatible support for selector strings and DOM roots.
+        if (typeof options === 'string') {
+            options = {
+                root: typeof document !== 'undefined'
+                    ? (document.querySelector(options) ?? document)
+                    : null,
+            };
+        } else if (options?.querySelector) {
             options = { root: options };
         }
 
