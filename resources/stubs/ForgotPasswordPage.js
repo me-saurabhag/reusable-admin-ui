@@ -1,4 +1,5 @@
 import BasePage from '../vendor/admin-ui/core/BasePage.js';
+import OtpManager from '../vendor/admin-ui/dialogs/OtpManager.js';
 
 /** Host-side password reset starter. Add your own API and token/OTP workflow. */
 export default class ForgotPasswordPage extends BasePage {
@@ -6,6 +7,8 @@ export default class ForgotPasswordPage extends BasePage {
         super();
         this.root = document.querySelector('[data-admin-ui-page="auth-forgot-password"]');
         this.form = this.root?.querySelector('#forgotPasswordForm') ?? null;
+        this.submitButton = this.root?.querySelector('#btnForgotPassword') ?? null;
+        this.otpDialog = document.getElementById('admin-ui-otp-modal') ? new OtpManager() : null;
     }
 
     init() {
@@ -20,21 +23,26 @@ export default class ForgotPasswordPage extends BasePage {
                 button.setAttribute('aria-pressed', String(show));
             });
         });
-        this.on(this.form, 'submit', event => this.handleSubmit(event));
+        this.on(this.submitButton, 'click', () => this.handleSubmit());
         return true;
     }
 
-    handleSubmit(event) {
+    handleSubmit() {
+        if (!this.form?.reportValidity()) return;
         if (this.root.dataset.demoMode === 'true') {
-            event.preventDefault();
             this.toast.info('This is a design preview. Password reset is not connected.', 'Preview mode');
             return;
         }
-        const resetEvent = new CustomEvent('admin-ui:forgot-password-submit', {
-            bubbles: true, cancelable: true,
-            detail: { form: this.form, formData: new FormData(this.form) },
-        });
-        if (!this.form.dispatchEvent(resetEvent)) event.preventDefault();
+
+        this.form.dispatchEvent(new CustomEvent('admin-ui:forgot-password-submit', {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+                form: this.form,
+                formData: new FormData(this.form),
+                otpDialog: this.otpDialog,
+            },
+        }));
     }
 }
 
