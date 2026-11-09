@@ -178,7 +178,19 @@ Publish `config/admin-ui.php` and customize its values for the host application.
 - `auth.login`: `v1`
 - `assets.include_bootstrap`: `false` (the host application supplies Bootstrap)
 
-The package can register GET presentation routes for `/login`, `/register`, and `/forgot-password`. These routes are enabled by default in the package configuration. If the host application already owns these routes, disable the corresponding package routes to prevent route overlap:
+The package can register GET presentation routes for `/login`, `/register`, and `/forgot-password`. These routes are enabled by default and use Laravel's `guest` middleware so an already-authenticated user is not shown a guest authentication page. This applies to all three package-owned auth routes.
+
+The middleware is configurable through `auth.guest_middleware` in the published `config/admin-ui.php`. Keep the default `guest`, provide your own middleware class/name (or an array of middleware), or set it to `null` to disable the additional guest middleware. Existing per-route `middleware` settings are preserved and combined with this setting. For example, a host with custom authentication guards can use its own middleware:
+
+```php
+'auth' => [
+    'guest_middleware' => \\App\\Http\\Middleware\\RedirectAuthenticatedUser::class,
+],
+```
+
+When using Laravel's built-in `guest` middleware, configure the authenticated-user destination in the host application's Laravel bootstrap/authentication configuration (for example, `/dashboard`). The package does not decide the host application's dashboard route.
+
+If the host application already owns these routes, disable the corresponding package routes to prevent route overlap:
 
 ```php
 // config/admin-ui.php
