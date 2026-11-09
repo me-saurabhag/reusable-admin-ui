@@ -1,3 +1,9 @@
+## Unreleased - Guest-only authentication page routes
+
+- Apply configurable guest middleware to the package-owned Login, Registration, and Forgot Password GET routes.
+- Preserve each route's existing middleware and allow the host application to supply a custom middleware class/name or disable the additional guest middleware.
+- Document authenticated-user redirect destination ownership in the host Laravel application.
+
 ## Unreleased - Toast notification service and core publishing fix
 
 - Add a lightweight Toast service with success, info, warning, error, dismiss, and clear APIs.
