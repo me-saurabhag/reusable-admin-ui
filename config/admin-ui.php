@@ -91,6 +91,11 @@ return [
         // Select one of the available Login visual variants: v1, v2, v3 or v4.
         'login' => 'v1',
 
+        // Authentication pages are guest-only by default. Set to a custom
+        // middleware class/name (or array) to use Host authentication rules,
+        // or null/false to disable the additional guest middleware.
+        'guest_middleware' => 'guest',
+
         // OTP dialog presentation defaults. OTP business logic remains in Host.
         'otp_dialog' => [
             'enabled' => true,
