@@ -217,6 +217,32 @@ class AdminUiServiceProvider extends ServiceProvider
         $this->registerForgotPasswordRoute();
     }
 
+    /**
+     * Build middleware for package-owned authentication presentation routes.
+     *
+     * The host may replace Laravel's default guest middleware with its own
+     * middleware class (or list), or set the value to null/false to disable it.
+     *
+     * @param array<int, string>|string|null $routeMiddleware
+     * @return array<int, string>
+     */
+    private function authRouteMiddleware(array|string|null $routeMiddleware): array
+    {
+        $middleware = is_array($routeMiddleware)
+            ? $routeMiddleware
+            : (is_string($routeMiddleware) ? [$routeMiddleware] : []);
+
+        $guestMiddleware = config('admin-ui.auth.guest_middleware', 'guest');
+
+        if (is_string($guestMiddleware) && $guestMiddleware !== '') {
+            $middleware[] = $guestMiddleware;
+        } elseif (is_array($guestMiddleware)) {
+            $middleware = array_merge($middleware, $guestMiddleware);
+        }
+
+        return array_values(array_unique($middleware));
+    }
+
     private function registerLoginRoute(): void
     {
         if (! config('admin-ui.auth.route.enabled', true)) {
@@ -225,7 +251,7 @@ class AdminUiServiceProvider extends ServiceProvider
 
         $path = config('admin-ui.auth.route.path', '/login');
         $name = config('admin-ui.auth.route.name', 'admin-ui.login');
-        $middleware = config('admin-ui.auth.route.middleware', ['web']);
+        $middleware = $this->authRouteMiddleware(config('admin-ui.auth.route.middleware', ['web']));
         $variant = config('admin-ui.auth.login', 'v1');
         // `split` was the previous name for the V1 split-screen presentation.
         $variant = $variant === 'split' ? 'v1' : $variant;
@@ -241,7 +267,6 @@ class AdminUiServiceProvider extends ServiceProvider
             ->name($name);
     }
 
-
     private function registerRegistrationRoute(): void
     {
         $config = config('admin-ui.auth.registration', []);
@@ -250,9 +275,10 @@ class AdminUiServiceProvider extends ServiceProvider
         if (! in_array($variant, ['v1', 'v2', 'v3'], true)) {
             throw new InvalidArgumentException('Unsupported admin-ui.auth.registration.variant. Supported values: v1, v2, v3.');
         }
+        $middleware = $this->authRouteMiddleware($config['route']['middleware'] ?? ['web']);
         Route::get($config['route']['path'] ?? '/register', function () use ($variant) {
             return view('admin-ui::auth.register.v1', ['registrationVariant' => $variant]);
-        })->middleware($config['route']['middleware'] ?? ['web'])
+        })->middleware($middleware)
           ->name($config['route']['name'] ?? 'admin-ui.register');
     }
 
@@ -260,9 +286,10 @@ class AdminUiServiceProvider extends ServiceProvider
     {
         $config = config('admin-ui.auth.forgot_password', []);
         if (! ($config['enabled'] ?? true) || ! ($config['route']['enabled'] ?? true)) return;
+        $middleware = $this->authRouteMiddleware($config['route']['middleware'] ?? ['web']);
         Route::get($config['route']['path'] ?? '/forgot-password', function () {
             return view('admin-ui::auth.forgot-password');
-        })->middleware($config['route']['middleware'] ?? ['web'])
+        })->middleware($middleware)
           ->name($config['route']['name'] ?? 'admin-ui.forgot-password');
     }
 
