@@ -167,7 +167,7 @@
                                 @endif
                             </div>
 
-                            <button type="submit" id="btnLogin" class="btn btn-signin w-100 mb-4">
+                            <button type="button" id="btnLogin" class="btn btn-signin w-100 mb-4">
                                 {{ $login['submit_label'] ?? 'Sign In' }}
                             </button>
                         </form>
