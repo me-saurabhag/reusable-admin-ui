@@ -309,7 +309,7 @@
 
                         {{-- SUBMIT BUTTON --}}
                         <button
-                            type="submit"
+                            type="button"
                             id="btnRegister"
                             class="btn btn-signin w-100 mb-4"
                         >
