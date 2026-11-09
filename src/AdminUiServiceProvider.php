@@ -144,6 +144,7 @@ class AdminUiServiceProvider extends ServiceProvider
         $coreAssets = [
             __DIR__ . '/../resources/js/core/BasePage.js' => resource_path('js/vendor/admin-ui/core/BasePage.js'),
             __DIR__ . '/../resources/js/core/LocationManager.js' => resource_path('js/vendor/admin-ui/core/LocationManager.js'),
+            __DIR__ . '/../resources/js/core/LocationAwarePage.js' => resource_path('js/vendor/admin-ui/core/LocationAwarePage.js'),
             __DIR__ . '/../resources/js/core/Loader.js' => resource_path('js/vendor/admin-ui/core/Loader.js'),
             __DIR__ . '/../resources/js/core/api' => resource_path('js/vendor/admin-ui/core/api'),
             __DIR__ . '/../resources/js/dialogs/StatusDialog.js' => resource_path('js/vendor/admin-ui/dialogs/StatusDialog.js'),

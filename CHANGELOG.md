@@ -1,3 +1,10 @@
+## Unreleased - Location-aware page foundation
+
+- Add optional `LocationAwarePage` extending the lightweight `BasePage`.
+- Centralize fresh location requests, page-level location state, accuracy helpers, and retryable Location Status Dialog behavior.
+- Publish `LocationAwarePage.js` through the `admin-ui-core` asset tag.
+- Document page-load location requests and adding coordinates to FormData.
+
 ## Unreleased - Modular API client and authentication logo alignment
 
 - Add reusable fetch-based API client, normalized response classes, API defaults and shared Loader under the core services.
