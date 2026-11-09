@@ -48,36 +48,38 @@ class AdminUiServiceProvider extends ServiceProvider
      */
     private function normalizeLegacyAuthViteEntries(array $auth): array
     {
-        // Migrate known legacy defaults from published configs to isolated page entries.
+        // Migrate known published defaults while preserving custom Host overrides.
         $migrations = [
-            'vite.css' => ['resources/css/auth-login-v1.css', [
-                'resources/css/app.css',
-                'resources/css/pages/auth/login.css',
-            ]],
-            'vite.js' => ['resources/js/pages/LoginPage.js', [
-                'resources/js/app.js',
-                'resources/js/pages/LoginPage.js',
-            ]],
-            'registration.vite.css' => ['resources/css/app.css', [
-                'resources/css/app.css',
-                'resources/css/pages/auth/register.css',
-            ]],
-            'registration.vite.js' => ['resources/js/app.js', [
-                'resources/js/app.js',
-                'resources/js/pages/RegisterPage.js',
-            ]],
-            'forgot_password.vite.css' => ['resources/css/app.css', [
-                'resources/css/app.css',
-                'resources/css/pages/auth/forgot-password.css',
-            ]],
-            'forgot_password.vite.js' => ['resources/js/app.js', [
-                'resources/js/app.js',
-                'resources/js/pages/ForgotPasswordPage.js',
-            ]],
+            'vite.css' => [
+                ['resources/css/app.css', 'resources/css/auth-login-v1.css'],
+                ['resources/css/app.css', 'resources/css/pages/auth/login.css'],
+            ],
+            'vite.js' => [
+                ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
+                ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
+            ],
+            'registration.vite.css' => [
+                ['resources/css/app.css'],
+                ['resources/css/app.css', 'resources/css/pages/auth/register.css'],
+            ],
+            'registration.vite.js' => [
+                ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
+                ['resources/js/app.js', 'resources/js/pages/RegisterPage.js'],
+            ],
+            'forgot_password.vite.css' => [
+                ['resources/css/app.css'],
+                ['resources/css/app.css', 'resources/css/pages/auth/forgot-password.css'],
+            ],
+            'forgot_password.vite.js' => [
+                ['resources/js/app.js'],
+                ['resources/js/app.js', 'resources/js/pages/ForgotPasswordPage.js'],
+            ],
         ];
 
-        foreach ($migrations as $key => [$legacyPath, $newPaths]) {
-            if (data_get($auth, $key) === $legacyPath) {
+        foreach ($migrations as $key => [$legacyPaths, $newPaths]) {
+            $configured = data_get($auth, $key);
+
+            if (is_string($configured) && in_array($configured, $legacyPaths, true)) {
                 data_set($auth, $key, $newPaths);
             }
         }
