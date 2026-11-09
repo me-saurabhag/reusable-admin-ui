@@ -143,6 +143,7 @@ class AdminUiServiceProvider extends ServiceProvider
         // ordinary local ES modules without requiring a package build pipeline.
         $coreAssets = [
             __DIR__ . '/../resources/js/core/BasePage.js' => resource_path('js/vendor/admin-ui/core/BasePage.js'),
+            __DIR__ . '/../resources/js/core/Toast.js' => resource_path('js/vendor/admin-ui/core/Toast.js'),
             __DIR__ . '/../resources/js/core/LocationManager.js' => resource_path('js/vendor/admin-ui/core/LocationManager.js'),
             __DIR__ . '/../resources/js/core/LocationAwarePage.js' => resource_path('js/vendor/admin-ui/core/LocationAwarePage.js'),
             __DIR__ . '/../resources/js/core/Validation.js' => resource_path('js/vendor/admin-ui/core/Validation.js'),
@@ -151,6 +152,7 @@ class AdminUiServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/js/dialogs/StatusDialog.js' => resource_path('js/vendor/admin-ui/dialogs/StatusDialog.js'),
             __DIR__ . '/../resources/js/dialogs/OtpManager.js' => resource_path('js/vendor/admin-ui/dialogs/OtpManager.js'),
             __DIR__ . '/../resources/css/components/status-dialog.css' => resource_path('css/vendor/admin-ui/status-dialog.css'),
+            __DIR__ . '/../resources/css/components/toast.css' => resource_path('css/vendor/admin-ui/components/toast.css'),
             __DIR__ . '/../resources/css/components/otp-dialog.css' => resource_path('css/vendor/admin-ui/otp-dialog.css'),
             __DIR__ . '/../resources/js/inputs/PinInput.js' => resource_path('js/vendor/admin-ui/inputs/PinInput.js'),
             __DIR__ . '/../resources/js/components/Pagination.js' => resource_path('js/vendor/admin-ui/components/Pagination.js'),
