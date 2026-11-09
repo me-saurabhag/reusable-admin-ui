@@ -1,3 +1,9 @@
+## Unreleased - Shared frontend validation helpers
+
+- Add the reusable Validation utility with email, mobile, password, PIN code, Aadhaar-format, UUID and numeric string helpers.
+- Publish Validation.js through the existing admin-ui-core tag for direct use by Host Vite entry points.
+- Document initialization and Login form usage.
+
 ## Unreleased - Location-aware page foundation
 
 - Add optional `LocationAwarePage` extending the lightweight `BasePage`.
