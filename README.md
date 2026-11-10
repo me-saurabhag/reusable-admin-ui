@@ -135,6 +135,10 @@ For example, a Dashboard view can load only its own assets:
     @vite('resources/css/pages/admin/dashboard.css')
 @endpush
 
+@push('admin-ui:scripts')
+    @vite('resources/js/pages/admin/DashboardPage.js')
+@endpush
+
 <x-admin-ui::layout title="Dashboard">
     <x-slot:sidebar>
         <x-admin-ui::sidebar :sections="$menu" />
@@ -147,9 +151,6 @@ For example, a Dashboard view can load only its own assets:
     {{-- Dashboard content --}}
 </x-admin-ui::layout>
 
-@push('admin-ui:scripts')
-    @vite('resources/js/pages/admin/DashboardPage.js')
-@endpush
 ```
 
 The layout renders the shared `app.css`/`app.js` first, then page CSS in the head and page JavaScript near the end of the body. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
