@@ -93,7 +93,7 @@ import './vendor/admin-ui/admin-ui.js';
 // Do not import page-specific modules in this global entry.
 ```
 
-Each authentication page has its own Vite entries. The shared `app.js` must
+Each authentication page has its own Vite entries. For authenticated Admin pages, push page CSS and JavaScript into the shared layout's `admin-ui:styles` and `admin-ui:scripts` stacks (example below). The shared `app.js` must
 contain only global runtime code and must never import LoginPage, RegisterPage,
 ForgotPasswordPage, DashboardPage, or other page modules.
 
@@ -125,6 +125,34 @@ forgot-password loads ForgotPasswordPage. For future admin pages, create a
 dedicated JS/CSS entry, add it to Vite input, and include only those entries
 in that page's Blade layout. Vite may extract shared dependencies into common
 chunks; unrelated page modules are still not executed.
+
+
+For example, a Dashboard view can load only its own assets:
+
+```blade
+{{-- resources/views/admin/dashboard/index.blade.php --}}
+@push('admin-ui:styles')
+    @vite('resources/css/pages/admin/dashboard.css')
+@endpush
+
+<x-admin-ui::layout title="Dashboard">
+    <x-slot:sidebar>
+        <x-admin-ui::sidebar :sections="$menu" />
+    </x-slot:sidebar>
+
+    <x-slot:header>
+        {{-- Page header content --}}
+    </x-slot:header>
+
+    {{-- Dashboard content --}}
+</x-admin-ui::layout>
+
+@push('admin-ui:scripts')
+    @vite('resources/js/pages/admin/DashboardPage.js')
+@endpush
+```
+
+The layout renders the shared `app.css`/`app.js` first, then page CSS in the head and page JavaScript near the end of the body. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
 
 Then run its normal commands:
 
@@ -272,7 +300,7 @@ Call `destroy()` on page instances when they are disposed so registered event li
 
 ## SVG icon sprite
 
-The package layout includes the SVG sprite once as a hidden inline symbol set. Sidebar menu items pass a symbol ID such as `stroke-layout`, `stroke-user`, or `stroke-chat`. Add icons by defining new `<symbol>` elements in `resources/views/components/icon-sprite.blade.php` and referencing their IDs.
+The package provides an external SVG symbol sprite at `resources/svg/icons.svg`. The `admin-ui-assets` publish tag copies it to `public/vendor/admin-ui/icons.svg`; sidebar menu items reference symbols by ID (for example `stroke-layout`, `stroke-user`, or `stroke-chat`) through an external SVG `<use>` URL. Add icons by defining new `<symbol>` elements in that SVG file.
 
 ## Responsibility boundary
 
