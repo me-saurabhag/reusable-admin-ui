@@ -27,27 +27,45 @@
     @if ($includeBootstrap)
         <link rel="stylesheet" href="{{ asset(config('admin-ui.assets.bootstrap_css')) }}">
     @endif
-   @vite([
-    'resources/css/app.css',
-    'resources/js/app.js',
-])
+
+    {{-- Shared styles and runtime --}}
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js',
+    ])
+
+    {{-- Page-specific CSS and optional head assets --}}
+    @stack('admin-ui:styles')
     @stack('admin-ui:head')
 </head>
 <body>
-@include('admin-ui::components.icon-sprite')
 <div class="rai-ui" data-rai-theme="{{ $activeTheme }}" data-rai-sidebar-preset="{{ config('admin-ui.layout.sidebar', 'classic') }}" data-rai-login-preset="{{ config('admin-ui.auth.login', 'centered') }}" data-rai-sidebar-open="false" data-rai-sidebar-collapsed="{{ config('admin-ui.sidebar.default_collapsed', true) ? 'true' : 'false' }}">
     <div class="rai-ui__shell">
-        @isset($sidebar)<aside class="rai-ui__sidebar" id="rai-primary-sidebar">{{ $sidebar }}</aside>@endisset
+        @isset($sidebar)
+            <aside class="rai-ui__sidebar" id="rai-primary-sidebar">{{ $sidebar }}</aside>
+        @endisset
+
         <div class="rai-ui__main">
-            @isset($header)<header class="rai-ui__header">{{ $header }}</header>@endisset
+            @isset($header)
+                <header class="rai-ui__header">{{ $header }}</header>
+            @endisset
+
             <main class="rai-ui__content">{{ $slot }}</main>
-            @isset($footer)<footer class="rai-ui__footer">{{ $footer }}</footer>@endisset
+
+            @isset($footer)
+                <footer class="rai-ui__footer">{{ $footer }}</footer>
+            @endisset
         </div>
     </div>
+
     <button type="button" class="rai-ui__mobile-backdrop" data-rai-sidebar-close aria-label="Close navigation"></button>
 </div>
-@if ($includeBootstrap)<script src="{{ asset(config('admin-ui.assets.bootstrap_js')) }}" defer></script>@endif
+
+@if ($includeBootstrap)
+    <script src="{{ asset(config('admin-ui.assets.bootstrap_js')) }}" defer></script>
+@endif
+
+{{-- Page-specific JavaScript is loaded after shared runtime assets. --}}
 @stack('admin-ui:scripts')
-@include('admin-ui::dialogs.status-dialog')
 </body>
 </html>
