@@ -29,6 +29,7 @@ export default class ForgotPasswordPage extends BasePage {
 
         // Expose common form helpers directly on the form element.
         this.attachFormHelpers(this.form, this.submitButton);
+        this.form.otpDialog = this.otpDialog;
 
         this.bindPasswordToggles();
 
