@@ -1,3 +1,9 @@
+## Unreleased - Configurable shared favicon
+
+- Add a top-level `favicon` configuration value with the requested chatbot image as its default.
+- Render the configured favicon in both the shared Admin layout and authentication layout; allow it to be disabled with a null or empty value.
+- Document the Host Application override.
+
 ## Unreleased - Configurable registration country selector and request payload
 
 - Add a configurable registration country list with India selected by default.
