@@ -4,7 +4,7 @@ The package provides three registration visual variants (`v1`, `v2`, `v3`) and o
 
 ## Host JavaScript integration
 
-`RegisterPage.js` dispatches cancelable `admin-ui:register-submit`; `ForgotPasswordPage.js` dispatches `admin-ui:forgot-password-submit`. The host listener must call `event.preventDefault()` synchronously before any `await` when it handles submission using fetch/AJAX. `event.detail.formData` contains the submitted fields.
+`RegisterPage.js` dispatches cancelable `admin-ui:register-submit`; `ForgotPasswordPage.js` dispatches `admin-ui:forgot-password-submit`. The host listener must call `event.preventDefault()` synchronously before any `await` when it handles submission using fetch/AJAX. `event.detail.formData` contains the submitted fields. Registration also includes `event.detail.request`, a normalized object with `fullName`, `email`, `mobile`, `refCode`, `countryCode`, `regionCode`, and `geoLocation`. Calling codes are sent without `+` (for example, `91`), while the country region is sent separately (for example, `IN`).
 
 ## Request browser location only when needed
 
@@ -29,3 +29,8 @@ const { latitude, longitude, accuracy } = location;
 - `admin-ui.auth.forgot_password`: centered form text, field names, GET route and host POST action.
 
 The password-reset page displays Email, New Password and Re-Type Password as requested. A production host should only accept this form after a valid reset token or other verified recovery step; never allow an email alone to authorize changing a password.
+
+
+## Registration country selector
+
+Configure the available countries in `admin-ui.auth.registration.countries`. Each item uses `code` (calling code without `+`), `region` (country symbol), and `name`. Set `admin-ui.auth.registration.default_country` to the desired region; the default is `IN`. The package's default list includes India, United States, and United Kingdom. The Host can replace or extend the list in its published configuration.
