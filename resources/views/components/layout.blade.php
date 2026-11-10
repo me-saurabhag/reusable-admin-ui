@@ -21,6 +21,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title }}</title>
+    @if (filled(config('admin-ui.favicon')))
+        <link rel="icon" href="{{ config('admin-ui.favicon') }}">
+    @endif
     @if ($includeBootstrap)
         <link rel="stylesheet" href="{{ asset(config('admin-ui.assets.bootstrap_css')) }}">
     @endif
