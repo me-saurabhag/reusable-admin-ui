@@ -235,3 +235,8 @@ The interactive Laravel demo is maintained separately from this package reposito
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+
+### Registration country selector
+
+Configure selectable countries in `admin-ui.auth.registration.countries`. Each item contains `code` (calling code without `+`), `region` (country symbol), and `name`. Set `admin-ui.auth.registration.default_country` to the desired region; the default is `IN`. The package defaults include India, United States, and United Kingdom. The Host can replace or extend this list in its published configuration. The registration starter dispatches `admin-ui:register-submit` with `event.detail.request` containing `fullName`, `email`, `mobile`, `refCode`, `countryCode`, `regionCode`, and `geoLocation`; the existing `formData` and `otpDialog` properties remain available.
