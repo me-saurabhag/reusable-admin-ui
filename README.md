@@ -171,12 +171,19 @@ The package includes reusable dashboard presentation components for a hero secti
 
 ## Configuration and authentication routes
 
-Publish `config/admin-ui.php` and customize its values for the host application. Important defaults include:
+Publish `config/admin-ui.php` and customize its values for the host application. The top-level `favicon` setting controls the browser tab icon in both the package Admin and authentication layouts. Set it to another image URL to use your own icon, or set it to `null`/an empty value to omit the favicon link. Important defaults include:
 
 - `theme.default`: `light`
 - `layout.sidebar`: `classic`
 - `auth.login`: `v1`
+- `favicon`: `https://bot.kotfumes.com/assets/app/images/chatbot.webp` (shared Admin and Auth browser tab icon)
 - `assets.include_bootstrap`: `false` (the host application supplies Bootstrap)
+
+Example favicon override in the host application's `config/admin-ui.php`:
+
+```php
+'favicon' => 'https://example.com/images/favicon.png',
+```
 
 The package can register GET presentation routes for `/login`, `/register`, and `/forgot-password`. These routes are enabled by default and use Laravel's `guest` middleware so an already-authenticated user is not shown a guest authentication page. This applies to all three package-owned auth routes.
 
