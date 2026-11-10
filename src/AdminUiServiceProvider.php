@@ -135,6 +135,7 @@ class AdminUiServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/css' => resource_path('css/vendor/admin-ui'),
             __DIR__ . '/../resources/js' => resource_path('js/vendor/admin-ui'),
             __DIR__ . '/../resources/gif' => public_path('vendor/admin-ui/gif'),
+            __DIR__ . '/../resources/svg/icons.svg' => public_path('vendor/admin-ui/icons.svg'),
         ], 'admin-ui-assets');
 
         // A starter LoginPage.js is copied into the host application so the
