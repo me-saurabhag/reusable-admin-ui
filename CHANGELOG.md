@@ -1,3 +1,11 @@
+## Unreleased - Modular Admin page layout and external SVG sprite
+
+- Keep the shared Admin layout focused on the shell, header/sidebar slots, shared Vite entries, and page asset stacks.
+- Add a dedicated `admin-ui:styles` stack and retain `admin-ui:head` for page-level head assets; load `admin-ui:scripts` after shared runtime assets.
+- Remove automatic Status Dialog inclusion and remove the inline SVG sprite from the shared layout.
+- Publish the SVG symbol sprite as `public/vendor/admin-ui/icons.svg` and update sidebar icons to reference external symbols.
+- Keep OTP and Status Dialog markup/styles opt-in at page level.
+
 ## Unreleased - Simplified Forgot Password form ownership
 
 - Keep the Forgot Password starter limited to preparing the form, attaching shared form helpers, and password visibility toggles.
