@@ -8,6 +8,7 @@ export default class RegisterPage extends BasePage {
         this.root = document.querySelector('[data-admin-ui-page="auth-register"]');
         this.form = this.root?.querySelector('#registrationForm') ?? null;
         this.submitButton = this.root?.querySelector('#btnRegister') ?? null;
+        this.countryCodeSelect = this.form?.querySelector('#register-country-code') ?? null;
         this.otpDialog = document.getElementById('admin-ui-otp-modal') ? new OtpManager() : null;
     }
 
@@ -17,6 +18,12 @@ export default class RegisterPage extends BasePage {
         return true;
     }
 
+    getFieldValue(fieldName) {
+        if (!fieldName || !this.form) return '';
+        const field = this.form.elements.namedItem(fieldName);
+        return field && 'value' in field ? field.value.trim() : '';
+    }
+
     handleSubmit() {
         if (!this.form?.reportValidity()) return;
         if (this.root.dataset.demoMode === 'true') {
@@ -24,12 +31,25 @@ export default class RegisterPage extends BasePage {
             return;
         }
 
+        const selectedOption = this.countryCodeSelect?.selectedOptions[0];
+
+        const request = {
+            fullName: this.getFieldValue(this.form.dataset.nameField),
+            email: this.getFieldValue(this.form.dataset.emailField),
+            mobile: this.getFieldValue(this.form.dataset.mobileField),
+            refCode: this.getFieldValue(this.form.dataset.referralField),
+            countryCode: selectedOption?.value ?? '',
+            regionCode: selectedOption?.dataset.name ?? '',
+            geoLocation: 'N/A',
+        };
+
         this.form.dispatchEvent(new CustomEvent('admin-ui:register-submit', {
             bubbles: true,
             cancelable: true,
             detail: {
                 form: this.form,
                 formData: new FormData(this.form),
+                request,
                 otpDialog: this.otpDialog,
             },
         }));
