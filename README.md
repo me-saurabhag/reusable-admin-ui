@@ -127,33 +127,49 @@ in that page's Blade layout. Vite may extract shared dependencies into common
 chunks; unrelated page modules are still not executed.
 
 
-For example, a Dashboard view can load only its own assets:
+### Post-Login Base Layout
+
+The package provides `admin-ui::layouts.app` as the shared layout for authenticated Admin pages. It renders the package Header, Sidebar, and content shell. Host pages extend this layout instead of rebuilding the shell:
 
 ```blade
 {{-- resources/views/admin/dashboard/index.blade.php --}}
+@extends('admin-ui::layouts.app')
+
+@section('title', 'Dashboard')
+@section('header_title', 'Dashboard')
+
 @push('admin-ui:styles')
     @vite('resources/css/pages/admin/dashboard.css')
 @endpush
 
+@section('content')
+    <div class="rai-page-heading">
+        <h1>Dashboard</h1>
+    </div>
+
+    {{-- Dashboard content --}}
+@endsection
+
 @push('admin-ui:scripts')
     @vite('resources/js/pages/admin/DashboardPage.js')
 @endpush
-
-<x-admin-ui::layout title="Dashboard">
-    <x-slot:sidebar>
-        <x-admin-ui::sidebar :sections="$menu" />
-    </x-slot:sidebar>
-
-    <x-slot:header>
-        {{-- Page header content --}}
-    </x-slot:header>
-
-    {{-- Dashboard content --}}
-</x-admin-ui::layout>
-
 ```
 
-The layout renders the shared `app.css`/`app.js` first, then page CSS in the head and page JavaScript near the end of the body. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
+The Host Application supplies the permission-filtered menu through its own `AdminMenuProvider` and `AdminLayoutComposer`. Register the composer against the package layout in the Host Application's `AppServiceProvider`:
+
+```php
+use App\\Presentation\\Admin\\ViewComposers\\AdminLayoutComposer;
+use Illuminate\\Support\\Facades\\View;
+
+public function boot(): void
+{
+    View::composer('admin-ui::layouts.app', AdminLayoutComposer::class);
+}
+```
+
+The composer should pass the menu array as `menu`; the package only renders it and never evaluates user permissions. The Host Application can also pass optional `headerData` (profile fields and header info-card values) from its controller or another view composer.
+
+The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Add each page-specific CSS and JS file to the Host Vite input list. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
 
 Then run its normal commands:
 
