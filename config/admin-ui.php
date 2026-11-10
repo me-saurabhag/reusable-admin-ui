@@ -171,7 +171,7 @@ return [
                 ],
                 [
                     'title' => 'Secure & Reliable',
-                    'description' => 'Enterprise-grade security to keep your data safe and compliant.',
+                    'description' => 'Enterprise-grade security and compliance.',
                     'icon' => 'profile-check',
                 ],
             ],
@@ -327,10 +327,17 @@ return [
             'fields' => [
                 'name' => ['enabled' => true, 'name' => 'name', 'label' => 'Full Name', 'placeholder' => 'Enter your full name', 'required' => true],
                 'email' => ['enabled' => true, 'name' => 'email', 'label' => 'Email Address', 'placeholder' => 'Enter your email', 'required' => true],
-                'country_code' => ['enabled' => true, 'name' => 'countryCode', 'label' => 'Country Code', 'placeholder' => 'Select country'],
+                'country_code' => ['enabled' => true, 'name' => 'countryCode', 'label' => 'Country Code', 'placeholder' => 'Select country', 'required' => true],
                 'mobile' => ['enabled' => true, 'name' => 'mobileNumber', 'label' => 'Mobile Number', 'placeholder' => 'Enter mobile number', 'required' => true],
                 'referral' => ['enabled' => true, 'name' => 'refCode', 'label' => 'Referral Code (Optional)', 'placeholder' => 'Enter referral code', 'required' => false],
             ],
+            // Calling codes are sent to the Host API without the leading "+".
+            'countries' => [
+                ['code' => '91', 'region' => 'IN', 'name' => 'India'],
+                ['code' => '1', 'region' => 'US', 'name' => 'United States'],
+                ['code' => '44', 'region' => 'GB', 'name' => 'United Kingdom'],
+            ],
+            'default_country' => 'IN',
             'title' => 'Create Your Account',
             'headline' => 'Get Started.',
             'headline_accent' => 'Grow With WhatsApp.',
