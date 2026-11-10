@@ -1,3 +1,11 @@
+## Unreleased - Host-controlled authentication form submission
+
+- Add reusable form helpers to BasePage: getFormValues, getFormData, getFieldValue, setFieldValue, clearForm, and setFormLoading.
+- Expose these helpers directly on the Forgot Password form element for Host Application use.
+- Keep form submission, API requests, server validation, OTP workflow, and response handling entirely under Host Application control.
+- Switch the Forgot Password primary action to a native submit button so browser validation runs before the submit event.
+- Leave Login and Registration starter behavior and views unchanged.
+
 ## Unreleased - Configurable shared favicon
 
 - Add a top-level `favicon` configuration value with the requested chatbot image as its default.
