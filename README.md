@@ -226,9 +226,11 @@ The package publishes small ES modules for shared page behavior and optional com
 ### Host-controlled form submission
 
 The Forgot Password starter prepares the form and exposes common helpers directly
-on the form element. The Host Application listens to the native `submit` event
-and decides what happens next (API request, OTP flow, server validation, and
-response handling). Browser-native validation runs before the submit event.
+on the form element. The Host Application registers its own native `submit`
+listener and decides what happens next (API request, OTP flow, server validation,
+and response handling). Browser-native validation runs before the submit event.
+The package does not listen for submission, dispatch a custom event, call an API,
+or initialize the OTP dialog.
 
 ```js
 const form = document.getElementById('forgotPasswordForm');
@@ -257,12 +259,11 @@ Available form helpers:
 - `form.setFieldValue(name, value)` — set one named control.
 - `form.clearForm()` — reset controls to their HTML default values.
 - `form.setFormLoading(boolean)` — disable/enable the submit button and update its loading label.
-- `form.otpDialog` — the page's OTP dialog instance, when the OTP modal is present.
-
 These helpers are attached by the Forgot Password starter after initialization.
-The Host Application should register its submit listener on the form and should
-not rely on a global page instance. Login and Registration are not changed by
-this update.
+The Host Application should register its submit listener on the form and call
+`form.getFormValues()` inside that listener. The Host Application initializes
+and uses the separate OTP helper itself when needed. Login and Registration are
+not changed by this update.
 
 
 Location permission is never requested automatically. Request it only after an explicit user action. Browser geolocation requires a secure context (HTTPS, except localhost) and must not be treated as authoritative proof for security-sensitive authorization or geofencing.
