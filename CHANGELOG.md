@@ -1,3 +1,10 @@
+## Unreleased - Configurable registration country selector and request payload
+
+- Add a configurable registration country list with India selected by default.
+- Render calling code and country region from configuration instead of hardcoded options.
+- Include the normalized registration request object in the `admin-ui:register-submit` event while preserving FormData and OTP integration.
+- Document country configuration and the Host event payload.
+
 ## Unreleased - Guest-only authentication page routes
 
 - Apply configurable guest middleware to the package-owned Login, Registration, and Forgot Password GET routes.
