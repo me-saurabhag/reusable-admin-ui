@@ -140,7 +140,7 @@
             <button
                 class="btn btn-primary w-100"
                 id="btnForgotPassword"
-                type="button"
+                type="submit"
             >
                 {{ $forgot['submit_label'] ?? 'Update Password' }}
             </button>
