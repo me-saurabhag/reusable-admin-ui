@@ -18,6 +18,20 @@
     );
 
     $fields = $registration['fields'] ?? [];
+    $countries = $registration['countries'] ?? [];
+    $defaultCountryRegion = $registration['default_country'] ?? 'IN';
+    $countryCodeField = $fields['country_code'] ?? [];
+    $countryCodeFieldName = $countryCodeField['name'] ?? 'countryCode';
+
+    $defaultCountryCode = '';
+    foreach ($countries as $country) {
+        if (($country['region'] ?? null) === $defaultCountryRegion) {
+            $defaultCountryCode = (string) ($country['code'] ?? '');
+            break;
+        }
+    }
+
+    $selectedCountryCode = (string) old($countryCodeFieldName, $defaultCountryCode);
 
     // Registration must load its own Host Vite entrypoints, not the login assets.
     $authCss = $registration['vite']['css'] ?? [
@@ -163,6 +177,10 @@
                     <form
                         id="registrationForm"
                         data-registration-form
+                        data-name-field="{{ $fields['name']['name'] ?? 'name' }}"
+                        data-email-field="{{ $fields['email']['name'] ?? 'email' }}"
+                        data-mobile-field="{{ $fields['mobile']['name'] ?? 'mobileNumber' }}"
+                        data-referral-field="{{ $fields['referral']['name'] ?? 'refCode' }}"
                         action="{{ $registration['action'] ?? request()->url() }}"
                         method="{{ strtoupper($registration['method'] ?? 'POST') === 'GET' ? 'GET' : 'POST' }}"
                     >
@@ -252,14 +270,17 @@
                                             id="register-country-code"
                                             name="{{ $countryCode['name'] ?? 'countryCode' }}"
                                             aria-label="{{ $countryCode['label'] ?? 'Country Code' }}"
+                                            @if($countryCode['required'] ?? true) required @endif
                                         >
-                                            <option value="">
-                                                {{ $countryCode['placeholder'] ?? 'Code' }}
-                                            </option>
-
-                                            <option value="+91">IN (+91)</option>
-                                            <option value="+1">US (+1)</option>
-                                            <option value="+44">UK (+44)</option>
+                                            @foreach($countries as $country)
+                                                <option
+                                                    value="{{ $country['code'] ?? '' }}"
+                                                    data-name="{{ $country['region'] ?? '' }}"
+                                                    @selected((string) ($country['code'] ?? '') === $selectedCountryCode)
+                                                >
+                                                    {{ $country['region'] ?? '' }} (+{{ $country['code'] ?? '' }})
+                                                </option>
+                                            @endforeach
                                         </select>
 
                                     @endif
