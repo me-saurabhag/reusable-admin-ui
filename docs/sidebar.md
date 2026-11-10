@@ -57,7 +57,7 @@ Define menu sections in the host application's Blade view (or prepare them in it
 Supported item fields:
 
 - `label` (string): visible menu label.
-- `icon` (string): ID of a `<symbol>` in the inline SVG sprite, for example `stroke-layout`.
+- `icon` (string): ID of a `<symbol>` in the external SVG sprite, for example `stroke-layout`.
 - `route` (string): named Laravel route; route matching supports the route name and its `.*` descendants.
 - `url` (string): direct URL. If supplied, it takes precedence over `route`.
 - `active` (bool): explicitly marks an item active when route inference is insufficient.
@@ -65,7 +65,7 @@ Supported item fields:
 - `children` (array): nested child links. The current UI supports one submenu level.
 - section `label` / `section` (string) and `items` (array).
 
-The sprite is included once by the package layout from `resources/views/components/icon-sprite.blade.php`. Add new symbols there and use their IDs in the menu array.
+The external sprite is published to `public/vendor/admin-ui/icons.svg` by the `admin-ui-assets` tag. Sidebar icons reference it with an external SVG `<use>` URL. Add new `<symbol>` definitions to `resources/svg/icons.svg` and use their IDs in the menu array.
 
 A missing/unregistered route falls back to `#` to avoid throwing while rendering a demo. Configure real route names in the host application. The UI's visibility settings are not authorization: enforce access control in Laravel middleware, policies, gates, and controllers.
 
@@ -83,4 +83,4 @@ A missing/unregistered route falls back to `#` to avoid throwing while rendering
 
 ### SVG sprite icons
 
-Menu `icon` values are IDs from the inline SVG sprite at `resources/views/components/icon-sprite.blade.php`. Use IDs such as `stroke-layout`, `stroke-user`, `stroke-chat`, or `stroke-file`. The sprite is included once by the package layout; no per-icon assets are published.
+Menu `icon` values are IDs from the external SVG sprite at `resources/svg/icons.svg`. Use IDs such as `stroke-layout`, `stroke-user`, `stroke-chat`, or `stroke-file`. The `admin-ui-assets` publish tag copies the sprite to `public/vendor/admin-ui/icons.svg`; the sidebar references symbols from that shared file.
