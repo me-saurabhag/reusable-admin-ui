@@ -1,3 +1,11 @@
+## Unreleased - Post-Login Base Layout
+
+- Add `admin-ui::layouts.app` as the shared authenticated Admin layout, composing the package layout, Header, and Sidebar.
+- Keep page content and page-specific CSS/JavaScript owned by each Host Application page.
+- Accept the permission-filtered Sidebar menu from the Host Application's `AdminMenuProvider` through `AdminLayoutComposer`; the package does not perform authorization checks.
+- Support optional Host-provided `headerData` for profile details and header information cards.
+- Document layout extension, Vite page entries, and Host view-composer registration.
+
 ## Unreleased - Modular Admin page layout and external SVG sprite
 
 - Keep the shared Admin layout focused on the shell, header/sidebar slots, shared Vite entries, and page asset stacks.
