@@ -65,7 +65,7 @@
                     @if ($hasChildren)
                         <div class="rai-ui__nav-group{{ $active ? ' is-active' : '' }}" data-rai-nav-group>
                             <button type="button" class="rai-ui__nav-link rai-ui__nav-parent{{ $active ? ' is-active' : '' }}" data-rai-submenu-toggle data-rai-tooltip="{{ $tooltip }}" title="{{ $tooltip }}" aria-expanded="{{ $active ? 'true' : 'false' }}" aria-controls="{{ $itemId }}">
-                                <span class="rai-ui__nav-icon" aria-hidden="true"><svg class="rai-ui__nav-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="#{{ $icon }}"></use></svg></span>
+                                <span class="rai-ui__nav-icon" aria-hidden="true"><svg class="rai-ui__nav-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="{{ asset('vendor/admin-ui/icons.svg') }}#{{ $icon }}"></use></svg></span>
                                 <span class="rai-ui__nav-text">{{ $label }}</span>
                                 <span class="rai-ui__nav-chevron" aria-hidden="true">⌄</span>
                             </button>
@@ -82,7 +82,7 @@
                                         }
                                     @endphp
                                     <a href="{{ $childHref }}" class="rai-ui__nav-link rai-ui__nav-child{{ $childActive ? ' is-active' : '' }}" @if ($childActive) aria-current="page" @endif>
-                                        <span class="rai-ui__nav-icon rai-ui__nav-child-icon" aria-hidden="true"><svg class="rai-ui__nav-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="#{{ $childIcon }}"></use></svg></span>
+                                        <span class="rai-ui__nav-icon rai-ui__nav-child-icon" aria-hidden="true"><svg class="rai-ui__nav-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="{{ asset('vendor/admin-ui/icons.svg') }}#{{ $childIcon }}"></use></svg></span>
                                         <span class="rai-ui__nav-text">{{ $child['label'] ?? 'Submenu' }}</span>
                                     </a>
                                 @endforeach
@@ -90,7 +90,7 @@
                         </div>
                     @else
                         <a href="{{ $href }}" class="rai-ui__nav-link{{ $active ? ' is-active' : '' }}" title="{{ $tooltip }}" @if ($active) aria-current="page" @endif>
-                            <span class="rai-ui__nav-icon" aria-hidden="true"><svg class="rai-ui__nav-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="#{{ $icon }}"></use></svg></span>
+                            <span class="rai-ui__nav-icon" aria-hidden="true"><svg class="rai-ui__nav-icon-svg" viewBox="0 0 24 24" focusable="false"><use href="{{ asset('vendor/admin-ui/icons.svg') }}#{{ $icon }}"></use></svg></span>
                             <span class="rai-ui__nav-text">{{ $label }}</span>
                         </a>
                     @endif
