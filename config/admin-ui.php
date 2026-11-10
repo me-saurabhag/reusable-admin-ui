@@ -1,6 +1,9 @@
 <?php
 
 return [
+    // Shared browser tab icon used by the package's Admin and Auth layouts.
+    'favicon' => 'https://bot.kotfumes.com/assets/app/images/chatbot.webp',
+
     /*
     |--------------------------------------------------------------------------
     | Theme defaults
