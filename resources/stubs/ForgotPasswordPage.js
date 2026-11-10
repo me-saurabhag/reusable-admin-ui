@@ -27,9 +27,7 @@ export default class ForgotPasswordPage extends BasePage {
     init() {
         if (!this.root || !this.form || !super.init()) return false;
 
-        // Makes getFormValues(), getFieldValue(), setFieldValue(),
-        // clearForm(), setFormLoading(), and getFormData() available
-        // directly on the form element for the Host Application.
+        // Expose common form helpers directly on the form element.
         this.attachFormHelpers(this.form, this.submitButton);
 
         this.bindPasswordToggles();
@@ -64,12 +62,7 @@ export default class ForgotPasswordPage extends BasePage {
 
 function boot() {
     const page = new ForgotPasswordPage();
-
-    if (page.init()) {
-        // Keep the instance alive for its managed UI event listeners.
-        // Host Application code does not need this reference; it uses the form.
-        window.adminUiForgotPasswordPageInstance = page;
-    }
+    page.init();
 }
 
 if (document.readyState === 'loading') {
