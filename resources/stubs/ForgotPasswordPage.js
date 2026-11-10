@@ -1,12 +1,11 @@
 import BasePage from '../vendor/admin-ui/core/BasePage.js';
-import OtpManager from '../vendor/admin-ui/dialogs/OtpManager.js';
 
 /**
  * Host-side Forgot Password page starter.
  *
- * This class prepares the form and exposes reusable form helpers directly
- * on the form element. The Host Application owns the submit event, API call,
- * server-side validation, OTP workflow, and response handling.
+ * The package prepares the form and exposes reusable form helpers.
+ * The Host Application listens to the native submit event and owns all
+ * submission behavior, including API calls and any OTP workflow.
  */
 export default class ForgotPasswordPage extends BasePage {
     constructor() {
@@ -18,23 +17,18 @@ export default class ForgotPasswordPage extends BasePage {
 
         this.form = this.root?.querySelector('#forgotPasswordForm') ?? null;
         this.submitButton = this.root?.querySelector('#btnForgotPassword') ?? null;
-
-        this.otpDialog = document.getElementById('admin-ui-otp-modal')
-            ? new OtpManager()
-            : null;
     }
 
     init() {
         if (!this.root || !this.form || !super.init()) return false;
 
-        // Expose common form helpers directly on the form element.
+        // Makes form.getFormValues() and the other helpers available to the Host.
         this.attachFormHelpers(this.form, this.submitButton);
-        this.form.otpDialog = this.otpDialog;
 
         this.bindPasswordToggles();
 
-        // Intentionally do not listen for form submission here.
-        // The Host Application owns the submit event and its full workflow.
+        // The Host Application registers its own native form submit listener.
+        // No API request, custom submit event, or OTP dialog is handled here.
         return true;
     }
 
