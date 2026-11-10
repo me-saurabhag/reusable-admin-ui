@@ -219,6 +219,47 @@ The package only renders the GET pages. The host application owns POST endpoints
 The package publishes small ES modules for shared page behavior and optional components:
 
 - `BasePage.js` — page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, and optional Loader integration.
+### Host-controlled form submission
+
+The Forgot Password starter prepares the form and exposes common helpers directly
+on the form element. The Host Application listens to the native `submit` event
+and decides what happens next (API request, OTP flow, server validation, and
+response handling). Browser-native validation runs before the submit event.
+
+```js
+const form = document.getElementById('forgotPasswordForm');
+
+form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // The browser has already passed native constraints before this event.
+    const values = form.getFormValues();
+
+    try {
+        form.setFormLoading(true);
+        const response = await ApiClient.post('/forgot-password', values);
+        // Handle the Host Application response here.
+    } catch (error) {
+        console.error(error);
+    } finally {
+        form.setFormLoading(false);
+    }
+});
+```
+
+Available form helpers:
+
+- `form.getFormValues()` — plain object of named successful controls; repeated names become arrays.
+- `form.getFormData()` — native FormData, useful for file or multipart requests.
+- `form.getFieldValue(name)` — read one named control.
+- `form.setFieldValue(name, value)` — set one named control.
+- `form.clearForm()` — reset controls to their HTML default values.
+- `form.setFormLoading(boolean)` — disable/enable the submit button and update its loading label.
+
+These helpers are attached by the page starter after initialization. The Host
+Application should register its submit listener on the form and should not rely
+on a global page instance. Login and Registration are not changed by this update.
+
 - `Toast.js` — lightweight success, info, warning, and error notifications; BasePage provides it as `this.toast` by default.
 - `LocationManager.js` — browser geolocation service with explicit permission requests and normalized errors.
 - Dialog, PIN input, pagination, and offcanvas utilities.
