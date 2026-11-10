@@ -1,3 +1,11 @@
+## Unreleased - Simplified Forgot Password form ownership
+
+- Keep the Forgot Password starter limited to preparing the form, attaching shared form helpers, and password visibility toggles.
+- Remove OtpManager initialization and the form.otpDialog property; the Host Application uses the separate OTP helper directly.
+- Keep native form submission handling entirely in the Host Application, which reads values with form.getFormValues().
+- Do not dispatch a custom submit event or make API calls from the package.
+- Leave Login and Registration files and behavior unchanged.
+
 ## Unreleased - Host-controlled authentication form submission
 
 - Add reusable form helpers to BasePage: getFormValues, getFormData, getFieldValue, setFieldValue, clearForm, and setFormLoading.
