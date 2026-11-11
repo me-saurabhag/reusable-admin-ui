@@ -39,6 +39,7 @@ body {
 .rai-ui__nav-icon { display: inline-grid; place-items: center; width: 1.35rem; flex: 0 0 1.35rem; font-size: 1rem; }
 .rai-ui__main { min-width: 0; flex: 1; }
 .rai-ui__header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--rai-header-height); padding: .75rem clamp(1rem, 2.5vw, 2rem); background: var(--rai-surface); border-bottom: 1px solid var(--rai-border); }
+.rai-ui__header--sticky { position: sticky; top: 0; z-index: 1025; background: var(--rai-surface, #fff); box-shadow: 0 2px 8px rgb(15 23 42 / 5%); }
 .rai-ui__header-start, .rai-ui__header-actions { display: flex; align-items: center; gap: .75rem; min-width: 0; }
 .rai-ui__header-title { margin: 0; color: var(--rai-heading); font-size: 1rem; font-weight: 650; }
 .rai-ui__header-subtitle { color: var(--rai-text-muted); font-size: .8rem; }
