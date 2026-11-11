@@ -68,11 +68,11 @@ $messagingActivity = [
 ];
 ```
 
-The chart is rendered with SVG and server-side Blade data. It does not require Chart.js, npm, or a JavaScript chart library.
+The chart is rendered with SVG and server-side Blade data. It does not require Chart.js, npm, or a JavaScript chart library. Its plot and summary footer use component-scoped spacing so the chart remains balanced at different card widths.
 
 ## Conversation and automation health
 
-Pass individual presentation values rather than a Host Application-specific dashboard array. The card keeps its icon/title header, explanatory summary, and four compact metric tiles. Its tile layout adapts to the available component width, not just the viewport width:
+Pass individual presentation values rather than a Host Application-specific dashboard array. The card keeps its icon/title header, explanatory summary, and four compact metric tiles. The metric labels use a consistent line-height and reserved label area so the values align cleanly. The tile layout adapts to the available component width, not just the viewport width:
 
 ```blade
 <x-admin-ui::conversation-automation-health
@@ -185,6 +185,10 @@ Configuration values that represent icons should contain the sprite symbol name,
 ```blade
 @include('admin-ui::components.icon-sprite')
 ```
+
+## Dashboard overview layout
+
+The Host Application owns the row that places the Messaging Activity chart beside the Conversation & Automation Health card. Choose the column ratio at page level based on the available content width. For a layout close to the design reference, use approximately 56% for the chart and 44% for the health card on wide screens, then stack the cards on smaller screens. Do not rely on component CSS to override the Host Application grid.
 
 ## Responsibility boundary
 
