@@ -97,6 +97,24 @@ Route::middleware('auth')->group(function () {
 
 Your controller and middleware names may differ. Keep authentication, authorization, session invalidation, and redirects in the Host Application.
 
+## Logout redirect route
+
+Set the named route the Host Application should use after logout in the published `config/admin-ui.php`:
+
+```php
+'auth' => [
+    'logout_redirect_route' => 'admin-ui.login',
+],
+```
+
+The package does not perform logout or redirect automatically. Read this setting in the Host logout controller after invalidating the session:
+
+```php
+return redirect()->route(config('admin-ui.auth.logout_redirect_route', 'admin-ui.login'));
+```
+
+Use a route name that exists in the Host Application. If the Host owns its login route, set that route name instead.
+
 ## Fallback behavior
 
 - If `route` is `null`, empty, or the named route is not registered, the item remains a button and emits the existing `admin-ui:profile-action` event with the item key in its `data-rai-profile-action` attribute.
