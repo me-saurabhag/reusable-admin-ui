@@ -18,7 +18,6 @@
     @stack('styles')
 </head>
 <body class="rai-auth-body">
-    @include('admin-ui::components.icon-sprite')
     @yield('content')
     @stack('scripts')
     @include('admin-ui::dialogs.status-dialog')
