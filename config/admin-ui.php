@@ -51,6 +51,8 @@ return [
     |
     */
     'header' => [
+        // Keep the post-login header visible while the page content scrolls.
+        'sticky' => false,
         'components' => [
             'search' => true,
             'explore' => true,
@@ -98,6 +100,9 @@ return [
         // middleware class/name (or array) to use Host authentication rules,
         // or null/false to disable the additional guest middleware.
         'guest_middleware' => 'guest',
+
+        // Named Host route used by the Host logout controller after logout.
+        'logout_redirect_route' => 'admin-ui.login',
 
         // OTP dialog presentation defaults. OTP business logic remains in Host.
         'otp_dialog' => [
