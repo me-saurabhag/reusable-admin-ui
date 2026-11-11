@@ -1,8 +1,8 @@
-## Unreleased - Dashboard Hero and Conversation Health visual refinements
+## Unreleased - Dashboard chart and Conversation Health visual refinements
 
-- Refine the Dashboard Hero stacking and action/date alignment while preserving the established green gradient and decorative treatment.
-- Match the Conversation & Automation Health icon treatment to the reference design and keep metric tiles consistently sized.
-- Make health metric tiles respond to the component's available width so the card remains readable in narrow dashboard columns.
+- Refine Messaging Activity chart plot spacing and footer rhythm to better match the supplied reference.
+- Improve Conversation & Automation Health description spacing and metric tile label/value alignment.
+- Document that the Host Application owns the parent grid ratio and recommend a chart/health split close to 56%/44% on wide screens.
 
 ## Unreleased - Unified external SVG sprite across layouts
 
