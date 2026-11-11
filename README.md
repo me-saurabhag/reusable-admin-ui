@@ -315,6 +315,10 @@ Location permission is never requested automatically. Request it only after an e
 
 Call `destroy()` on page instances when they are disposed so registered event listeners can be removed. See the implementation notes in `docs/` for component-specific usage.
 
+## Header profile menu
+
+Each Header profile menu item can be connected to a named route owned by the Host Application. Configure its `route` and HTTP `method` in `config/admin-ui.php`. See [Header Profile Menu](docs/header-profile-menu.md) for GET links, CSRF-protected state-changing requests, logout setup, and the fallback JavaScript event.
+
 ## SVG icon sprite
 
 The package provides an external SVG symbol sprite at `resources/svg/icons.svg`. The `admin-ui-assets` publish tag copies it to `public/vendor/admin-ui/icons.svg`; sidebar menu items reference symbols by ID (for example `stroke-layout`, `stroke-user`, or `stroke-chat`) through an external SVG `<use>` URL. Add icons by defining new `<symbol>` elements in that SVG file.
