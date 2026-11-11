@@ -331,7 +331,12 @@ body {
 
 
 /* Header v0.4 — compact navigation inspired by the approved reference. */
-.rai-ui__header { min-height: 64px; padding: .35rem clamp(.75rem, 1.7vw, 1.5rem); }
+.rai-ui__header { min-height: 58px; padding: .2rem clamp(.75rem, 1.7vw, 1.5rem); }
+.rai-header__menu { width: 34px; height: 34px; }
+.rai-header__search { height: 36px; }
+.rai-header__quick-create { height: 34px; }
+.rai-header__icon-action { width: 34px; height: 34px; }
+.rai-header__avatar { width: 34px; height: 34px; }
 .rai-header { width: 100%; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: .8rem; color: var(--rai-text); }
 .rai-header button { font: inherit; cursor: pointer; }
 .rai-header svg { width: 17px; height: 17px; display: block; flex: 0 0 auto; }
