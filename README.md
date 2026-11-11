@@ -321,7 +321,7 @@ Each Header profile menu item can be connected to a named route owned by the Hos
 
 ## SVG icon sprite
 
-The package provides an external SVG symbol sprite at `resources/svg/icons.svg`. The `admin-ui-assets` publish tag copies it to `public/vendor/admin-ui/icons.svg`; sidebar menu items reference symbols by ID (for example `stroke-layout`, `stroke-user`, or `stroke-chat`) through an external SVG `<use>` URL. Add icons by defining new `<symbol>` elements in that SVG file.
+The package provides one external SVG symbol sprite at `resources/svg/icons.svg`. The `admin-ui-assets` publish tag copies it to `public/vendor/admin-ui/icons.svg`. Both authentication and post-login layouts, including the shared Icon component and Sidebar, reference symbols from this same external file using SVG `<use>` URLs. The browser can cache the sprite separately, so its full markup is not repeated in every page response. The public path is configurable through `admin-ui.assets.icon_sprite` (default: `vendor/admin-ui/icons.svg`). Add icons by defining new `<symbol>` elements in the package SVG file, then update the published Host copy when upgrading package assets.
 
 ## Responsibility boundary
 
