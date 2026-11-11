@@ -109,7 +109,7 @@ body {
 .rai-ui__nav { padding: 1.25rem .75rem; }
 .rai-ui__nav-label { margin-top: .35rem; margin-bottom: .4rem; }
 .rai-ui__nav-link { min-height: 44px; }
-.rai-ui__header { min-height: 72px; }
+.rai-ui__header { min-height: 64px; }
 .rai-ui__header-title { font-size: 1.025rem; letter-spacing: -.015em; }
 .rai-ui__content { padding-top: clamp(0.75rem, 1.5vw, 1.25rem); }
 .rai-page-heading { align-items: center; margin-bottom: 1.35rem; }
@@ -331,7 +331,7 @@ body {
 
 
 /* Header v0.4 — compact navigation inspired by the approved reference. */
-.rai-ui__header { min-height: 72px; padding: .55rem clamp(.75rem, 1.7vw, 1.5rem); }
+.rai-ui__header { min-height: 64px; padding: .4rem clamp(.75rem, 1.7vw, 1.5rem); }
 .rai-header { width: 100%; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: .8rem; color: var(--rai-text); }
 .rai-header button { font: inherit; cursor: pointer; }
 .rai-header svg { width: 17px; height: 17px; display: block; flex: 0 0 auto; }
