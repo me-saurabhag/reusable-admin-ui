@@ -115,12 +115,42 @@
                                     @if ($item['divider_before'] ?? false)
                                         <div class="rai-profile-menu__divider" role="separator"></div>
                                     @endif
-                                    <button type="button"
-                                            class="rai-profile-menu__item {{ ($item['danger'] ?? false) ? 'is-danger' : '' }}"
-                                            data-rai-profile-action="{{ $key }}">
-                                        <span class="rai-profile-menu__item-icon">{!! $icon($item['icon'] ?? 'grid') !!}</span>
-                                        <span>{{ $item['label'] ?? $key }}</span>
-                                    </button>
+
+                                    @php
+                                        $routeName = $item['route'] ?? null;
+                                        $actionMethod = strtoupper($item['method'] ?? 'GET');
+                                        $supportedMethods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
+                                        $hasValidRoute = is_string($routeName)
+                                            && $routeName !== ''
+                                            && \\Illuminate\\Support\\Facades\\Route::has($routeName);
+                                        $hasValidMethod = in_array($actionMethod, $supportedMethods, true);
+                                        $profileItemClass = 'rai-profile-menu__item '.(($item['danger'] ?? false) ? 'is-danger' : '');
+                                    @endphp
+
+                                    @if ($hasValidRoute && $hasValidMethod && $actionMethod === 'GET')
+                                        <a href="{{ route($routeName) }}" class="{{ $profileItemClass }}">
+                                            <span class="rai-profile-menu__item-icon">{!! $icon($item['icon'] ?? 'grid') !!}</span>
+                                            <span>{{ $item['label'] ?? $key }}</span>
+                                        </a>
+                                    @elseif ($hasValidRoute && $hasValidMethod)
+                                        <form method="POST" action="{{ route($routeName) }}" class="rai-profile-menu__form">
+                                            @csrf
+                                            @if ($actionMethod !== 'POST')
+                                                @method($actionMethod)
+                                            @endif
+                                            <button type="submit" class="{{ $profileItemClass }}">
+                                                <span class="rai-profile-menu__item-icon">{!! $icon($item['icon'] ?? 'grid') !!}</span>
+                                                <span>{{ $item['label'] ?? $key }}</span>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <button type="button"
+                                                class="{{ $profileItemClass }}"
+                                                data-rai-profile-action="{{ $key }}">
+                                            <span class="rai-profile-menu__item-icon">{!! $icon($item['icon'] ?? 'grid') !!}</span>
+                                            <span>{{ $item['label'] ?? $key }}</span>
+                                        </button>
+                                    @endif
                                 @endif
                             @endforeach
                         </div>
