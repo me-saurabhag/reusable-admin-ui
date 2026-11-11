@@ -217,4 +217,4 @@ Use the package overview wrapper when placing Messaging Activity beside Conversa
 </x-admin-ui::dashboard-overview>
 ```
 
-The wrapper uses a 2:1 desktop column ratio and equal 356px card heights. Below 992px it stacks the cards and lets their heights follow their content. No page-specific CSS is required in the Host Application.
+The wrapper uses a 4:3 desktop column ratio (approximately 57% chart / 43% health), matching the supplied reference, and equal 356px card heights. Below 992px it stacks the cards and lets their heights follow their content. No page-specific CSS is required in the Host Application.
