@@ -1,3 +1,10 @@
+## Unreleased - Configurable Header profile menu routes and methods
+
+- Allow each profile menu item to target a Host Application named route.
+- Render GET destinations as links and POST, PUT, PATCH, or DELETE destinations as CSRF-protected forms with Laravel method spoofing where required.
+- Preserve the existing `admin-ui:profile-action` button event when a route is not configured or is unavailable.
+- Document profile menu route and method configuration for Host Applications.
+
 ## Unreleased - SVG icon compatibility and WhatsApp navigation icons
 
 - Add missing stroke-style symbols used by the Host Application's WhatsApp admin menu, including monitor, add, reply, list, users, megaphone, history, conversation, inbox, automation, key, repeat, file, folder, status, clock, code, gauge, book, and logout icons.
