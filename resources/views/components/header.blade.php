@@ -122,7 +122,7 @@
                                         $supportedMethods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
                                         $hasValidRoute = is_string($routeName)
                                             && $routeName !== ''
-                                            && \\Illuminate\\Support\\Facades\\Route::has($routeName);
+                                            && \Illuminate\Support\Facades\Route::has($routeName);
                                         $hasValidMethod = in_array($actionMethod, $supportedMethods, true);
                                         $profileItemClass = 'rai-profile-menu__item '.(($item['danger'] ?? false) ? 'is-danger' : '');
                                     @endphp
