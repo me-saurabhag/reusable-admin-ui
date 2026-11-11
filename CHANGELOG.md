@@ -1,6 +1,6 @@
 ## Unreleased - Reusable dashboard overview composition
 
-- Add a reusable Dashboard Overview wrapper that composes Messaging Activity and Conversation & Automation Health with a 2:1 desktop ratio, equal 356px card heights, and responsive stacking.
+- Add a reusable Dashboard Overview wrapper that composes Messaging Activity and Conversation & Automation Health with a 4:3 desktop ratio, equal 356px card heights, and responsive stacking.
 - Move the overview grid and equal-height composition into the package so Host Applications do not need page-specific layout CSS.
 - Document the wrapper component and its Blade usage.
 
