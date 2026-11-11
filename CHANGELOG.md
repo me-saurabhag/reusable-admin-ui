@@ -1,3 +1,10 @@
+## Unreleased - Icon sprite, logout redirect config, and sticky header
+
+- Replace the package SVG sprite with the newly supplied icon set (255 unique symbols).
+- Add `auth.logout_redirect_route` so the Host logout controller can read its configured post-logout named route.
+- Add `header.sticky` to optionally keep the post-login header fixed at the top of the page while scrolling; default remains disabled.
+- Document the new configuration options and Host logout-controller integration.
+
 ## Unreleased - Reusable dashboard overview composition
 
 - Add a reusable Dashboard Overview wrapper that composes Messaging Activity and Conversation & Automation Health with a 4:3 desktop ratio, equal 356px card heights, and responsive stacking.
