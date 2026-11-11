@@ -11,6 +11,7 @@
     }
 
     $iconSize = is_numeric($size) ? max(1, (int) $size) . 'px' : (string) $size;
+    $spriteUrl = asset(config('admin-ui.assets.icon_sprite', 'vendor/admin-ui/icons.svg'));
 @endphp
 
 <svg
@@ -27,5 +28,5 @@
         focusable="false"
     @endif
 >
-    <use href="#{{ $iconName }}"></use>
+    <use href="{{ $spriteUrl }}#{{ $iconName }}"></use>
 </svg>
