@@ -1,3 +1,9 @@
+## Unreleased - SVG icon compatibility and WhatsApp navigation icons
+
+- Add missing stroke-style symbols used by the Host Application's WhatsApp admin menu, including monitor, add, reply, list, users, megaphone, history, conversation, inbox, automation, key, repeat, file, folder, status, clock, code, gauge, book, and logout icons.
+- Restore the `refresh`, `send`, and `automation` symbol IDs retained by existing package consumers.
+- Add correctly spelled aliases for commonly mistyped icon IDs such as `attachment`, `dollar-return`, and `map-location` while preserving the legacy IDs for compatibility.
+
 ## Unreleased - Post-Login Base Layout
 
 - Add `admin-ui::layouts.app` as the shared authenticated Admin layout, composing the package layout, Header, and Sidebar.
