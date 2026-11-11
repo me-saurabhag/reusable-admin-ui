@@ -539,7 +539,7 @@
  */
 .rai-dashboard-overview {
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 4fr) minmax(0, 3fr);
     gap: 1rem;
     align-items: stretch;
 }
