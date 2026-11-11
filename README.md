@@ -169,7 +169,7 @@ public function boot(): void
 
 The composer should pass the menu array as `menu`; the package only renders it and never evaluates user permissions. The Host Application can also pass optional `headerData` (profile fields and header info-card values) from its controller or another view composer.
 
-The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Add each page-specific CSS and JS file to the Host Vite input list. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
+The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Set `header.sticky` to `true` in `config/admin-ui.php` to make the post-login header stick to the top while scrolling; it defaults to `false`. Add each page-specific CSS and JS file to the Host Vite input list. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
 
 Then run its normal commands:
 
@@ -221,6 +221,8 @@ Publish `config/admin-ui.php` and customize its values for the host application.
 - `theme.default`: `light`
 - `layout.sidebar`: `classic`
 - `auth.login`: `v1`
+- `auth.logout_redirect_route`: `admin-ui.login` (named route for the Host logout controller to redirect to after logout)
+- `header.sticky`: `false` (set to `true` to keep the post-login header visible while scrolling)
 - `favicon`: `https://bot.kotfumes.com/assets/app/images/chatbot.webp` (shared Admin and Auth browser tab icon)
 - `assets.include_bootstrap`: `false` (the host application supplies Bootstrap)
 
@@ -257,7 +259,7 @@ If the host application already owns these routes, disable the corresponding pac
 ],
 ```
 
-The package only renders the GET pages. The host application owns POST endpoints, authentication, authorization, validation, OTP verification, password reset, session handling, and redirects. Review the sample branding, logo URLs, labels, and copy in the published configuration before using them in a public-facing application.
+The package only renders the GET pages. The host application owns POST endpoints, authentication, authorization, validation, OTP verification, password reset, session handling, and redirects. The Host logout controller can read `config('admin-ui.auth.logout_redirect_route')` to choose its post-logout destination. Review the sample branding, logo URLs, labels, and copy in the published configuration before using them in a public-facing application.
 
 ## JavaScript utilities
 
