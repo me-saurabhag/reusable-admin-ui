@@ -426,6 +426,7 @@ return [
     */
     'assets' => [
         'include_bootstrap' => false,
+        'icon_sprite' => 'vendor/admin-ui/icons.svg',
         'bootstrap_css' => 'vendor/bootstrap/css/bootstrap.min.css',
         'bootstrap_js' => 'vendor/bootstrap/js/bootstrap.bundle.min.js',
     ],
