@@ -1,8 +1,8 @@
-## Unreleased - Dashboard chart and Conversation Health visual refinements
+## Unreleased - Reusable dashboard overview composition
 
-- Refine Messaging Activity chart plot spacing and footer rhythm to better match the supplied reference.
-- Improve Conversation & Automation Health description spacing and metric tile label/value alignment.
-- Document that the Host Application owns the parent grid ratio and recommend a chart/health split close to 56%/44% on wide screens.
+- Add a reusable Dashboard Overview wrapper that composes Messaging Activity and Conversation & Automation Health with a 2:1 desktop ratio, equal 356px card heights, and responsive stacking.
+- Move the overview grid and equal-height composition into the package so Host Applications do not need page-specific layout CSS.
+- Document the wrapper component and its Blade usage.
 
 ## Unreleased - Unified external SVG sprite across layouts
 
