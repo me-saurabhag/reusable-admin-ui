@@ -47,7 +47,7 @@
 
         <div class="rai-ui__main">
             @isset($header)
-                <header class="rai-ui__header">{{ $header }}</header>
+                <header class="rai-ui__header{{ config('admin-ui.header.sticky', false) ? ' rai-ui__header--sticky' : '' }}">{{ $header }}</header>
             @endisset
 
             <main class="rai-ui__content">{{ $slot }}</main>
