@@ -1,3 +1,10 @@
+## Unreleased - Unified external SVG sprite across layouts
+
+- Update the shared Icon component to reference symbols from the published external SVG sprite file.
+- Use the same configurable sprite URL in authentication pages, post-login components, and sidebar navigation.
+- Remove the authentication layout's inline SVG sprite markup so both layouts share the cached public asset.
+- Add `assets.icon_sprite` as the Host-configurable public path, defaulting to `vendor/admin-ui/icons.svg`.
+
 ## Unreleased - Reduced Admin page content padding
 
 - Reduce the shared Admin content area's default padding on desktop and mobile for a more space-efficient page layout.
