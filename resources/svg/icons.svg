@@ -117,8 +117,7 @@
   </symbol>
 
   <symbol id="bookmark" viewBox="0 0 24 24" fill="none">
-    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
+    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>  </symbol>
 
   <symbol id="attchment" viewBox="0 0 24 24" fill="none">
     <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -237,8 +236,7 @@
 
   <symbol id="stroke-search" viewBox="0 0 24 24" fill="none">
     <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
-    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-  </symbol>
+    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>  </symbol>
 
   <symbol id="stroke-user" viewBox="0 0 24 24" fill="none">
     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -357,8 +355,7 @@
 
   <symbol id="stroke-pincode" viewBox="0 0 24 24" fill="none">
     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
-  </symbol>
+    <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>  </symbol>
 
   <symbol id="stroke-mobile" viewBox="0 0 24 24" fill="none">
     <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -366,10 +363,8 @@
   </symbol>
 
   <symbol id="stroke-rupee" viewBox="0 0 24 24" fill="none">
-    <path d="M6 4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M6 8h8a4 4 0 0 1 0 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M6 16h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M18 4v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M5 4.5h14M5 8.5h11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M7 4.5h6.2a4 4 0 0 1 0 8H7l10 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
   <symbol id="stroke-transfer" viewBox="0 0 24 24" fill="none">
@@ -479,8 +474,7 @@
 
 
   <!-- ==================== BUSINESS / FINANCE / SPORTS ==================== -->
-  <symbol id="briefcase" viewBox="0 0 24 24" fill="none">
-    <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+  <symbol id="briefcase" viewBox="0 0 24 24" fill="none">    <rect x="2" y="7" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
     <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     <path d="M2 12h20" stroke="currentColor" stroke-width="1.5"/>
   </symbol>
@@ -599,8 +593,7 @@
   </symbol>
   <symbol id="invoice" viewBox="0 0 24 24" fill="none">
     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>    <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     <line x1="8" y1="17" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
   <symbol id="trophy" viewBox="0 0 24 24" fill="none">
@@ -650,9 +643,11 @@
     <line x1="4" y1="22" x2="4" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
   <symbol id="running" viewBox="0 0 24 24" fill="none">
-    <circle cx="13" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/>
-    <path d="M6 20l3-6 2 2 3-5 4 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M10 12l-2 8M14 11l2 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="15.5" cy="4.5" r="2" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M12.5 8.5l-3 3.2-4.2 1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.5 8.5l3.5 2.2 3.5-.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.5 8.5l-1 5.2 4.2 2.2 2.8 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.5 13.7l-4.2 2.1-2.1 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
 
@@ -692,10 +687,9 @@
     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
   <symbol id="rupee" viewBox="0 0 24 24" fill="none">
-    <path d="M6 4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M6 8h8a4 4 0 0 1 0 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M6 16h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M18 4v16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M5 4h14M5 8h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M6 4h7a4 4 0 0 1 0 8H6l10 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5 12h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
   </symbol>
   <symbol id="google" viewBox="0 0 24 24" fill="none">
     <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 1.5-.3 2.9-.9 4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -718,22 +712,24 @@
     <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
   <symbol id="tv" viewBox="0 0 24 24" fill="none">
-    <rect x="2" y="7" width="20" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/>
-    <path d="M17 2l-5 5-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="2" y="7" width="20" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/>    <path d="M17 2l-5 5-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
   <symbol id="satellite" viewBox="0 0 24 24" fill="none">
-    <path d="M13 7l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M7 13l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
-    <path d="M4.5 9.5a8 8 0 0 1 0 5M19.5 9.5a8 8 0 0 0 0 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M2 8a12 12 0 0 1 0 8M22 8a12 12 0 0 0 0 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <g stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="8" width="5" height="8" rx=".6"/><path d="M4.5 8v8M2 12h5"/>
+      <rect x="17" y="8" width="5" height="8" rx=".6"/><path d="M19.5 8v8M17 12h5"/>
+      <path d="M7 12h2M15 12h2"/><rect x="9" y="9" width="6" height="6" rx="1.1"/>
+      <path d="M12 9V6l2-2M12 15v3"/>
+    </g>
   </symbol>
   <symbol id="satellite-dish" viewBox="0 0 24 24" fill="none">
-    <path d="M12 13v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M4 14a10 10 0 0 1 16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M7 11a6 6 0 0 1 10 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="12" cy="9" r="1.5" stroke="currentColor" stroke-width="1.5"/>
-    <path d="M8 21h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <g stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4c-.2 7.2 4.5 13.5 12.5 15.5"/>
+      <path d="M4 4 9.5 9.5"/>
+      <circle cx="9.5" cy="9.5" r="1"/>
+      <path d="M13.5 13.5 18 18l2.5 3M18 18l-3 3M13 21h8"/>
+      <path d="M7 4.5c2.2-.2 4.1.5 5.6 2M6 8c1.3-.1 2.5.3 3.4 1.2"/>
+    </g>
   </symbol>
   <symbol id="laptop" viewBox="0 0 24 24" fill="none">
     <path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -835,8 +831,7 @@
   </symbol>
   <symbol id="radio" viewBox="0 0 24 24" fill="none">
     <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>    <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/>
     <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </symbol>
@@ -869,7 +864,376 @@
 <symbol id="stroke-book" viewBox="0 0 24 24" fill="none"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 0-4 4V4Zm0 0v16a4 4 0 0 1 4-4h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="stroke-code" viewBox="0 0 24 24" fill="none"><path d="m8 8-5 4 5 4m8-8 5 4-5 4m-2-12-4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="stroke-logout" viewBox="0 0 24 24" fill="none"><path d="M10 17l5-5-5-5m5 5H3M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-<symbol id="refresh" viewBox="0 0 24 24" fill="none"><path d="M20 7v5h-5M4 17v-5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.6 9A7 7 0 0 1 18 6l2 6M4 12l2 6a7 7 0 0 0 12.4-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="refresh" viewBox="0 0 24 24" fill="none">
+    <path d="M20 8a8 8 0 0 0-14.6-2L4 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 4v4h4M4 16a8 8 0 0 0 14.6 2L20 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20 20v-4h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
 <symbol id="send" viewBox="0 0 24 24" fill="none"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 <symbol id="automation" viewBox="0 0 24 24" fill="none"><path d="M12 2v3m0 14v3M4.9 4.9 7 7m10 10 2.1 2.1M2 12h3m14 0h3M4.9 19.1 7 17m10-10 2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/></symbol>
+
+  <!-- ==================== USERS / GROUPS / CHAT / CALL ==================== -->
+  <symbol id="user" viewBox="0 0 24 24" fill="none">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="user-plus" viewBox="0 0 24 24" fill="none">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="19" y1="8" x2="19" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="22" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="user-minus" viewBox="0 0 24 24" fill="none">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="22" y1="11" x2="16" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="user-check" viewBox="0 0 24 24" fill="none">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <polyline points="16 11 18 13 22 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="user-x" viewBox="0 0 24 24" fill="none">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="17" y1="8" x2="22" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="22" y1="8" x2="17" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="user-circle" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M6.2 18.4a6.5 6.5 0 0 1 11.6 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="contact" viewBox="0 0 24 24" fill="none">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+  </symbol>
+  <symbol id="contacts" viewBox="0 0 24 24" fill="none">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="contact-group" viewBox="0 0 24 24" fill="none">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="19" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="phone" viewBox="0 0 24 24" fill="none">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="phone-call" viewBox="0 0 24 24" fill="none">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14.05 2a9 9 0 0 1 8 7.94M14.05 6A5 5 0 0 1 18 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="phone-incoming" viewBox="0 0 24 24" fill="none">
+    <polyline points="16 2 16 8 22 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="23" y1="1" x2="16" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="phone-outgoing" viewBox="0 0 24 24" fill="none">
+    <polyline points="22 8 22 2 16 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="16" y1="8" x2="23" y2="1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="phone-missed" viewBox="0 0 24 24" fill="none">
+    <line x1="23" y1="1" x2="17" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="17" y1="1" x2="23" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="phone-off" viewBox="0 0 24 24" fill="none">
+    <path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="call-user" viewBox="0 0 24 24" fill="none">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M16 3.5a3 3 0 0 1 4.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>  <symbol id="message" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="message-circle" viewBox="0 0 24 24" fill="none">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="message-square" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="messages" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14 3H4a2 2 0 0 0-2 2v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="message-group" viewBox="0 0 24 24" fill="none">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M19 14l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8 10h.01M12 10h.01M16 10h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="chat-group" viewBox="0 0 24 24" fill="none">
+    <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="mail" viewBox="0 0 24 24" fill="none">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="inbox" viewBox="0 0 24 24" fill="none">
+    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="at-sign" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="users-group" viewBox="0 0 24 24" fill="none">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="group" viewBox="0 0 24 24" fill="none">
+    <circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="17" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M2 21v-2a4 4 0 0 1 4-4h2M14 15h2a4 4 0 0 1 4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="13" cy="14" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="team" viewBox="0 0 24 24" fill="none">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="video" viewBox="0 0 24 24" fill="none">
+    <path d="M23 7l-7 5 7 5V7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="1" y="5" width="15" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="video-off" viewBox="0 0 24 24" fill="none">
+    <path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2m5.66 0H14a2 2 0 0 1 2 2v3.34l1 1L23 7v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="mic" viewBox="0 0 24 24" fill="none">
+    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="mic-off" viewBox="0 0 24 24" fill="none">
+    <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="share" viewBox="0 0 24 24" fill="none">
+    <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="share-2" viewBox="0 0 24 24" fill="none">
+    <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="link" viewBox="0 0 24 24" fill="none">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="hash" viewBox="0 0 24 24" fill="none">
+    <line x1="4" y1="9" x2="20" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="10" y1="3" x2="8" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="16" y1="3" x2="14" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="bell" viewBox="0 0 24 24" fill="none">
+    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="bell-off" viewBox="0 0 24 24" fill="none">
+    <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M18.63 13A17.89 17.89 0 0 1 18 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M18 8a6 6 0 0 0-9.33-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+
+
+  <!-- ==================== BILL PAYMENT / COURIER ==================== -->
+  <symbol id="mobile-recharge" viewBox="0 0 24 24" fill="none">
+    <rect x="7" y="2" width="10" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 18h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 6h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M9 9l1.5 2L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>  <symbol id="dth-recharge" viewBox="0 0 24 24" fill="none">
+    <path d="M12 14v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M8 21h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M5 15.5c0-4.5 3.5-8 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M8 15.5c0-2.8 2.2-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="13" cy="10.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M16 4.5l2.5-2.5M18.5 6.5l2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M13 10.5L17 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="fastag" viewBox="0 0 24 24" fill="none">
+    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M2 10h20" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M6 14h4M14 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12" cy="6" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="aeps" viewBox="0 0 24 24" fill="none">
+    <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 9v6M9 12h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M6 5V3M18 5V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="money-transfer" viewBox="0 0 24 24" fill="none">
+    <path d="M7 16V4M7 4L3 8M7 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17 8v12M17 20l4-4M17 20l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 12h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="cable-tv" viewBox="0 0 24 24" fill="none">
+    <rect x="2" y="7" width="20" height="15" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M17 2l-5 5-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="14.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="housing" viewBox="0 0 24 24" fill="none">
+    <path d="M3 21h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M5 21V7l7-4 7 4v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="loan" viewBox="0 0 24 24" fill="none">
+    <path d="M12 1v22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19 9l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="electricity" viewBox="0 0 24 24" fill="none">
+    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="water-bill" viewBox="0 0 24 24" fill="none">
+    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 8v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="gas-cylinder" viewBox="0 0 24 24" fill="none">
+    <path d="M9 5V3h6v2M10 3h4M8 5h8a2 2 0 0 1 2 2v11.5a3.5 3.5 0 0 1-3.5 3.5h-5A3.5 3.5 0 0 1 6 18.5V7a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.5 9h11M6.5 17.5h11M10 12v2.5M14 12v2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 5V3M14 5V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="broadband" viewBox="0 0 24 24" fill="none">
+    <path d="M5 12.55a11 11 0 0 1 14.08 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M1.42 9a16 16 0 0 1 21.16 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12" cy="20" r="1" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="9" y="2" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="insurance" viewBox="0 0 24 24" fill="none">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="credit-card-bill" viewBox="0 0 24 24" fill="none">
+    <rect x="1" y="4" width="22" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    <line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M5 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="education-fee" viewBox="0 0 24 24" fill="none">
+    <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 12v5c3 3 9 3 12 0v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="rent" viewBox="0 0 24 24" fill="none">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 1v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="recharge" viewBox="0 0 24 24" fill="none">
+    <path d="M23 4v6h-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 8v4l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="upi" viewBox="0 0 24 24" fill="none">
+    <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M7 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M12 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M8 9l4 3 4-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="qr-code" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M14 14h3v3h-3zM18 14h3v3h-3zM14 18h3v3h-3zM20 20h1v1h-1z" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="courier" viewBox="0 0 24 24" fill="none">
+    <path d="M16 16h6v-4a2 2 0 0 0-2-2h-4v6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2 16h14v-8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6.5" cy="18.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="16.5" cy="18.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M14 8V6a2 2 0 0 0-2-2H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="package" viewBox="0 0 24 24" fill="none">
+    <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="package-check" viewBox="0 0 24 24" fill="none">
+    <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 12v10" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M3.27 6.96L12 12.01l8.73-5.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M9 16l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="package-x" viewBox="0 0 24 24" fill="none">
+    <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 12v10" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M3.27 6.96L12 12.01l8.73-5.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M10 15l4 4M14 15l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>  <symbol id="truck" viewBox="0 0 24 24" fill="none">
+    <path d="M1 3h15v13H1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="delivery" viewBox="0 0 24 24" fill="none">
+    <path d="M16 16h6v-4a2 2 0 0 0-2-2h-4v6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2 16h14v-8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6.5" cy="18.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="16.5" cy="18.5" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M7 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="shipping" viewBox="0 0 24 24" fill="none">
+    <rect x="1" y="3" width="15" height="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M1 8h15" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="tracking" viewBox="0 0 24 24" fill="none">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M12 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="box" viewBox="0 0 24 24" fill="none">
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="warehouse" viewBox="0 0 24 24" fill="none">
+    <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 18h12M6 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M12 22V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="parcel" viewBox="0 0 24 24" fill="none">
+    <path d="M16.5 9.4l-9-5.19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.27 6.96L12 12.01l8.73-5.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M12 22.08V12" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="hand-package" viewBox="0 0 24 24" fill="none">
+    <path d="M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7 20l1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2 15l6.5 6.5c.4.4 1 .4 1.4 0L16 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="14" y="2" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+  </symbol>
+
 </svg>
