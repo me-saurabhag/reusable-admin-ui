@@ -1,3 +1,9 @@
+## Unreleased - Dashboard Hero and Conversation Health visual refinements
+
+- Refine the Dashboard Hero stacking and action/date alignment while preserving the established green gradient and decorative treatment.
+- Match the Conversation & Automation Health icon treatment to the reference design and keep metric tiles consistently sized.
+- Make health metric tiles respond to the component's available width so the card remains readable in narrow dashboard columns.
+
 ## Unreleased - Unified external SVG sprite across layouts
 
 - Update the shared Icon component to reference symbols from the published external SVG sprite file.
