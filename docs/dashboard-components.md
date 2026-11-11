@@ -39,7 +39,7 @@ The component name uses the standard spelling `dashboard-hero-section` (not `dah
 </x-admin-ui::dashboard-hero-section>
 ```
 
-The button is intentionally supplied by the host application. Its click handler and refresh request belong to the host.
+The button is intentionally supplied by the host application. Its click handler and refresh request belong to the host. The package component supplies the dark green gradient, subtle grid/glow decoration, refresh badge, action/date alignment, and responsive statistics layout.
 
 ## Messaging activity chart
 
@@ -72,7 +72,7 @@ The chart is rendered with SVG and server-side Blade data. It does not require C
 
 ## Conversation and automation health
 
-Pass individual presentation values rather than a Host Application-specific dashboard array:
+Pass individual presentation values rather than a Host Application-specific dashboard array. The card keeps its icon/title header, explanatory summary, and four compact metric tiles. Its tile layout adapts to the available component width, not just the viewport width:
 
 ```blade
 <x-admin-ui::conversation-automation-health
