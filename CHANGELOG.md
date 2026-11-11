@@ -1,3 +1,8 @@
+## Unreleased - Reduced Admin page content padding
+
+- Reduce the shared Admin content area's default padding on desktop and mobile for a more space-efficient page layout.
+- Keep component-internal spacing, including the Dashboard Hero section, unchanged.
+
 ## Unreleased - Configurable Header profile menu routes and methods
 
 - Allow each profile menu item to target a Host Application named route.
