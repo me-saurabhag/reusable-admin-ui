@@ -194,3 +194,27 @@ The Host Application owns the row that places the Messaging Activity chart besid
 
 - Host Application: queries, data preparation, number/date localization, authorization, routes, refresh actions, and JavaScript event handlers.
 - Package: component markup, presentation styles, icon sprite rendering, and chart drawing from the supplied values.
+
+
+## Dashboard overview composition
+
+Use the package overview wrapper when placing Messaging Activity beside Conversation & Automation Health. It owns the reference layout ratio, equal card height, spacing, and responsive stacking; the Host Application only supplies the two existing components and their data.
+
+```blade
+<x-admin-ui::dashboard-overview>
+    <x-slot:activity>
+        <x-admin-ui::messaging-activity-chart :activity="$messagingActivity" />
+    </x-slot:activity>
+
+    <x-slot:health>
+        <x-admin-ui::conversation-automation-health
+            :active-conversations="$summary['conversations']['active']"
+            :unassigned-conversations="$summary['conversations']['unassigned']"
+            :automation-success-percent="$summary['automation_health']['success_percent']"
+            :failed-runs-today="$summary['automation_health']['failed_runs_today']"
+        />
+    </x-slot:health>
+</x-admin-ui::dashboard-overview>
+```
+
+The wrapper uses a 2:1 desktop column ratio and equal 356px card heights. Below 992px it stacks the cards and lets their heights follow their content. No page-specific CSS is required in the Host Application.
