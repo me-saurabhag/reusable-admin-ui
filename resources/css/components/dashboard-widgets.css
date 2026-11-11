@@ -531,3 +531,54 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Dashboard overview layout: chart + conversation health.
+ * The package owns this reusable composition so host pages do not need
+ * page-specific grid CSS for these two dashboard widgets.
+ */
+.rai-dashboard-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+}
+.rai-dashboard-overview__item {
+    display: flex;
+    min-width: 0;
+}
+.rai-dashboard-overview__item > .rai-dashboard-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 356px;
+    height: 356px;
+    box-sizing: border-box;
+}
+.rai-dashboard-overview .rai-messaging-chart {
+    min-height: 356px;
+}
+.rai-dashboard-overview .rai-conversation-health {
+    min-height: 356px;
+    height: 356px;
+}
+.rai-dashboard-overview .rai-messaging-chart__plot-wrap {
+    flex: 1 1 auto;
+    grid-template-rows: minmax(9rem, 1fr) auto;
+}
+.rai-dashboard-overview .rai-conversation-health__tiles {
+    margin-top: auto;
+}
+@media (max-width: 991px) {
+    .rai-dashboard-overview {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .rai-dashboard-overview__item > .rai-dashboard-card,
+    .rai-dashboard-overview .rai-conversation-health,
+    .rai-dashboard-overview .rai-messaging-chart {
+        height: auto;
+        min-height: 0;
+    }
+    .rai-dashboard-overview .rai-messaging-chart__plot-wrap {
+        flex: initial;
+    }
+}
