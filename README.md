@@ -46,7 +46,11 @@ After Composer has installed the package, run the installer:
 
 ```bash
 php artisan admin-ui:install
+npm install bootstrap
+npm run build
 ```
+
+Bootstrap is a host-application dependency. Install it after the Admin UI installer and before building the Vite assets. If Bootstrap is already listed in the host application's dependencies, running `npm install bootstrap` again is safe.
 
 The installer publishes the package configuration (only when it does not already exist), frontend assets, shared utilities, and missing authentication starter files. It also creates the required host-side auth CSS entry files, registers the authentication CSS/JS entries in the standard Laravel Vite `input: []` array, and adds the package's shared shell runtime import to `resources/js/app.js`.
 
@@ -184,16 +188,14 @@ The composer should pass the menu array as `menu`; the package only renders it a
 
 The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Set `header.sticky` to `true` in `config/admin-ui.php` to make the post-login header stick to the top while scrolling; it defaults to `false`. Add each future Admin page's CSS and JS entry to the Host Vite input list. Authentication pages share both Status and OTP Dialog markup through `admin-ui::layouts.auth` (OTP markup can be disabled with `auth.otp_dialog.enabled`). Login, Registration, and Forgot Password each load their own page CSS/JS entry; each authentication CSS entry includes both dialog styles. The authenticated `admin-ui::layouts.app` never inserts either dialog. A post-login Host page opts in by including the required Blade partial and importing the matching CSS/JS from that page's own assets.
 
-Then run its normal commands:
+Then install Bootstrap if it is not already installed, and run the frontend build:
 
 ```bash
-npm install
-npm run dev
-# or
+npm install bootstrap
 npm run build
 ```
 
-Bootstrap is supplied by the host. The package defaults `assets.include_bootstrap` to `false`; the host application
+For local development, use `npm run dev` instead of `npm run build`. Bootstrap is supplied by the host. The package defaults `assets.include_bootstrap` to `false`; the host application
 is responsible for loading Bootstrap. Set it to `true` only if the package
 layout should load valid public Bootstrap files and the host does not load it.
 
