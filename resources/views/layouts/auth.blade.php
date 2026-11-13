@@ -20,10 +20,6 @@
 <body class="rai-auth-body">
     @yield('content')
     @stack('scripts')
-    @include('admin-ui::dialogs.status-dialog')
-    @if (config('admin-ui.auth.otp_dialog.enabled', true))
-        @include('admin-ui::dialogs.otp-modal')
-    @endif
 
     @vite($authJs ?? config('admin-ui.auth.vite.js', 'resources/js/app.js'))
 </body>
