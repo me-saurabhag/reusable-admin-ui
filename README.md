@@ -56,6 +56,27 @@ The command is designed to be safe to run again: existing Vite entries are not d
 
 The focused publish tags remain available when you only need to refresh one part of the package: `admin-ui-config`, `admin-ui-assets`, `admin-ui-core`, `admin-ui-auth`, `admin-ui-dialogs`, `admin-ui-otp-dialog`, `admin-ui-inputs`, `admin-ui-pagination`, and `admin-ui-offcanvas`.
 
+## Updating an existing Host Application
+
+Use the same update sequence in every Laravel project that uses this package:
+
+```bash
+composer update reusable-admin-ui/framework
+php artisan admin-ui:install --force
+npm run build
+```
+
+For projects tracking the GitHub development branch, Composer must already have the VCS repository configured and the package constraint must allow `dev-main`. For released projects, keep a stable version constraint (for example, `^0.2`) and update within that allowed range.
+
+The update command has a deliberate ownership boundary:
+
+- Composer owns the code under `vendor/reusable-admin-ui/framework`.
+- The package installer refreshes only package-managed published copies under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui` when `--force` is supplied.
+- Host-owned configuration, page entry wrappers, page starter JavaScript, `vite.config.js`, and `resources/js/app.js` are not force-overwritten.
+- Put custom application styles and behavior in separate Host files; do not edit files inside the published `vendor/admin-ui` resource folders.
+
+New components are delivered by the Composer package. If a component adds a new Host Vite entry or requires a Host layout integration, that change must be included in the installer and documented as part of the same release. Package releases should be tested against both a clean Laravel host and an existing host with previously published config/assets before tagging.
+
 ## Vite integration
 
 The host application owns its Vite configuration and imports the published package assets. Typical imports are:
