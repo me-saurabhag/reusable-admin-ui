@@ -114,12 +114,12 @@ class InstallCommand extends Command
             return true;
         }
 
-        $addition = implode("\\n", $missingImports) . "\\n\\n";
+        $addition = implode("\n", $missingImports) . "\n\n";
 
         // Keep Tailwind's entry first when the Laravel starter uses Tailwind.
         if (preg_match('/@import\\s+[\\\'"]tailwindcss[\\\'"]\\s*;/', $contents, $match, PREG_OFFSET_CAPTURE)) {
             $offset = $match[0][1] + strlen($match[0][0]);
-            $updated = substr($contents, 0, $offset) . "\\n" . $addition . ltrim(substr($contents, $offset), "\\r\\n");
+            $updated = substr($contents, 0, $offset) . "\n" . $addition . ltrim(substr($contents, $offset), "\r\n");
         } else {
             $updated = $addition . ltrim($contents, "\\r\\n");
         }
