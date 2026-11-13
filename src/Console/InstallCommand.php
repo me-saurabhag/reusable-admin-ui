@@ -41,7 +41,9 @@ class InstallCommand extends Command
         foreach ($this->publishTags as $tag) {
             $options = ['--tag' => $tag];
 
-            if ($this->option('force')) {
+            // Config and Host-owned starter entry files are never force-overwritten.
+            // --force refreshes only package-managed asset copies under vendor/admin-ui.
+            if ($this->option('force') && ! in_array($tag, ['admin-ui-config', 'admin-ui-auth'], true)) {
                 $options['--force'] = true;
             }
 
@@ -59,7 +61,7 @@ class InstallCommand extends Command
         $this->newLine();
         $this->info('Reusable Admin UI installation completed.');
         $this->line('Next, run: <fg=yellow>npm run build</>');
-        $this->line('OTP and Status dialogs remain opt-in. Include them only on pages that need them.');
+        $this->line('Login, Registration, and Forgot Password include OTP and Status dialogs. Post-login pages opt in per page.');
 
         return self::SUCCESS;
     }
