@@ -59,7 +59,7 @@ export default class ForgotPasswordPage extends BasePage {
 
 function boot() {
     const page = new ForgotPasswordPage();
-    page.init();
+    if (page.init()) window.adminUiForgotPasswordPage = page;
 }
 
 if (document.readyState === 'loading') {
