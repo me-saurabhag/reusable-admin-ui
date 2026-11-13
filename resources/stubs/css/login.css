@@ -1,2 +1,3 @@
 /* Host Vite entry for the Login page. Keep this out of global app.css. */
 @import '../../vendor/admin-ui/auth/login-v1.css';
+@import '../../vendor/admin-ui/otp-dialog.css';
