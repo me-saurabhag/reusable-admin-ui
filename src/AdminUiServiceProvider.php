@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use InvalidArgumentException;
+use ReusableAdminUi\Console\InstallCommand;
 
 class AdminUiServiceProvider extends ServiceProvider
 {
@@ -122,7 +123,7 @@ class AdminUiServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
-            $this->commands([\\ReusableAdminUi\\Console\\InstallCommand::class]);
+            $this->commands([InstallCommand::class]);
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin-ui');
