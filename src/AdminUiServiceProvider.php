@@ -49,39 +49,80 @@ class AdminUiServiceProvider extends ServiceProvider
      */
     private function normalizeLegacyAuthViteEntries(array $auth): array
     {
-        // Migrate known published defaults while preserving custom Host overrides.
+        // Published config files are owned by the Host and are intentionally not
+        // overwritten during Composer upgrades. Normalize only exact defaults
+        // shipped by older package versions; preserve every custom entry point.
         $migrations = [
             'vite.css' => [
-                ['resources/css/app.css', 'resources/css/auth-login-v1.css'],
-                ['resources/css/app.css', 'resources/css/pages/auth/login.css'],
+                'legacy' => [
+                    'resources/css/app.css',
+                    ['resources/css/app.css'],
+                    ['resources/css/app.css', 'resources/css/auth-login-v1.css'],
+                ],
+                'current' => [
+                    'resources/css/app.css',
+                    'resources/css/pages/auth/login.css',
+                ],
             ],
             'vite.js' => [
-                ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
-                ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
+                'legacy' => [
+                    'resources/js/app.js',
+                    ['resources/js/app.js'],
+                ],
+                'current' => [
+                    'resources/js/app.js',
+                    'resources/js/pages/LoginPage.js',
+                ],
             ],
             'registration.vite.css' => [
-                ['resources/css/app.css'],
-                ['resources/css/app.css', 'resources/css/pages/auth/register.css'],
+                'legacy' => [
+                    'resources/css/app.css',
+                    ['resources/css/app.css'],
+                ],
+                'current' => [
+                    'resources/css/app.css',
+                    'resources/css/pages/auth/register.css',
+                ],
             ],
             'registration.vite.js' => [
-                ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
-                ['resources/js/app.js', 'resources/js/pages/RegisterPage.js'],
+                'legacy' => [
+                    'resources/js/app.js',
+                    ['resources/js/app.js'],
+                    ['resources/js/app.js', 'resources/js/pages/LoginPage.js'],
+                ],
+                'current' => [
+                    'resources/js/app.js',
+                    'resources/js/pages/RegisterPage.js',
+                ],
             ],
             'forgot_password.vite.css' => [
-                ['resources/css/app.css'],
-                ['resources/css/app.css', 'resources/css/pages/auth/forgot-password.css'],
+                'legacy' => [
+                    'resources/css/app.css',
+                    ['resources/css/app.css'],
+                    'resources/css/auth-forgot-password.css',
+                ],
+                'current' => [
+                    'resources/css/app.css',
+                    'resources/css/pages/auth/forgot-password.css',
+                ],
             ],
             'forgot_password.vite.js' => [
-                ['resources/js/app.js'],
-                ['resources/js/app.js', 'resources/js/pages/ForgotPasswordPage.js'],
+                'legacy' => [
+                    'resources/js/app.js',
+                    ['resources/js/app.js'],
+                ],
+                'current' => [
+                    'resources/js/app.js',
+                    'resources/js/pages/ForgotPasswordPage.js',
+                ],
             ],
         ];
 
-        foreach ($migrations as $key => [$legacyPaths, $newPaths]) {
+        foreach ($migrations as $key => $migration) {
             $configured = data_get($auth, $key);
 
-            if (is_string($configured) && in_array($configured, $legacyPaths, true)) {
-                data_set($auth, $key, $newPaths);
+            if (in_array($configured, $migration['legacy'], true)) {
+                data_set($auth, $key, $migration['current']);
             }
         }
 
