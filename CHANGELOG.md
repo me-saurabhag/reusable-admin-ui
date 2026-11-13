@@ -1,3 +1,8 @@
+## Unreleased - Bootstrap installation guidance
+
+- Add `npm install bootstrap` before `npm run build` to the fresh Host Application installation sequence.
+- Show the Bootstrap installation command in the `admin-ui:install` completion instructions; Bootstrap remains a Host Application dependency and is not installed automatically by the package.
+
 ## Unreleased - Safe installer and authentication asset integration
 
 - Normalize exact legacy published Vite defaults for Login, Registration, and Forgot Password to current page-specific entry arrays while preserving custom Host paths.
