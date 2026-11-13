@@ -1,3 +1,9 @@
+## Unreleased - Automatic Bootstrap and global CSS integration
+
+- Register Bootstrap CSS and the package's shared global CSS imports in the Host `resources/css/app.css` during `admin-ui:install`.
+- Preserve existing Tailwind directives and Host CSS; add only missing imports and keep the operation idempotent.
+- Keep authentication page styles in their dedicated page-specific Vite entries.
+
 ## Unreleased - Bootstrap installation guidance
 
 - Add `npm install bootstrap` before `npm run build` to the fresh Host Application installation sequence.
