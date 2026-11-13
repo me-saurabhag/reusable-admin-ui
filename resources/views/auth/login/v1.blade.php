@@ -275,4 +275,9 @@
             </div>
         </div>
     </main>
+
+    {{-- Login opts into OTP markup; other pages do not inherit it. --}}
+    @if (config('admin-ui.auth.otp_dialog.enabled', true))
+        @include('admin-ui::dialogs.otp-modal')
+    @endif
 @endsection
