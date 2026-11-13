@@ -40,32 +40,21 @@ composer require reusable-admin-ui/framework:^0.2
 
 Laravel package auto-discovery registers `ReusableAdminUi\AdminUiServiceProvider`.
 
-## Publish package files
+## Install package assets
 
-Publish the package configuration and frontend assets:
-
-```bash
-php artisan vendor:publish --tag=admin-ui-config
-php artisan vendor:publish --tag=admin-ui-assets
-```
-
-If you use the shared page utilities (BasePage, LocationManager, dialogs, PIN input, pagination, or offcanvas), publish the core set:
+After Composer has installed the package, run the installer:
 
 ```bash
-php artisan vendor:publish --tag=admin-ui-core
+php artisan admin-ui:install
 ```
 
-If you want the package's starter authentication page classes copied into your host application, publish:
+The installer publishes the package configuration, frontend assets, shared utilities, and authentication starter files. It also creates the required host-side auth CSS entry files, registers the authentication CSS/JS entries in the standard Laravel Vite `input: []` array, and adds the package's shared shell runtime import to `resources/js/app.js`.
 
-```bash
-php artisan vendor:publish --tag=admin-ui-auth
-```
+The command is designed to be safe to run again: existing Vite entries are not duplicated, and already-published files are not overwritten unless `--force` is supplied.
 
-The auth starter files import `BasePage` from `resources/js/vendor/admin-ui/core/BasePage.js`; publish `admin-ui-core` before building the auth entry points. Publishing starter files is optional if you manage your own page classes.
+> **Overwrite warning:** use `php artisan admin-ui:install --force` only when you intentionally want to replace files already published into your application. Review local changes first.
 
-Other focused publish tags are available: `admin-ui-dialogs`, `admin-ui-otp-dialog`, `admin-ui-inputs`, `admin-ui-pagination`, and `admin-ui-offcanvas`. The `admin-ui-core` tag includes the shared dependencies for the full core utility set.
-
-> **Overwrite warning:** add `--force` only when you intentionally want to replace files already published into your application. Review local changes first.
+The focused publish tags remain available when you only need to refresh one part of the package: `admin-ui-config`, `admin-ui-assets`, `admin-ui-core`, `admin-ui-auth`, `admin-ui-dialogs`, `admin-ui-otp-dialog`, `admin-ui-inputs`, `admin-ui-pagination`, and `admin-ui-offcanvas`.
 
 ## Vite integration
 
@@ -79,10 +68,11 @@ Global `resources/css/app.css` should contain only shared/global styles. Do not 
 @import './vendor/admin-ui/sidebar-logo.css';
 @import './vendor/admin-ui/sidebar-variants.css';
 @import './vendor/admin-ui/main-header-alignment.css';
-@import './vendor/admin-ui/components/status-dialog.css';
 @import './vendor/admin-ui/components/toast.css';
 @import './vendor/admin-ui/components/loader.css';
-@import './vendor/admin-ui/components/otp-dialog.css';
+
+/* Do not import OTP or Status Dialog styles globally.
+   Import each component stylesheet only from pages that render that dialog. */
 ```
 
 ```js
@@ -97,11 +87,13 @@ Each authentication page has its own Vite entries. For authenticated Admin pages
 contain only global runtime code and must never import LoginPage, RegisterPage,
 ForgotPasswordPage, DashboardPage, or other page modules.
 
-Publish `admin-ui-auth` to create the starter page modules and their matching
-CSS entry files under `resources/css/pages/auth/`. Keep page-specific auth
-stylesheet imports out of global `resources/css/app.css`.
+The `admin-ui:install` command creates the starter page modules and matching
+CSS entry files under `resources/css/pages/auth/`, then adds their entries to
+the host `vite.config.js`. You do not need to create these wrappers or add the
+three authentication entries manually. Keep page-specific auth stylesheet
+imports out of global `resources/css/app.css`.
 
-Add all entries to the host `vite.config.js`:
+The resulting Vite input array contains:
 
 ```js
 laravel({
@@ -265,8 +257,10 @@ The package only renders the GET pages. The host application owns POST endpoints
 
 The package publishes small ES modules for shared page behavior and optional components:
 
-- `BasePage.js` — page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, reusable form helpers, and optional Loader integration.
+- `BasePage.js` — minimal page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, reusable form helpers, Toast integration, and optional Loader integration. It does not import dialogs or the API client.
 - `Toast.js` — lightweight success, info, warning, and error notifications; BasePage provides it as `this.toast` by default.
+- `ApiClient.js` — a separate opt-in module. Import it only from pages that make API requests.
+- `OtpManager.js` and `StatusDialog.js` — optional page-level dialog utilities. Include the corresponding Blade markup and CSS/JS only on pages that use them.
 - `LocationManager.js` — browser geolocation service with explicit permission requests and normalized errors.
 - Dialog, PIN input, pagination, and offcanvas utilities.
 
