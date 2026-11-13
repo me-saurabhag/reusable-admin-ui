@@ -86,7 +86,7 @@ class InstallCommand extends Command
 
         $runtimeImport = "import './vendor/admin-ui/admin-ui.js';";
 
-        if (str_contains($contents, $runtimeImport)) {
+        if (preg_match('/import\\s+[\'\"]\\.\\/vendor\\/admin-ui\\/admin-ui\\.js[\'\"]\\s*;?/', $contents)) {
             $this->line('Global Admin UI runtime is already imported by app.js.');
             return true;
         }
