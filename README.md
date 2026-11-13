@@ -161,7 +161,7 @@ public function boot(): void
 
 The composer should pass the menu array as `menu`; the package only renders it and never evaluates user permissions. The Host Application can also pass optional `headerData` (profile fields and header info-card values) from its controller or another view composer.
 
-The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Set `header.sticky` to `true` in `config/admin-ui.php` to make the post-login header stick to the top while scrolling; it defaults to `false`. Add each page-specific CSS and JS file to the Host Vite input list. Keep OTP and Status Dialog markup out of the shared layout: include each dialog and its stylesheet only on pages that use it.
+The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Set `header.sticky` to `true` in `config/admin-ui.php` to make the post-login header stick to the top while scrolling; it defaults to `false`. Add each future Admin page's CSS and JS entry to the Host Vite input list. Keep OTP and Status Dialog markup out of shared layouts: Login and Registration explicitly opt into OTP markup (when enabled in config), Forgot Password does not include either dialog by default, and Status Dialog is never inserted automatically. A Host page opts into a dialog by including its Blade partial and importing its matching CSS/JS from that page's own assets.
 
 Then run its normal commands:
 
