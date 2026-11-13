@@ -53,7 +53,7 @@ class InstallCommand extends Command
             }
         }
 
-        if (! $this->registerGlobalRuntime() || ! $this->updateViteConfig()) {
+        if (! $this->registerGlobalStyles() || ! $this->registerGlobalRuntime() || ! $this->updateViteConfig()) {
             $this->error('Assets were published, but frontend integration needs attention. See the messages above.');
             return self::FAILURE;
         }
@@ -62,9 +62,76 @@ class InstallCommand extends Command
         $this->info('Reusable Admin UI installation completed.');
         $this->line('Next, run: <fg=yellow>npm install bootstrap</>');
         $this->line('Then run: <fg=yellow>npm run build</>');
+        $this->line('Bootstrap and Admin UI global CSS imports were added to resources/css/app.css.');
         $this->line('Login, Registration, and Forgot Password include OTP and Status dialogs. Post-login pages opt in per page.');
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Register Bootstrap and package-wide styles in the Host global CSS entry.
+     * Existing Tailwind directives and Host styles are preserved; imports are
+     * inserted once, before CSS directives such as @source and @theme.
+     */
+    private function registerGlobalStyles(): bool
+    {
+        $appCssPath = resource_path('css/app.css');
+
+        if (! is_file($appCssPath) || ! is_readable($appCssPath)) {
+            $this->error('Could not find resources/css/app.css. Create the standard Laravel Vite CSS entry first.');
+            return false;
+        }
+
+        $contents = file_get_contents($appCssPath);
+
+        if ($contents === false) {
+            $this->error('Could not read resources/css/app.css.');
+            return false;
+        }
+
+        $imports = [
+            '@import "bootstrap/dist/css/bootstrap.min.css";',
+            "@import './vendor/admin-ui/admin-ui.css';",
+            "@import './vendor/admin-ui/sidebar-logo.css';",
+            "@import './vendor/admin-ui/sidebar-variants.css';",
+            "@import './vendor/admin-ui/main-header-alignment.css';",
+            "@import './vendor/admin-ui/components/toast.css';",
+            "@import './vendor/admin-ui/components/loader.css';",
+        ];
+
+        $missingImports = [];
+
+        foreach ($imports as $import) {
+            $path = preg_quote(trim(substr($import, 7), " \\t\\n\\r;\\\"'"), '/');
+
+            if (! preg_match('/@import\\s+[\\\'"]' . $path . '[\\\'"]\\s*;/', $contents)) {
+                $missingImports[] = $import;
+            }
+        }
+
+        if ($missingImports === []) {
+            $this->line('Bootstrap and Admin UI global CSS imports are already registered in app.css.');
+            return true;
+        }
+
+        $addition = implode("\\n", $missingImports) . "\\n\\n";
+
+        // Keep Tailwind's entry first when the Laravel starter uses Tailwind.
+        if (preg_match('/@import\\s+[\\\'"]tailwindcss[\\\'"]\\s*;/', $contents, $match, PREG_OFFSET_CAPTURE)) {
+            $offset = $match[0][1] + strlen($match[0][0]);
+            $updated = substr($contents, 0, $offset) . "\\n" . $addition . ltrim(substr($contents, $offset), "\\r\\n");
+        } else {
+            $updated = $addition . ltrim($contents, "\\r\\n");
+        }
+
+        if (file_put_contents($appCssPath, $updated) === false) {
+            $this->error('Could not update resources/css/app.css. Check file permissions.');
+            return false;
+        }
+
+        $this->info('Registered Bootstrap and Admin UI global CSS imports in resources/css/app.css.');
+
+        return true;
     }
 
     /**
