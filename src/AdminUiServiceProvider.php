@@ -121,6 +121,10 @@ class AdminUiServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if ($this->app->runningInConsole()) {
+            $this->commands([\\ReusableAdminUi\\Console\\InstallCommand::class]);
+        }
+
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin-ui');
         Blade::anonymousComponentPath(__DIR__ . '/../resources/views/components', 'admin-ui');
 
@@ -174,9 +178,8 @@ class AdminUiServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/css/components/offcanvas.css' => resource_path('css/vendor/admin-ui/offcanvas.css'),
         ];
 
-        // BasePage imports StatusDialog, so all shared runtime dependencies are
-        // published together as one complete Core set. The narrower dialog tag
-        // is also available for developers who only need to refresh this UI.
+        // Publish shared page utilities and optional component modules. Publishing
+        // makes them available to the Host; it does not load dialogs on any page.
         $this->publishes($coreAssets, 'admin-ui-core');
 
         // Status dialog GIFs are package-owned assets; publish them alongside
