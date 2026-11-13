@@ -225,6 +225,33 @@ layout should load valid public Bootstrap files and the host does not load it.
 </x-admin-ui::layout>
 ```
 
+## Design Tokens and Brand Customization
+
+The framework exposes CSS variables for the primary/secondary brand palette,
+semantic colors, page surfaces, text, borders, typography and spacing. Override
+these tokens in the Host Application instead of editing package-managed CSS.
+For example, add the following at the bottom of `resources/css/app.css`:
+
+```css
+:root {
+    --rai-primary: #2457a6;
+    --rai-primary-hover: #1d4788;
+    --rai-primary-active: #17396d;
+    --rai-primary-soft: #eaf0fb;
+    --rai-primary-contrast: #ffffff;
+    --rai-focus-ring: #2457a6;
+}
+```
+
+The shared `--rai-*` tokens apply to Admin UI components that consume them.
+Authentication pages can also have page-scoped accent variables; for example,
+Login V1 uses `--wa-green`. Keep such overrides in the Host page CSS wrapper,
+not in `resources/css/vendor/admin-ui/`.
+
+See [Design Tokens and Host Theme Overrides](docs/design-tokens.md) for the
+full token categories, examples for secondary/status/sidebar colors,
+typography and spacing, and the separate Login accent override.
+
 ## Dashboard components
 
 The package includes reusable dashboard presentation components for a hero section, messaging activity chart, conversation/automation health, and dashboard statistic cards. See [Dashboard Components](docs/dashboard-components.md) for the Blade APIs, expected data, and examples. The package renders supplied values; the host application remains responsible for retrieving and preparing real data.
