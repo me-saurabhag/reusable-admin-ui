@@ -11,7 +11,7 @@
 
 - Add `php artisan admin-ui:install` to publish package assets, create authentication page CSS entry wrappers, register the authentication entries in the Host Vite input array, and import the shared shell runtime into the global app.js entry.
 - Keep Login, Registration, and Forgot Password CSS/JS as separate Vite entries; do not load page modules from the global runtime.
-- Remove OTP and Status Dialog markup from the shared authentication layout. Login and Registration explicitly opt into OTP markup; Status Dialog remains opt-in at the page level.
+- Keep OTP and Status Dialog markup available on all three authentication pages through the shared authentication layout; post-login layouts remain opt-in.
 - Keep the API client separate from BasePage and document that pages import it only when required.
 - Make the installer repeatable without duplicating Vite entries or overwriting published files unless --force is requested.
 
