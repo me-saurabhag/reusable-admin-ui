@@ -60,7 +60,8 @@ class InstallCommand extends Command
 
         $this->newLine();
         $this->info('Reusable Admin UI installation completed.');
-        $this->line('Next, run: <fg=yellow>npm run build</>');
+        $this->line('Next, run: <fg=yellow>npm install bootstrap</>');
+        $this->line('Then run: <fg=yellow>npm run build</>');
         $this->line('Login, Registration, and Forgot Password include OTP and Status dialogs. Post-login pages opt in per page.');
 
         return self::SUCCESS;
