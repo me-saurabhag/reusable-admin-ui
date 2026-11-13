@@ -13,12 +13,22 @@
         <link rel="stylesheet" href="{{ asset(config('admin-ui.assets.bootstrap_css')) }}">
     @endif
 
-    @vite($authCss ?? config('admin-ui.auth.vite.css', 'resources/css/app.css'))
+    @vite($authCss ?? config('admin-ui.auth.vite.css', [
+        'resources/css/app.css',
+        'resources/css/pages/auth/login.css',
+    ]))
 
     @stack('styles')
 </head>
 <body class="rai-auth-body">
     @yield('content')
+
+    {{-- Authentication pages consistently provide both shared dialogs. --}}
+    @include('admin-ui::dialogs.status-dialog')
+    @if (config('admin-ui.auth.otp_dialog.enabled', true))
+        @include('admin-ui::dialogs.otp-modal')
+    @endif
+
     @stack('scripts')
 
     @vite($authJs ?? config('admin-ui.auth.vite.js', 'resources/js/app.js'))

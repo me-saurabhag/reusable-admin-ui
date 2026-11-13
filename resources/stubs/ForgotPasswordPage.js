@@ -1,4 +1,5 @@
 import BasePage from '../vendor/admin-ui/core/BasePage.js';
+import OtpManager from '../vendor/admin-ui/dialogs/OtpManager.js';
 
 /**
  * Host-side Forgot Password page starter.
@@ -17,6 +18,7 @@ export default class ForgotPasswordPage extends BasePage {
 
         this.form = this.root?.querySelector('#forgotPasswordForm') ?? null;
         this.submitButton = this.root?.querySelector('#btnForgotPassword') ?? null;
+        this.otpDialog = document.getElementById('admin-ui-otp-modal') ? new OtpManager() : null;
     }
 
     init() {
@@ -57,7 +59,7 @@ export default class ForgotPasswordPage extends BasePage {
 
 function boot() {
     const page = new ForgotPasswordPage();
-    page.init();
+    if (page.init()) window.adminUiForgotPasswordPage = page;
 }
 
 if (document.readyState === 'loading') {

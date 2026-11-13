@@ -48,13 +48,34 @@ After Composer has installed the package, run the installer:
 php artisan admin-ui:install
 ```
 
-The installer publishes the package configuration, frontend assets, shared utilities, and authentication starter files. It also creates the required host-side auth CSS entry files, registers the authentication CSS/JS entries in the standard Laravel Vite `input: []` array, and adds the package's shared shell runtime import to `resources/js/app.js`.
+The installer publishes the package configuration (only when it does not already exist), frontend assets, shared utilities, and missing authentication starter files. It also creates the required host-side auth CSS entry files, registers the authentication CSS/JS entries in the standard Laravel Vite `input: []` array, and adds the package's shared shell runtime import to `resources/js/app.js`.
 
-The command is designed to be safe to run again: existing Vite entries are not duplicated, and already-published files are not overwritten unless `--force` is supplied.
+The command is designed to be safe to run again: existing Vite entries are not duplicated, and existing Host config and authentication starter files are never overwritten. Package-managed copies under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui` are refreshed only when `--force` is supplied.
 
-> **Overwrite warning:** use `php artisan admin-ui:install --force` only when you intentionally want to replace files already published into your application. Review local changes first.
+> **Update rule:** use `php artisan admin-ui:install --force` only to refresh package-managed files under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui`. It does not overwrite `config/admin-ui.php`, page starter files, page CSS wrappers, `vite.config.js`, or `resources/js/app.js`. Do not customize files inside the `vendor/admin-ui` resource folders; put application-specific changes in your own files.
 
 The focused publish tags remain available when you only need to refresh one part of the package: `admin-ui-config`, `admin-ui-assets`, `admin-ui-core`, `admin-ui-auth`, `admin-ui-dialogs`, `admin-ui-otp-dialog`, `admin-ui-inputs`, `admin-ui-pagination`, and `admin-ui-offcanvas`.
+
+## Updating an existing Host Application
+
+Use the same update sequence in every Laravel project that uses this package:
+
+```bash
+composer update reusable-admin-ui/framework
+php artisan admin-ui:install --force
+npm run build
+```
+
+For projects tracking the GitHub development branch, Composer must already have the VCS repository configured and the package constraint must allow `dev-main`. For released projects, keep a stable version constraint (for example, `^0.2`) and update within that allowed range.
+
+The update command has a deliberate ownership boundary:
+
+- Composer owns the code under `vendor/reusable-admin-ui/framework`.
+- The package installer refreshes only package-managed published copies under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui` when `--force` is supplied.
+- Host-owned configuration, page entry wrappers, page starter JavaScript, `vite.config.js`, and `resources/js/app.js` are not force-overwritten.
+- Put custom application styles and behavior in separate Host files; do not edit files inside the published `vendor/admin-ui` resource folders.
+
+New components are delivered by the Composer package. If a component adds a new Host Vite entry or requires a Host layout integration, that change must be included in the installer and documented as part of the same release. Package releases should be tested against both a clean Laravel host and an existing host with previously published config/assets before tagging.
 
 ## Vite integration
 
@@ -161,7 +182,7 @@ public function boot(): void
 
 The composer should pass the menu array as `menu`; the package only renders it and never evaluates user permissions. The Host Application can also pass optional `headerData` (profile fields and header info-card values) from its controller or another view composer.
 
-The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Set `header.sticky` to `true` in `config/admin-ui.php` to make the post-login header stick to the top while scrolling; it defaults to `false`. Add each future Admin page's CSS and JS entry to the Host Vite input list. Keep OTP and Status Dialog markup out of shared layouts: Login and Registration explicitly opt into OTP markup (when enabled in config), Forgot Password does not include either dialog by default, and Status Dialog is never inserted automatically. A Host page opts into a dialog by including its Blade partial and importing its matching CSS/JS from that page's own assets.
+The shared layout loads global `app.css`/`app.js`, page CSS in the document head, and page JavaScript immediately before `</body>`. Set `header.sticky` to `true` in `config/admin-ui.php` to make the post-login header stick to the top while scrolling; it defaults to `false`. Add each future Admin page's CSS and JS entry to the Host Vite input list. Authentication pages share both Status and OTP Dialog markup through `admin-ui::layouts.auth` (OTP markup can be disabled with `auth.otp_dialog.enabled`). Login, Registration, and Forgot Password each load their own page CSS/JS entry; each authentication CSS entry includes both dialog styles. The authenticated `admin-ui::layouts.app` never inserts either dialog. A post-login Host page opts in by including the required Blade partial and importing the matching CSS/JS from that page's own assets.
 
 Then run its normal commands:
 
@@ -260,7 +281,7 @@ The package publishes small ES modules for shared page behavior and optional com
 - `BasePage.js` — minimal page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, reusable form helpers, Toast integration, and optional Loader integration. It does not import dialogs or the API client.
 - `Toast.js` — lightweight success, info, warning, and error notifications; BasePage provides it as `this.toast` by default.
 - `ApiClient.js` — a separate opt-in module. Import it only from pages that make API requests.
-- `OtpManager.js` and `StatusDialog.js` — optional page-level dialog utilities. Include the corresponding Blade markup and CSS/JS only on pages that use them.
+- `OtpManager.js` and `StatusDialog.js` — dialog utilities. Both are available on the three authentication pages; post-login pages import and render them only when required.
 - `LocationManager.js` — browser geolocation service with explicit permission requests and normalized errors.
 - Dialog, PIN input, pagination, and offcanvas utilities.
 
