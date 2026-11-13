@@ -1,2 +1,3 @@
 /* Host Vite entry for the Registration page. Keep this out of global app.css. */
 @import '../../vendor/admin-ui/auth/register.css';
+@import '../../vendor/admin-ui/otp-dialog.css';
