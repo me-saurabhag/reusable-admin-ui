@@ -54,7 +54,7 @@ Bootstrap is a host-application dependency. Install it after the Admin UI instal
 
 The installer publishes the package configuration (only when it does not already exist), frontend assets, shared utilities, and missing authentication starter files. It also creates the required host-side auth CSS entry files, registers the authentication CSS/JS entries in the standard Laravel Vite `input: []` array, and adds the package's shared shell runtime import to `resources/js/app.js`.
 
-The command is designed to be safe to run again: existing Vite entries are not duplicated, and existing Host config and authentication starter files are never overwritten. Package-managed copies under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui` are refreshed only when `--force` is supplied.
+The command is designed to be safe to run again: existing Vite entries and CSS imports are not duplicated, and existing Host config and authentication starter files are never overwritten. It adds Bootstrap CSS and the package's global CSS imports to `resources/css/app.css` while preserving existing Tailwind directives and Host CSS. Package-managed copies under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui` are refreshed only when `--force` is supplied.
 
 > **Update rule:** use `php artisan admin-ui:install --force` only to refresh package-managed files under `resources/css/vendor/admin-ui` and `resources/js/vendor/admin-ui`. It does not overwrite `config/admin-ui.php`, page starter files, page CSS wrappers, `vite.config.js`, or `resources/js/app.js`. Do not customize files inside the `vendor/admin-ui` resource folders; put application-specific changes in your own files.
 
