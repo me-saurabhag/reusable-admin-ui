@@ -4,6 +4,10 @@ return [
     // Shared browser tab icon used by the package's Admin and Auth layouts.
     'favicon' => 'https://bot.kotfumes.com/assets/app/images/chatbot.webp',
 
+    // Sender identity used by package-triggered user emails.
+    'email_from_address' => env('MAIL_FROM_ADDRESS'),
+    'email_from_name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Admin UI')),
+
     /*
     |--------------------------------------------------------------------------
     | Theme defaults
