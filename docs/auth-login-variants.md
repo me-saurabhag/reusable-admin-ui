@@ -9,7 +9,7 @@ All four Login designs use one shared Blade renderer and one stable form contrac
 | `v1` | WhatsApp CRM | Original dark split-screen design with WhatsApp green accents |
 | `v2` | News portal | Same split-screen layout, newsroom/editorial navy theme and coral accents |
 | `v3` | Islamic education | Same split-screen layout, deep emerald theme, subtle geometric texture and antique-gold accents |
-| `v4` | Minimal centered | Centered form card, supplied white logo on a dark logo plate, no marketing panel or social/register section |
+| `v4` | Minimal centered | Centered form card, supplied white logo on a dark logo plate, no marketing panel or social-login buttons; registration link is shown below the form |
 
 ## Select a design
 
@@ -49,7 +49,7 @@ Example:
 ],
 ```
 
-A variant's `login_page.features` list replaces the shared feature list. `show_social_logins` and `show_register_link` can be set to `false` for a minimal layout.
+A variant's `login_page.features` list replaces the shared feature list. `show_social_logins` and `show_register_link` can independently be enabled or disabled. V2 and V4 show the registration link by default; V4 keeps social-login buttons disabled.
 
 ## Asset URLs
 
