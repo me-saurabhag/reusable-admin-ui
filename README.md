@@ -258,7 +258,7 @@ The package includes reusable dashboard presentation components for a hero secti
 
 ## Configuration and authentication routes
 
-Publish `config/admin-ui.php` and customize its values for the host application. The top-level `favicon` setting controls the browser tab icon in both the package Admin and authentication layouts. Set it to another image URL to use your own icon, or set it to `null`/an empty value to omit the favicon link. Important defaults include:
+Publish `config/admin-ui.php` and customize its values for the host application. The top-level `favicon` setting controls the browser tab icon in both the package Admin and authentication layouts. Set it to another image URL to use your own icon, or set it to `null`/an empty value to omit the favicon link. The top-level `email_from_address` and `email_from_name` settings define the sender identity for emails sent by package features; they default to `MAIL_FROM_ADDRESS` and `MAIL_FROM_NAME` from the host environment (with `APP_NAME` as the sender-name fallback). Laravel's mail transport/SMTP configuration remains owned by the host application. Important defaults include:
 
 - `theme.default`: `light`
 - `layout.sidebar`: `classic`
@@ -267,6 +267,22 @@ Publish `config/admin-ui.php` and customize its values for the host application.
 - `header.sticky`: `false` (set to `true` to keep the post-login header visible while scrolling)
 - `favicon`: `https://bot.kotfumes.com/assets/app/images/chatbot.webp` (shared Admin and Auth browser tab icon)
 - `assets.include_bootstrap`: `false` (the host application supplies Bootstrap)
+- `email_from_address`: `env('MAIL_FROM_ADDRESS')` (sender email address)
+- `email_from_name`: `env('MAIL_FROM_NAME', env('APP_NAME', 'Admin UI'))` (sender display name)
+
+Example overrides in the host application's `.env`:
+
+```dotenv
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME="Your Application Name"
+```
+
+Or set the values directly in the published `config/admin-ui.php`:
+
+```php
+'email_from_address' => env('MAIL_FROM_ADDRESS', 'no-reply@example.com'),
+'email_from_name' => env('MAIL_FROM_NAME', 'Your Application Name'),
+```
 
 Example favicon override in the host application's `config/admin-ui.php`:
 
