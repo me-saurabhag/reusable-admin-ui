@@ -336,6 +336,74 @@
     document.addEventListener('keydown', handleDropdownKeydown);
     document.addEventListener('click', handleAccordionClick);
 
+    function handleImageUploadClick(event) {
+        if (!(event.target instanceof Element)) return;
+        var upload = event.target.closest('[data-rai-image-upload]');
+        if (!upload) return;
+
+        var trigger = event.target.closest('[data-rai-image-trigger]');
+        if (trigger) {
+            var input = upload.querySelector('[data-rai-image-input]');
+            if (input) input.click();
+            return;
+        }
+
+        var clear = event.target.closest('[data-rai-image-clear]');
+        if (!clear) return;
+
+        var fileInput = upload.querySelector('[data-rai-image-input]');
+        var image = upload.querySelector('[data-rai-image-element]');
+        var placeholder = upload.querySelector('[data-rai-image-placeholder]');
+        var status = upload.querySelector('[data-rai-image-status]');
+
+        if (fileInput) fileInput.value = '';
+        if (image) {
+            if (image.dataset.raiObjectUrl) URL.revokeObjectURL(image.dataset.raiObjectUrl);
+            image.removeAttribute('src');
+            delete image.dataset.raiObjectUrl;
+            image.hidden = true;
+        }
+        if (placeholder) placeholder.hidden = false;
+        if (status) status.textContent = '';
+        upload.dispatchEvent(new CustomEvent('rai:image-upload:clear', { bubbles: true }));
+    }
+
+    function handleImageUploadChange(event) {
+        var input = event.target;
+        if (!(input instanceof HTMLInputElement) || !input.matches('[data-rai-image-input]')) return;
+
+        var upload = input.closest('[data-rai-image-upload]');
+        var file = input.files && input.files[0];
+        if (!upload || !file) return;
+
+        if (!file.type || !file.type.startsWith('image/')) {
+            input.value = '';
+            var invalidStatus = upload.querySelector('[data-rai-image-status]');
+            if (invalidStatus) invalidStatus.textContent = 'Please choose a valid image file.';
+            return;
+        }
+
+        var image = upload.querySelector('[data-rai-image-element]');
+        var placeholder = upload.querySelector('[data-rai-image-placeholder]');
+        var status = upload.querySelector('[data-rai-image-status]');
+        if (!image) return;
+
+        if (image.dataset.raiObjectUrl) URL.revokeObjectURL(image.dataset.raiObjectUrl);
+        var objectUrl = URL.createObjectURL(file);
+        image.src = objectUrl;
+        image.dataset.raiObjectUrl = objectUrl;
+        image.hidden = false;
+        if (placeholder) placeholder.hidden = true;
+        if (status) status.textContent = file.name;
+        upload.dispatchEvent(new CustomEvent('rai:image-upload:change', {
+            bubbles: true,
+            detail: { file: file, input: input }
+        }));
+    }
+
+    document.addEventListener('click', handleImageUploadClick);
+    document.addEventListener('change', handleImageUploadChange);
+
     document.addEventListener('click', handleHeaderActionClick);
     document.addEventListener('click', handleProfileMenuClick);
     document.addEventListener('keydown', handleProfileMenuKeydown);
