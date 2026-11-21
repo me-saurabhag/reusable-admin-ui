@@ -22,7 +22,7 @@
     <div class="rai-image-upload__preview" data-rai-image-preview>
         <img
             class="rai-image-upload__image"
-            src="{{ $image }}"
+            @if ($hasImage) src="{{ $image }}" @endif
             alt="{{ $label ? $label . ' preview' : 'Uploaded image preview' }}"
             data-rai-image-element
             @unless ($hasImage) hidden @endunless
