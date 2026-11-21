@@ -1382,3 +1382,10 @@ body {
  .rai-pagination__controls { width:100%; justify-content:flex-start; flex-wrap:wrap; }
  .rai-table__cell { padding-left:12px; padding-right:12px; }
 }
+
+/* Header responsive fix: hide information cards on mobile screens. */
+@media (max-width: 767.98px) {
+    .rai-header__cards {
+        display: none !important;
+    }
+}
