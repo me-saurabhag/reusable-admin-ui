@@ -6,6 +6,7 @@
 @import "./tokens/radius.css";
 @import "./tokens/shadows.css";
 @import "./components/dashboard-widgets.css";
+@import "./components/image-upload-card.css";
 
 /* Reusable Admin UI — scoped design tokens and UI styles. */
 html,
