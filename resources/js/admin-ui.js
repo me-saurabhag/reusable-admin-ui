@@ -403,6 +403,57 @@
 
     document.addEventListener('click', handleImageUploadClick);
     document.addEventListener('change', handleImageUploadChange);
+    
+    function handleDocumentUploadClick(event) {
+        if (!(event.target instanceof Element)) return;
+        var upload = event.target.closest('[data-rai-document-upload]');
+        if (!upload) return;
+
+        if (event.target.closest('[data-rai-document-trigger]')) {
+            var input = upload.querySelector('[data-rai-document-input]');
+            if (input) input.click();
+            return;
+        }
+
+        if (!event.target.closest('[data-rai-document-clear]')) return;
+        var fileInput = upload.querySelector('[data-rai-document-input]');
+        var placeholder = upload.querySelector('[data-rai-document-placeholder]');
+        var fileDisplay = upload.querySelector('[data-rai-document-file]');
+        var fileName = upload.querySelector('[data-rai-document-file-name]');
+        var status = upload.querySelector('[data-rai-document-status]');
+
+        if (fileInput) fileInput.value = '';
+        if (placeholder) placeholder.hidden = false;
+        if (fileDisplay) fileDisplay.hidden = true;
+        if (fileName) fileName.textContent = '';
+        if (status) status.textContent = '';
+        upload.dispatchEvent(new CustomEvent('rai:document-upload:clear', { bubbles: true }));
+    }
+
+    function handleDocumentUploadChange(event) {
+        var input = event.target;
+        if (!(input instanceof HTMLInputElement) || !input.matches('[data-rai-document-input]')) return;
+        var upload = input.closest('[data-rai-document-upload]');
+        var file = input.files && input.files[0];
+        if (!upload || !file) return;
+
+        var placeholder = upload.querySelector('[data-rai-document-placeholder]');
+        var fileDisplay = upload.querySelector('[data-rai-document-file]');
+        var fileName = upload.querySelector('[data-rai-document-file-name]');
+        var status = upload.querySelector('[data-rai-document-status]');
+        if (placeholder) placeholder.hidden = true;
+        if (fileDisplay) fileDisplay.hidden = false;
+        if (fileName) fileName.textContent = file.name;
+        if (status) status.textContent = '';
+        upload.dispatchEvent(new CustomEvent('rai:document-upload:change', {
+            bubbles: true,
+            detail: { file: file, input: input }
+        }));
+    }
+
+    document.addEventListener('click', handleDocumentUploadClick);
+    document.addEventListener('change', handleDocumentUploadChange);
+
 
     document.addEventListener('click', handleHeaderActionClick);
     document.addEventListener('click', handleProfileMenuClick);
