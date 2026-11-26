@@ -1540,3 +1540,30 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .rai-ui .rai-control, .rai-ui .rai-check__box, .rai-ui .rai-radio__circle { transition: none; }
 }
+
+
+/* Mofi form-control border refinement: match the theme's light, subtle outlines. */
+.rai-ui .rai-control,
+.rai-ui .rai-form-field .form-control,
+.rai-ui .rai-form-field .form-select,
+.rai-ui .rai-input-group__addon {
+    border: 1px solid #efefef !important;
+    border-radius: 5px;
+    box-shadow: none;
+}
+.rai-ui .rai-control:focus,
+.rai-ui .rai-form-field .form-control:focus,
+.rai-ui .rai-form-field .form-select:focus {
+    border: 1px solid var(--rai-primary, #7366ff) !important;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--rai-primary, #7366ff) 12%, transparent);
+}
+.rai-ui .rai-control.is-invalid,
+.rai-ui .rai-form-field .form-control.is-invalid,
+.rai-ui .rai-form-field .form-select.is-invalid {
+    border: 1px solid var(--rai-danger, #dc3545) !important;
+}
+.rai-ui .rai-control.is-valid,
+.rai-ui .rai-form-field .form-control.is-valid,
+.rai-ui .rai-form-field .form-select.is-valid {
+    border: 1px solid var(--rai-success, #198754) !important;
+}
