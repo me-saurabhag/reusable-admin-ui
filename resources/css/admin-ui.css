@@ -1595,3 +1595,25 @@ body {
     border-style: solid !important;
     border-color: var(--rai-success, #198754) !important;
 }
+
+
+/* Ensure component controls receive the dotted outline even when the host
+   application does not wrap its page content in .rai-ui. */
+.rai-control,
+.rai-form-field .form-control,
+.rai-form-field .form-select {
+    border: 1px dotted #bfc4cc !important;
+}
+.rai-control:focus,
+.rai-form-field .form-control:focus,
+.rai-form-field .form-select:focus {
+    border: 1px solid var(--rai-primary, #7366ff) !important;
+}
+.rai-control.is-invalid,
+.rai-form-field .form-control.is-invalid {
+    border: 1px solid var(--rai-danger, #dc3545) !important;
+}
+.rai-control.is-valid,
+.rai-form-field .form-control.is-valid {
+    border: 1px solid var(--rai-success, #198754) !important;
+}
