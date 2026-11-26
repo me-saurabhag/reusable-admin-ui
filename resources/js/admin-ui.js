@@ -354,6 +354,7 @@
         var fileInput = upload.querySelector('[data-rai-image-input]');
         var image = upload.querySelector('[data-rai-image-element]');
         var placeholder = upload.querySelector('[data-rai-image-placeholder]');
+        var placeholderImage = upload.querySelector('[data-rai-image-placeholder-image]');
         var status = upload.querySelector('[data-rai-image-status]');
 
         if (fileInput) fileInput.value = '';
@@ -364,6 +365,7 @@
             image.hidden = true;
         }
         if (placeholder) placeholder.hidden = false;
+        if (placeholderImage) placeholderImage.hidden = false;
         if (status) status.textContent = '';
         upload.dispatchEvent(new CustomEvent('rai:image-upload:clear', { bubbles: true }));
     }
@@ -385,6 +387,7 @@
 
         var image = upload.querySelector('[data-rai-image-element]');
         var placeholder = upload.querySelector('[data-rai-image-placeholder]');
+        var placeholderImage = upload.querySelector('[data-rai-image-placeholder-image]');
         var status = upload.querySelector('[data-rai-image-status]');
         if (!image) return;
 
@@ -394,6 +397,7 @@
         image.dataset.raiObjectUrl = objectUrl;
         image.hidden = false;
         if (placeholder) placeholder.hidden = true;
+        if (placeholderImage) placeholderImage.hidden = true;
         if (status) status.textContent = file.name;
         upload.dispatchEvent(new CustomEvent('rai:image-upload:change', {
             bubbles: true,
