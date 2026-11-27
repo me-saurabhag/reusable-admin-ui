@@ -1,0 +1,37 @@
+/* Mofi-inspired form card: header, dashed divider and spacious form body. */
+.rai-ui .rai-form-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--rai-surface, #fff);
+    border: 1px solid rgba(106, 113, 133, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 1px 20px rgba(32, 43, 58, 0.06);
+}
+.rai-ui .rai-form-card__header {
+    padding: 18px 24px 16px;
+}
+.rai-ui .rai-form-card__title {
+    margin: 0;
+    color: var(--rai-heading, #2c323f);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.rai-ui .rai-form-card__subtitle {
+    margin: 4px 0 0;
+    color: var(--rai-text-muted, #6c757d);
+    font-size: 13px;
+    line-height: 1.5;
+}
+.rai-ui .rai-form-card__divider {
+    width: 100%;
+    border-top: 1px dashed rgba(106, 113, 133, 0.3);
+}
+.rai-ui .rai-form-card__body {
+    min-width: 0;
+    padding: 20px 24px 24px;
+}
+@media (max-width: 575.98px) {
+    .rai-ui .rai-form-card__header { padding: 16px 16px 14px; }
+    .rai-ui .rai-form-card__body { padding: 16px; }
+}
