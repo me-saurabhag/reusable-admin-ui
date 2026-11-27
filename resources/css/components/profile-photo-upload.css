@@ -154,3 +154,13 @@
     .rai-profile-photo { padding: 16px; }
     .rai-profile-photo__avatar { width: 128px; height: 128px; }
 }
+
+
+/* Stretch to the height of sibling upload cards in the same Bootstrap row. */
+.rai-profile-photo {
+    height: 100%;
+}
+.rai-profile-photo__content {
+    flex: 1 1 auto;
+    justify-content: center;
+}
