@@ -1,0 +1,156 @@
+/* Profile Photo Upload — compact avatar-focused upload control. */
+.rai-profile-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    width: 100%;
+    padding: 18px;
+    background: var(--rai-surface, #fff);
+    border: 1px solid var(--rai-border, #dce3ec);
+    border-radius: 15px;
+    box-shadow: 0 5px 16px rgb(16 24 40 / 5%);
+}
+.rai-profile-photo__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 18px;
+}
+.rai-profile-photo__heading { min-width: 0; }
+.rai-profile-photo__label {
+    display: block;
+    margin: 0;
+    color: var(--rai-heading, #172b4d);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+.rai-profile-photo__subtitle {
+    margin: 3px 0 0;
+    color: var(--rai-text-muted, #8491a5);
+    font-size: 12px;
+    line-height: 1.4;
+}
+.rai-profile-photo__required {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    color: #7464c9;
+    background: #f1effb;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 700;
+}
+.rai-profile-photo__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.rai-profile-photo__avatar {
+    display: grid;
+    place-items: center;
+    width: 148px;
+    height: 148px;
+    overflow: hidden;
+    background: #f1f3f7;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px var(--rai-border, #e3e8ef);
+}
+.rai-profile-photo__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.rai-profile-photo__image[hidden],
+.rai-profile-photo__placeholder[hidden],
+.rai-profile-photo__button[hidden] { display: none !important; }
+.rai-profile-photo__placeholder {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    color: #a8b1c0;
+}
+.rai-profile-photo__placeholder svg {
+    width: 66%;
+    height: 66%;
+}
+.rai-profile-photo__placeholder circle,
+.rai-profile-photo__placeholder path {
+    fill: #d7dde7;
+    stroke: #d7dde7;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+.rai-profile-photo__input {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+}
+.rai-profile-photo__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+.rai-profile-photo__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.rai-profile-photo__button--primary {
+    color: #fff;
+    background: #071b68;
+    border-color: #071b68;
+}
+.rai-profile-photo__button--primary:hover { color: #fff; background: #0b287f; border-color: #0b287f; }
+.rai-profile-photo__button--remove {
+    color: #d64545;
+    background: #fff;
+    border-color: #f0d6d6;
+}
+.rai-profile-photo__button--remove:hover { background: #fff5f5; border-color: #e9bcbc; }
+.rai-profile-photo__button:focus-visible { outline: 3px solid rgb(7 27 104 / 18%); outline-offset: 2px; }
+.rai-profile-photo__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--rai-text-muted, #8491a5);
+    font-size: 11px;
+    line-height: 1.4;
+}
+.rai-profile-photo__status {
+    margin-top: 5px;
+    color: var(--rai-text-muted, #667085);
+    font-size: 11px;
+    overflow-wrap: anywhere;
+    text-align: center;
+}
+.rai-profile-photo__status:empty { display: none; }
+@media (max-width: 575.98px) {
+    .rai-profile-photo { padding: 16px; }
+    .rai-profile-photo__avatar { width: 128px; height: 128px; }
+}

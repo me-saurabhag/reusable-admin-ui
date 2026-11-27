@@ -408,6 +408,79 @@
     document.addEventListener('click', handleImageUploadClick);
     document.addEventListener('change', handleImageUploadChange);
     
+
+    function handleProfilePhotoClick(event) {
+        if (!(event.target instanceof Element)) return;
+        var card = event.target.closest('[data-rai-profile-photo]');
+        if (!card) return;
+
+        if (event.target.closest('[data-rai-profile-photo-trigger]')) {
+            var input = card.querySelector('[data-rai-profile-photo-input]');
+            if (input) input.click();
+            return;
+        }
+
+        if (!event.target.closest('[data-rai-profile-photo-remove]')) return;
+        var fileInput = card.querySelector('[data-rai-profile-photo-input]');
+        var image = card.querySelector('[data-rai-profile-photo-image]');
+        var placeholder = card.querySelector('[data-rai-profile-photo-placeholder]');
+        var trigger = card.querySelector('[data-rai-profile-photo-trigger]');
+        var remove = card.querySelector('[data-rai-profile-photo-remove]');
+        var status = card.querySelector('[data-rai-profile-photo-status]');
+
+        if (fileInput) fileInput.value = '';
+        if (image) {
+            if (image.dataset.raiObjectUrl) URL.revokeObjectURL(image.dataset.raiObjectUrl);
+            image.removeAttribute('src');
+            delete image.dataset.raiObjectUrl;
+            image.hidden = true;
+        }
+        if (placeholder) placeholder.hidden = false;
+        if (trigger) trigger.textContent = 'Upload photo';
+        if (remove) remove.hidden = true;
+        if (status) status.textContent = '';
+        card.dispatchEvent(new CustomEvent('rai:profile-photo:remove', { bubbles: true }));
+    }
+
+    function handleProfilePhotoChange(event) {
+        var input = event.target;
+        if (!(input instanceof HTMLInputElement) || !input.matches('[data-rai-profile-photo-input]')) return;
+        var card = input.closest('[data-rai-profile-photo]');
+        var file = input.files && input.files[0];
+        if (!card || !file) return;
+
+        if (!file.type || !file.type.startsWith('image/')) {
+            input.value = '';
+            var invalidStatus = card.querySelector('[data-rai-profile-photo-status]');
+            if (invalidStatus) invalidStatus.textContent = 'Please choose a valid image file.';
+            return;
+        }
+
+        var image = card.querySelector('[data-rai-profile-photo-image]');
+        var placeholder = card.querySelector('[data-rai-profile-photo-placeholder]');
+        var trigger = card.querySelector('[data-rai-profile-photo-trigger]');
+        var remove = card.querySelector('[data-rai-profile-photo-remove]');
+        var status = card.querySelector('[data-rai-profile-photo-status]');
+        if (!image) return;
+
+        if (image.dataset.raiObjectUrl) URL.revokeObjectURL(image.dataset.raiObjectUrl);
+        var objectUrl = URL.createObjectURL(file);
+        image.src = objectUrl;
+        image.dataset.raiObjectUrl = objectUrl;
+        image.hidden = false;
+        if (placeholder) placeholder.hidden = true;
+        if (trigger) trigger.textContent = 'Change photo';
+        if (remove) remove.hidden = false;
+        if (status) status.textContent = file.name;
+        card.dispatchEvent(new CustomEvent('rai:profile-photo:change', {
+            bubbles: true,
+            detail: { file: file, input: input }
+        }));
+    }
+
+    document.addEventListener('click', handleProfilePhotoClick);
+    document.addEventListener('change', handleProfilePhotoChange);
+
     function handleDocumentUploadClick(event) {
         if (!(event.target instanceof Element)) return;
         var upload = event.target.closest('[data-rai-document-upload]');

@@ -7,6 +7,7 @@
 @import "./tokens/shadows.css";
 @import "./components/dashboard-widgets.css";
 @import "./components/image-upload-card.css";
+@import "./components/profile-photo-upload.css";
 @import "./components/document-upload-card.css";
 
 /* Reusable Admin UI — scoped design tokens and UI styles. */
