@@ -1617,3 +1617,53 @@ body {
 .rai-form-field .form-control.is-valid {
     border: 1px solid var(--rai-success, #198754) !important;
 }
+
+
+/* Unified Mofi-inspired form control finish.
+   Use a subtle solid border and one consistent 8px radius for every control. */
+.rai-ui .rai-control,
+.rai-ui .rai-form-field .form-control,
+.rai-ui .rai-form-field .form-select,
+.rai-control,
+.rai-form-field .form-control,
+.rai-form-field .form-select {
+    border: 1px solid #e6e9ef !important;
+    border-radius: 8px !important;
+    background-color: #fff;
+    box-shadow: none;
+}
+.rai-ui .rai-control:focus,
+.rai-ui .rai-form-field .form-control:focus,
+.rai-ui .rai-form-field .form-select:focus,
+.rai-control:focus,
+.rai-form-field .form-control:focus,
+.rai-form-field .form-select:focus {
+    border: 1px solid var(--rai-primary, #2457a6) !important;
+    border-radius: 8px !important;
+    outline: 0;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--rai-primary, #2457a6) 10%, transparent);
+}
+.rai-ui textarea.rai-control,
+.rai-ui textarea.form-control,
+textarea.rai-control,
+.rai-form-field textarea.form-control {
+    border-radius: 8px !important;
+}
+.rai-ui .rai-control.is-invalid,
+.rai-ui .rai-form-field .form-control.is-invalid,
+.rai-ui .rai-form-field .form-select.is-invalid,
+.rai-control.is-invalid,
+.rai-form-field .form-control.is-invalid,
+.rai-form-field .form-select.is-invalid {
+    border: 1px solid var(--rai-danger, #dc3545) !important;
+    border-radius: 8px !important;
+}
+.rai-ui .rai-control.is-valid,
+.rai-ui .rai-form-field .form-control.is-valid,
+.rai-ui .rai-form-field .form-select.is-valid,
+.rai-control.is-valid,
+.rai-form-field .form-control.is-valid,
+.rai-form-field .form-select.is-valid {
+    border: 1px solid var(--rai-success, #198754) !important;
+    border-radius: 8px !important;
+}
