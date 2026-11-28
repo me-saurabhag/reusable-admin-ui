@@ -5,6 +5,7 @@
  * class. Import only the services a page actually needs.
  */
 import Toast from './Toast.js';
+import ViewBinding from './ViewBinding.js';
 
 export default class BasePage {
     constructor(options = {}) {
@@ -22,6 +23,7 @@ export default class BasePage {
         const { root = null, toast = null, loader = null } = options ?? {};
 
         this.root = root ?? (typeof document !== 'undefined' ? document : null);
+        this.view = new ViewBinding(this.root);
         this.toast = toast ?? (typeof window !== 'undefined' ? (window.AdminUiToast ?? Toast) : Toast);
         this.loader = loader ?? (typeof window !== 'undefined' ? (window.AdminUiLoader ?? null) : null);
         this.abortController = new AbortController();
@@ -61,7 +63,10 @@ export default class BasePage {
     }
 
     setRoot(root) {
-        if (root?.querySelector) this.root = root;
+        if (root?.querySelector) {
+            this.root = root;
+            this.view = new ViewBinding(this.root);
+        }
         return this;
     }
 
