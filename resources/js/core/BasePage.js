@@ -92,6 +92,7 @@ export default class BasePage {
         const helpers = {
             getFormValues: () => this.getFormValues(),
             getFormData: () => this.getFormData(),
+            getField: (name) => this.getField(name),
             getFieldValue: (name) => this.getFieldValue(name),
             setFieldValue: (name, value) => this.setFieldValue(name, value),
             clearForm: () => this.clearForm(),
@@ -137,23 +138,16 @@ export default class BasePage {
             : null;
     }
 
-    /** Get one field by its name attribute. */
+    /** Get one field element by its name attribute. */
+    getField(name) {
+        if (!this.form || !name) return null;
+        return this.form.elements.namedItem(name) ?? null;
+    }
+
+    /** Read a named form field using the shared ViewBinding implementation. */
     getFieldValue(name) {
-        if (!this.form || !name) return '';
-
-        const field = this.form.elements.namedItem(name);
-        if (!field) return '';
-
-        // RadioNodeList covers groups of radio inputs with the same name.
-        if (typeof RadioNodeList !== 'undefined' && field instanceof RadioNodeList) {
-            return field.value ?? '';
-        }
-
-        if (field.type === 'checkbox') {
-            return field.checked ? field.value : '';
-        }
-
-        return field.value ?? '';
+        if (!this.form || !name) return null;
+        return new ViewBinding(this.form).getFieldValue(name);
     }
 
     /** Set one field by its name attribute. */
