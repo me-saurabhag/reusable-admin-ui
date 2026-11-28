@@ -9,6 +9,7 @@
 @import "./components/image-upload-card.css";
 @import "./components/profile-photo-upload.css";
 @import "./components/document-upload-card.css";
+@import "./components/form-errors.css";
 
 /* Reusable Admin UI — scoped design tokens and UI styles. */
 html,
