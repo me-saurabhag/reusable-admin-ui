@@ -93,7 +93,7 @@ export default class BasePage {
             getFormValues: () => this.getFormValues(),
             getFieldValues: () => new ViewBinding(this.form).getFieldValues(),
             getInvalidFields: () => new ViewBinding(this.form).getInvalidFields(),
-            checkValidity: () => new ViewBinding(this.form).checkValidity(),
+            checkFormValidity: () => new ViewBinding(this.form).checkValidity(),
             getFormData: () => this.getFormData(),
             getField: (name) => this.getField(name),
             getFieldValue: (name, options) => this.getFieldValue(name, options),
