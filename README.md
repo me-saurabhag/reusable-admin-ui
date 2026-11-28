@@ -420,9 +420,13 @@ import ViewBinding from '../vendor/admin-ui/core/ViewBinding.js';
 const page = new ViewBinding();
 const saveButton = page.get('saveButton');
 
+// BasePage subclasses already receive this.view for the page root.
+// const saveButton = this.view.get('saveButton');
+
 // Or limit the lookup scope to one form.
 const formElement = document.getElementById('completeRegistrationForm');
 const form = new ViewBinding(formElement);
+// Inside a BasePage subclass, use: this.formView = new ViewBinding(this.form);
 
 const mobileInput = form.get('mobile');
 const mobile = form.getValue('mobile');
@@ -436,7 +440,7 @@ if (form.has('email')) {
 form.refresh();
 ```
 
-`get(id)` returns the DOM element or `null`; `getValue(id)` reads a control value; `setValue(id, value)` sets it and returns `true` when supported; `has(id)` checks existence; `getAllIds()` returns indexed IDs; and `refresh()` rebuilds the index. Checkbox values are read as booleans, radio values as the selected value (or `null`), multiple-select values as arrays, and file inputs as a `FileList`. For security reasons, a file input can only be cleared programmatically, not populated with an arbitrary file. `setValue()` does not automatically dispatch input/change events.
+`get(id)` returns the DOM element or `null`; `getValue(id)` reads a control value; `setValue(id, value)` sets it and returns `true` when supported; `has(id)` checks existence; `getAllIds()` returns indexed IDs; and `refresh()` rebuilds the index. `BasePage` exposes a page-scoped instance as `this.view`; when `setRoot()` changes the root, the binding is rebuilt automatically. Create a separate `new ViewBinding(this.form)` when you want lookups limited to one form. Checkbox values are read as booleans, radio values as the selected value (or `null`), multiple-select values as arrays, and file inputs as a `FileList`. For security reasons, a file input can only be cleared programmatically, not populated with an arbitrary file. `setValue()` does not automatically dispatch input/change events.
 
 Location permission is never requested automatically. Request it only after an explicit user action. Browser geolocation requires a secure context (HTTPS, except localhost) and must not be treated as authoritative proof for security-sensitive authorization or geofencing.
 
