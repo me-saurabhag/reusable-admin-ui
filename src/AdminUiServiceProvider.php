@@ -200,6 +200,7 @@ class AdminUiServiceProvider extends ServiceProvider
         // ordinary local ES modules without requiring a package build pipeline.
         $coreAssets = [
             __DIR__ . '/../resources/js/core/BasePage.js' => resource_path('js/vendor/admin-ui/core/BasePage.js'),
+            __DIR__ . '/../resources/js/core/ViewBinding.js' => resource_path('js/vendor/admin-ui/core/ViewBinding.js'),
             __DIR__ . '/../resources/js/core/Toast.js' => resource_path('js/vendor/admin-ui/core/Toast.js'),
             __DIR__ . '/../resources/js/core/ImagePicker.js' => resource_path('js/vendor/admin-ui/core/ImagePicker.js'),
             __DIR__ . '/../resources/js/core/LocationManager.js' => resource_path('js/vendor/admin-ui/core/LocationManager.js'),
