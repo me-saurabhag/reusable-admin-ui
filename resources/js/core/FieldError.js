@@ -11,6 +11,7 @@ export default class FieldError {
     static tooltip = null;
     static visibleFor = null;
     static bindings = new WeakMap();
+    static positionHandler = null;
 
     static ensureTooltip() {
         if (this.tooltip?.isConnected) return this.tooltip;
@@ -24,6 +25,17 @@ export default class FieldError {
 
         document.body.appendChild(tooltip);
         this.tooltip = tooltip;
+
+        if (!this.positionHandler) {
+            this.positionHandler = () => {
+                if (this.visibleFor?.isConnected && this.tooltip && !this.tooltip.hidden) {
+                    this.position(this.visibleFor, this.tooltip);
+                }
+            };
+
+            window.addEventListener('resize', this.positionHandler);
+            window.addEventListener('scroll', this.positionHandler, true);
+        }
 
         return tooltip;
     }
@@ -65,6 +77,18 @@ export default class FieldError {
 
         const tooltip = this.ensureTooltip();
         if (!tooltip) return false;
+
+        if (this.visibleFor && this.visibleFor !== field) {
+            const previousDescriptions = (this.visibleFor.getAttribute('aria-describedby') ?? '')
+                .split(/\\s+/)
+                .filter(id => id && id !== 'rai-field-error-tooltip');
+
+            if (previousDescriptions.length) {
+                this.visibleFor.setAttribute('aria-describedby', previousDescriptions.join(' '));
+            } else {
+                this.visibleFor.removeAttribute('aria-describedby');
+            }
+        }
 
         field.setCustomValidity(text);
         field.classList.add('field-error');
