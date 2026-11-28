@@ -65,9 +65,9 @@ export default class ViewBinding {
         if (element.matches('input[type="radio"]')) {
             if (!element.name) return element.checked ? element.value : null;
 
-            const selected = this.root.querySelector(
-                `input[type="radio"][name="${this.escapeAttribute(element.name)}"]:checked`
-            );
+            const selected = Array.from(
+                this.root.querySelectorAll('input[type="radio"]')
+            ).find(radio => radio.name === element.name && radio.checked);
 
             return selected?.value ?? null;
         }
@@ -106,9 +106,9 @@ export default class ViewBinding {
                 return true;
             }
 
-            const radios = this.root.querySelectorAll(
-                `input[type="radio"][name="${this.escapeAttribute(element.name)}"]`
-            );
+            const radios = Array.from(
+                this.root.querySelectorAll('input[type="radio"]')
+            ).filter(radio => radio.name === element.name);
 
             radios.forEach((radio) => {
                 radio.checked = String(radio.value) === String(value);
@@ -144,8 +144,4 @@ export default class ViewBinding {
         return true;
     }
 
-    /** Escape a value used inside a quoted CSS attribute selector. */
-    escapeAttribute(value) {
-        return String(value).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
-    }
 }
