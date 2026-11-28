@@ -1,55 +1,71 @@
 import Toast from './Toast.js';
 
 /**
- * Open the native image picker and return a validated File through callbacks.
+ * Open an image upload component and return the selected image through a callback.
  *
+ * The supplied element can be either the file input itself or a wrapper
+ * containing an input[type="file"].
+ *
+ * @param {HTMLElement} element Image upload component or file input.
+ * @param {(file: File) => void} callback Called with the selected image.
  * @param {Object} options
- * @param {string} [options.accept]
- * @param {number} [options.maxSize] Maximum file size in bytes.
- * @param {(file: File) => void} [options.onSelect]
- * @param {() => void} [options.onCancel]
- * @param {(message: string, file?: File) => void} [options.onError]
- * @returns {HTMLInputElement|null} The temporary file input, when available.
+ * @param {number} [options.maxSize=5242880] Maximum file size in bytes.
+ * @param {() => void} [options.onCancel] Called when the picker is cancelled.
+ * @param {(message: string, file?: File) => void} [options.onError] Called when validation fails.
+ * @returns {HTMLInputElement|null} The file input, when available.
  */
-export default function chooseImage({
-    accept = 'image/jpeg,image/png,image/webp',
-    maxSize = 5 * 1024 * 1024,
-    onSelect,
-    onCancel,
-    onError,
-} = {}) {
-    if (typeof document === 'undefined' || !document.body) return null;
+export default function chooseImage(
+    element,
+    callback,
+    {
+        maxSize = 5 * 1024 * 1024,
+        onCancel,
+        onError,
+    } = {}
+) {
+    if (!element || typeof element.querySelector !== 'function') {
+        console.error('A valid image upload element is required.');
+        return null;
+    }
 
-    const input = document.createElement('input');
+    if (typeof callback !== 'function') {
+        console.error('A valid image selection callback is required.');
+        return null;
+    }
+
+    const input = element.matches?.('input[type="file"]')
+        ? element
+        : element.querySelector('input[type="file"]');
+
+    if (!input) {
+        console.error('File input not found in the image upload component.');
+        return null;
+    }
+
     let settled = false;
 
-    input.type = 'file';
-    input.accept = accept;
-    input.hidden = true;
-    input.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(input);
-
     const cleanup = () => {
-        if (input.isConnected) input.remove();
+        input.removeEventListener('change', handleChange);
+        input.removeEventListener('cancel', handleCancel);
     };
 
     const fail = (message, file = null) => {
         if (settled) return;
+
         settled = true;
         cleanup();
+
         Toast.error(message, 'Invalid image');
         onError?.(message, file ?? undefined);
     };
 
-    input.addEventListener('change', () => {
+    const handleChange = () => {
         if (settled) return;
 
         const file = input.files?.[0];
 
         if (!file) {
-            settled = true;
-            cleanup();
-            onCancel?.();
+            handleCancel();
             return;
         }
 
@@ -59,23 +75,37 @@ export default function chooseImage({
         }
 
         const allowedMaxSize = Number(maxSize);
-        if (Number.isFinite(allowedMaxSize) && allowedMaxSize > 0 && file.size > allowedMaxSize) {
-            const maxSizeInMb = (allowedMaxSize / (1024 * 1024)).toFixed(2).replace(/\.00$/, '');
+
+        if (
+            Number.isFinite(allowedMaxSize) &&
+            allowedMaxSize > 0 &&
+            file.size > allowedMaxSize
+        ) {
+            const maxSizeInMb = (allowedMaxSize / (1024 * 1024))
+                .toFixed(2)
+                .replace(/\.00$/, '');
+
             fail(`Image size must not exceed ${maxSizeInMb} MB.`, file);
             return;
         }
 
         settled = true;
         cleanup();
-        onSelect?.(file);
-    }, { once: true });
 
-    input.addEventListener('cancel', () => {
+        callback(file);
+    };
+
+    const handleCancel = () => {
         if (settled) return;
+
         settled = true;
         cleanup();
+
         onCancel?.();
-    }, { once: true });
+    };
+
+    input.addEventListener('change', handleChange);
+    input.addEventListener('cancel', handleCancel, { once: true });
 
     input.click();
 
