@@ -144,4 +144,103 @@ export default class ViewBinding {
         return true;
     }
 
+
+    /**
+     * Resolve a form control by its name attribute.
+     * The current root may itself be a form or contain one.
+     */
+    getField(name) {
+        if (!name) return null;
+
+        const form = this.root?.elements
+            ? this.root
+            : this.root?.querySelector?.('form');
+
+        return form?.elements?.namedItem(name) ?? null;
+    }
+
+    /**
+     * Read a named form field without changing its original value.
+     * Radio groups return the selected value; checkbox groups return
+     * selected values; a single checkbox returns a boolean.
+     */
+    getFieldValue(name) {
+        const field = this.getField(name);
+        if (!field) return null;
+
+        if (typeof RadioNodeList !== 'undefined' && field instanceof RadioNodeList) {
+            const controls = Array.from(field);
+            if (!controls.length) return null;
+
+            if (controls[0].type === 'radio') {
+                return field.value || null;
+            }
+
+            if (controls[0].type === 'checkbox') {
+                return controls.filter(item => item.checked).map(item => item.value);
+            }
+
+            return field.value ?? null;
+        }
+
+        if (field.matches?.('input[type="checkbox"]')) {
+            return field.checked;
+        }
+
+        if (field.matches?.('select[multiple]')) {
+            return Array.from(field.selectedOptions, option => option.value);
+        }
+
+        if (field.matches?.('input[type="file"]')) {
+            return field.files;
+        }
+
+        return 'value' in field ? field.value : null;
+    }
+
+    /** Return all successful named controls as a plain object. */
+    getFieldValues() {
+        const form = this.root?.elements
+            ? this.root
+            : this.root?.querySelector?.('form');
+
+        if (!form || typeof FormData === 'undefined') return {};
+
+        const values = {};
+
+        for (const [name, value] of new FormData(form).entries()) {
+            if (Object.prototype.hasOwnProperty.call(values, name)) {
+                values[name] = Array.isArray(values[name])
+                    ? [...values[name], value]
+                    : [values[name], value];
+            } else {
+                values[name] = value;
+            }
+        }
+
+        return values;
+    }
+
+    /** Return all controls that currently fail native HTML constraint validation. */
+    getInvalidFields() {
+        const form = this.root?.elements
+            ? this.root
+            : this.root?.querySelector?.('form');
+
+        if (!form?.elements) return [];
+
+        return Array.from(form.elements).filter(field =>
+            field.willValidate && !field.validity.valid
+        );
+    }
+
+    /** Run native HTML form validation. */
+    checkValidity() {
+        const form = this.root?.elements
+            ? this.root
+            : this.root?.querySelector?.('form');
+
+        return form?.checkValidity?.() ?? false;
+    }
+
 }
