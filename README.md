@@ -359,7 +359,8 @@ The package only renders the GET pages. The host application owns POST endpoints
 The package publishes small ES modules for shared page behavior and optional components:
 
 - `BasePage.js` — minimal page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, reusable form helpers, Toast integration, and optional Loader integration. It does not import dialogs or the API client.
-- `ViewBinding.js` — access page or form elements by their HTML IDs, read/set control values, and refresh the ID map after dynamic DOM changes.
+- `ViewBinding.js` — access page or form elements by their HTML IDs or form field names, read/set control values, and inspect native validity.
+- `FieldError.js` — show custom field tooltips for HTML5 constraint validation and API/Laravel validation errors.
 - `Toast.js` — lightweight success, info, warning, and error notifications; BasePage provides it as `this.toast` by default.
 - `ApiClient.js` — a separate opt-in module. Import it only from pages that make API requests.
 - `OtpManager.js` and `StatusDialog.js` — dialog utilities. Both are available on the three authentication pages; post-login pages import and render them only when required.
@@ -398,7 +399,10 @@ Available form helpers:
 
 - `form.getFormValues()` — plain object of named successful controls; repeated names become arrays.
 - `form.getFormData()` — native FormData, useful for file or multipart requests.
-- `form.getFieldValue(name)` — read one named control.
+- `form.getField(name)` — get a named form control.
+- `form.getFieldValue(name)` — read one named control (radio groups return the selected value; checkbox groups return selected values; a single checkbox returns a boolean).
+- `form.getFieldValues()` — read all successful named controls as a plain object.
+- `form.getInvalidFields()` / `form.checkValidity()` — inspect native HTML constraint validation.
 - `form.setFieldValue(name, value)` — set one named control.
 - `form.clearForm()` — reset controls to their HTML default values.
 - `form.setFormLoading(boolean)` — disable/enable the submit button and update its loading label.
@@ -408,6 +412,52 @@ The Host Application should register its submit listener on the form and call
 and uses the separate OTP helper itself when needed. Login and Registration are
 not changed by this update.
 
+
+### FieldError — native and API validation feedback
+
+Import and bind the helper to a form to replace browser validation popups with the
+framework tooltip. Native HTML constraints such as `required`, `type="email"`,
+`minlength`, `maxlength`, and `pattern` remain the source of validation rules.
+
+```js
+import FieldError from '../vendor/admin-ui/core/FieldError.js';
+
+const form = document.getElementById('completeRegistrationForm');
+const unbindValidation = FieldError.bind(form);
+
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!FieldError.validate(form)) return;
+
+    // The form is valid. Continue with the Host Application API request.
+});
+
+// When disposing the page:
+// unbindValidation();
+```
+
+For custom or API validation messages:
+
+```js
+const email = form.elements.namedItem('email');
+FieldError.show(email, 'This email address is already registered.');
+
+// Laravel-style errors object; all matching fields are marked invalid,
+// and the first error is shown in the tooltip.
+FieldError.showServerErrors(form, {
+    email: ['This email address is already registered.'],
+    mobile: ['The mobile number is invalid.'],
+});
+```
+
+`FieldError.bind(form)` returns a cleanup function. It enables the form's
+`noValidate` property so browser popups do not compete with the framework tooltip;
+call `FieldError.validate(form)` in the submit handler to run the same native
+constraint rules. An edited field clears its current custom error. Use
+`FieldError.clear(field)` or `FieldError.clearAll(form)` when clearing errors
+programmatically. The form-error CSS is included by the package's
+`resources/css/admin-ui.css` aggregate stylesheet.
 
 ### ViewBinding — access elements by ID
 
@@ -440,7 +490,7 @@ if (form.has('email')) {
 form.refresh();
 ```
 
-`get(id)` returns the DOM element or `null`; `getValue(id)` reads a control value; `setValue(id, value)` sets it and returns `true` when supported; `has(id)` checks existence; `getAllIds()` returns indexed IDs; and `refresh()` rebuilds the index. `BasePage` exposes a page-scoped instance as `this.view`; when `setRoot()` changes the root, the binding is rebuilt automatically. Create a separate `new ViewBinding(this.form)` when you want lookups limited to one form. Checkbox values are read as booleans, radio values as the selected value (or `null`), multiple-select values as arrays, and file inputs as a `FileList`. For security reasons, a file input can only be cleared programmatically, not populated with an arbitrary file. `setValue()` does not automatically dispatch input/change events.
+`get(id)` returns the DOM element or `null`; `getValue(id)` reads a control value; `setValue(id, value)` sets it and returns `true` when supported; `has(id)` checks existence; `getAllIds()` returns indexed IDs; and `refresh()` rebuilds the index. For a form-scoped binding, `getField(name)` resolves a named control, `getFieldValue(name)` reads its actual value without trimming, `getFieldValues()` returns all successful controls, `getInvalidFields()` lists native-invalid controls, and `checkValidity()` runs native form validation. `BasePage` exposes a page-scoped instance as `this.view`; when `setRoot()` changes the root, the binding is rebuilt automatically. Create a separate `new ViewBinding(this.form)` when you want lookups limited to one form. Checkbox values are read as booleans, radio values as the selected value (or `null`), multiple-select values as arrays, and file inputs as a `FileList`. For security reasons, a file input can only be cleared programmatically, not populated with an arbitrary file. `setValue()` does not automatically dispatch input/change events.
 
 Location permission is never requested automatically. Request it only after an explicit user action. Browser geolocation requires a secure context (HTTPS, except localhost) and must not be treated as authoritative proof for security-sensitive authorization or geofencing.
 
