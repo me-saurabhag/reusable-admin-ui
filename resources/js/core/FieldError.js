@@ -63,10 +63,6 @@ export default class FieldError {
         const text = String(message ?? '').trim();
         if (!text) return false;
 
-        if (this.visibleFor && this.visibleFor !== field) {
-            this.clear(this.visibleFor);
-        }
-
         const tooltip = this.ensureTooltip();
         if (!tooltip) return false;
 
@@ -211,23 +207,38 @@ export default class FieldError {
         if (!form?.elements || !errors || typeof errors !== 'object') return 0;
 
         let count = 0;
+        let firstInvalid = null;
 
-        Object.entries(errors).some(([name, messages]) => {
+        Object.entries(errors).forEach(([name, messages]) => {
             const field = form.elements.namedItem(name);
-            if (!field) return false;
+            if (!field) return;
 
             const target = typeof RadioNodeList !== 'undefined' && field instanceof RadioNodeList
                 ? field[0]
                 : field;
 
             const message = Array.isArray(messages) ? messages[0] : messages;
-            if (target && this.show(target, message)) {
-                count++;
-                return true;
+            if (!target || !message) return;
+
+            target.setCustomValidity(String(message));
+            target.classList.add('field-error');
+            target.setAttribute('aria-invalid', 'true');
+
+            if (!this.bindings.has(target)) {
+                const clearOnEdit = () => this.clear(target);
+                target.addEventListener('input', clearOnEdit);
+                target.addEventListener('change', clearOnEdit);
+                this.bindings.set(target, clearOnEdit);
             }
 
-            return false;
+            if (!firstInvalid) firstInvalid = { field: target, message };
+            count++;
         });
+
+        if (firstInvalid) {
+            this.show(firstInvalid.field, firstInvalid.message);
+            firstInvalid.field.focus?.({ preventScroll: false });
+        }
 
         return count;
     }
