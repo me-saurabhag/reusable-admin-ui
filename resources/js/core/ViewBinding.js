@@ -144,7 +144,6 @@ export default class ViewBinding {
         return true;
     }
 
-
     /**
      * Resolve a form control by its name attribute.
      * The current root may itself be a form or contain one.
@@ -160,11 +159,13 @@ export default class ViewBinding {
     }
 
     /**
-     * Read a named form field without changing its original value.
-     * Radio groups return the selected value; checkbox groups return
-     * selected values; a single checkbox returns a boolean.
+     * Read a named form field.
+     *
+     * Regular text inputs are trimmed by default. Pass { trim: false }
+     * to preserve their whitespace. Password, hidden, textarea, checkbox,
+     * radio, select and file values are returned without trimming.
      */
-    getFieldValue(name) {
+    getFieldValue(name, { trim = true } = {}) {
         const field = this.getField(name);
         if (!field) return null;
 
@@ -177,7 +178,9 @@ export default class ViewBinding {
             }
 
             if (controls[0].type === 'checkbox') {
-                return controls.filter(item => item.checked).map(item => item.value);
+                return controls
+                    .filter(item => item.checked)
+                    .map(item => item.value);
             }
 
             return field.value ?? null;
@@ -195,7 +198,33 @@ export default class ViewBinding {
             return field.files;
         }
 
-        return 'value' in field ? field.value : null;
+        if (!('value' in field)) return null;
+
+        const value = field.value;
+
+        if (typeof value !== 'string' || !trim) {
+            return value;
+        }
+
+        // Preserve whitespace for fields where it may be meaningful.
+        if (
+            field.tagName === 'TEXTAREA' ||
+            ['password', 'hidden'].includes(field.type)
+        ) {
+            return value;
+        }
+
+        // Trim only regular text-based inputs.
+        const trimTypes = ['text', 'email', 'tel', 'search', 'url'];
+
+        if (
+            field.tagName === 'INPUT' &&
+            trimTypes.includes(field.type)
+        ) {
+            return value.trim();
+        }
+
+        return value;
     }
 
     /** Return all successful named controls as a plain object. */
@@ -242,5 +271,4 @@ export default class ViewBinding {
 
         return form?.checkValidity?.() ?? false;
     }
-
 }
