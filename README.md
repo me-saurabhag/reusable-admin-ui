@@ -402,7 +402,7 @@ Available form helpers:
 - `form.getField(name)` — get a named form control.
 - `form.getFieldValue(name)` — read one named control (radio groups return the selected value; checkbox groups return selected values; a single checkbox returns a boolean).
 - `form.getFieldValues()` — read all successful named controls as a plain object.
-- `form.getInvalidFields()` / `form.checkValidity()` — inspect native HTML constraint validation.
+- `form.getInvalidFields()` / `form.checkFormValidity()` — inspect native HTML constraint validation without overriding the browser's native `form.checkValidity()` method.
 - `form.setFieldValue(name, value)` — set one named control.
 - `form.clearForm()` — reset controls to their HTML default values.
 - `form.setFormLoading(boolean)` — disable/enable the submit button and update its loading label.
