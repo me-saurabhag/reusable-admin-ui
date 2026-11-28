@@ -96,7 +96,7 @@ export default class BasePage {
             checkValidity: () => new ViewBinding(this.form).checkValidity(),
             getFormData: () => this.getFormData(),
             getField: (name) => this.getField(name),
-            getFieldValue: (name) => this.getFieldValue(name),
+            getFieldValue: (name, options) => this.getFieldValue(name, options),
             setFieldValue: (name, value) => this.setFieldValue(name, value),
             clearForm: () => this.clearForm(),
             setFormLoading: (loading) => this.setFormLoading(loading),
@@ -148,9 +148,9 @@ export default class BasePage {
     }
 
     /** Read a named form field using the shared ViewBinding implementation. */
-    getFieldValue(name) {
+    getFieldValue(name, options = {}) {
         if (!this.form || !name) return null;
-        return new ViewBinding(this.form).getFieldValue(name);
+        return new ViewBinding(this.form).getFieldValue(name, options);
     }
 
     /** Set one field by its name attribute. */
