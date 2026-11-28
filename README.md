@@ -359,6 +359,7 @@ The package only renders the GET pages. The host application owns POST endpoints
 The package publishes small ES modules for shared page behavior and optional components:
 
 - `BasePage.js` — minimal page lifecycle, DOM helpers, event-listener cleanup, header/profile action hooks, reusable form helpers, Toast integration, and optional Loader integration. It does not import dialogs or the API client.
+- `ViewBinding.js` — access page or form elements by their HTML IDs, read/set control values, and refresh the ID map after dynamic DOM changes.
 - `Toast.js` — lightweight success, info, warning, and error notifications; BasePage provides it as `this.toast` by default.
 - `ApiClient.js` — a separate opt-in module. Import it only from pages that make API requests.
 - `OtpManager.js` and `StatusDialog.js` — dialog utilities. Both are available on the three authentication pages; post-login pages import and render them only when required.
@@ -407,6 +408,35 @@ The Host Application should register its submit listener on the form and call
 and uses the separate OTP helper itself when needed. Login and Registration are
 not changed by this update.
 
+
+### ViewBinding — access elements by ID
+
+Use `ViewBinding` when you prefer ID-based access instead of repeatedly calling `document.getElementById()` or `querySelector()`.
+
+```js
+import ViewBinding from '../vendor/admin-ui/core/ViewBinding.js';
+
+// Index IDs across the whole page.
+const page = new ViewBinding();
+const saveButton = page.get('saveButton');
+
+// Or limit the lookup scope to one form.
+const formElement = document.getElementById('completeRegistrationForm');
+const form = new ViewBinding(formElement);
+
+const mobileInput = form.get('mobile');
+const mobile = form.getValue('mobile');
+form.setValue('mobile', '9876543210');
+
+if (form.has('email')) {
+    // The email control exists in this form.
+}
+
+// Re-index after adding/removing elements dynamically.
+form.refresh();
+```
+
+`get(id)` returns the DOM element or `null`; `getValue(id)` reads a control value; `setValue(id, value)` sets it and returns `true` when supported; `has(id)` checks existence; `getAllIds()` returns indexed IDs; and `refresh()` rebuilds the index. Checkbox values are read as booleans, radio values as the selected value (or `null`), multiple-select values as arrays, and file inputs as a `FileList`. For security reasons, a file input can only be cleared programmatically, not populated with an arbitrary file. `setValue()` does not automatically dispatch input/change events.
 
 Location permission is never requested automatically. Request it only after an explicit user action. Browser geolocation requires a secure context (HTTPS, except localhost) and must not be treated as authoritative proof for security-sensitive authorization or geofencing.
 
