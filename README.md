@@ -225,6 +225,41 @@ layout should load valid public Bootstrap files and the host does not load it.
 </x-admin-ui::layout>
 ```
 
+## Component IDs
+
+Form components accept an optional `id` attribute. When an explicit ID is supplied, the component uses it on the actual interactive HTML element (for example, the `input`, `select`, `textarea`, or file input). When omitted, the component generates a unique ID automatically. Labels are linked to the generated or supplied ID through their `for` attribute.
+
+This behavior is available on the form controls, including `input`, `select`, `textarea`, `checkbox`, `radio`, `switch`, `image-upload-card`, and `profile-photo-upload`.
+
+```blade
+<x-admin-ui::input
+    id="mobile"
+    name="mobile"
+    type="tel"
+    label="Mobile"
+    required
+/>
+
+<x-admin-ui::select
+    id="gender"
+    name="gender"
+    label="Gender"
+>
+    <option value="">Select gender</option>
+    <option value="female">Female</option>
+    <option value="male">Male</option>
+</x-admin-ui::select>
+```
+
+Access these elements directly from page JavaScript:
+
+```js
+const mobileInput = document.getElementById('mobile');
+const genderSelect = document.getElementById('gender');
+```
+
+If you omit `id`, the component still renders a unique ID and keeps its label correctly associated with the control. You only need to provide an ID when you want to reference the element from JavaScript, CSS, or another part of the page.
+
 ## Design Tokens and Brand Customization
 
 The framework exposes CSS variables for the primary/secondary brand palette,
