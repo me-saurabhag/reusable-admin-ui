@@ -91,6 +91,9 @@ export default class BasePage {
 
         const helpers = {
             getFormValues: () => this.getFormValues(),
+            getFieldValues: () => new ViewBinding(this.form).getFieldValues(),
+            getInvalidFields: () => new ViewBinding(this.form).getInvalidFields(),
+            checkValidity: () => new ViewBinding(this.form).checkValidity(),
             getFormData: () => this.getFormData(),
             getField: (name) => this.getField(name),
             getFieldValue: (name) => this.getFieldValue(name),
